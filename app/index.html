@@ -587,6 +587,117 @@ footer{padding-bottom:calc(30px + var(--sab))}
 @media (max-width:560px){.tpanel{top:calc(58px + var(--sat))}.sbtop{top:calc(58px + var(--sat))}}
 /* în aplicația nativă nu are sens hover-ul „lipicios” de pe ecranele tactile */
 @media (hover:none){.ch:hover{transform:none;box-shadow:none}}
+
+/* ---------- PREMIUM: lecții video și audio ---------- */
+:root[data-theme="dark"],:root[data-theme="noapte"],:root[data-theme="neon"],:root[data-theme="cafea"]{--gold:#f2c14e}
+@media (prefers-color-scheme:dark){:root:not([data-theme]){--gold:#f2c14e}}
+:root{--gold:#c8902a}
+.pm-tag{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:color-mix(in srgb,var(--gold) 18%,transparent);color:var(--gold)}
+.pm-strip{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.pm-strip .btn{display:inline-flex;align-items:center;gap:8px}
+.pm-strip svg{width:18px;height:18px;flex:none}
+.pm-lockcard{display:flex;align-items:center;gap:12px;width:100%;text-decoration:none;color:var(--ink);border:1.5px dashed color-mix(in srgb,var(--gold) 60%,var(--line));background:color-mix(in srgb,var(--gold) 7%,var(--sheet));border-radius:14px;padding:12px 16px}
+.pm-lockcard b{display:block;font-family:var(--display)}
+.pm-lockcard small{color:var(--muted)}
+.pm-lockcard .ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--gold);color:#fff;flex:none;font-size:18px}
+.pm-unlock{max-width:520px}
+.pm-unlock .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.pm-unlock input{flex:1;min-width:0;font:600 18px var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--sheet2);color:var(--ink)}
+.pm-unlock input:focus{outline:none;border-color:var(--gold)}
+.pm-unlock .err{min-height:22px;color:var(--pen);font-size:14.5px;margin-top:8px}
+.pm-feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+.pm-feat{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.pm-feat b{display:block;font-family:var(--display);font-size:17px;margin-bottom:2px}
+.pm-feat span{color:var(--muted);font-size:14.5px}
+.pm-list{display:grid;gap:8px}
+.pm-item{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.pm-item .no{font-family:var(--mono);font-weight:600;color:var(--pen);font-size:13px;text-align:center}
+.pm-item .t{font-weight:700;line-height:1.3}
+.pm-item .d{display:block;color:var(--muted);font-size:13.5px;font-weight:400}
+.pm-item .acts{display:flex;gap:6px}
+.pm-item .acts a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:14px;padding:7px 11px;border-radius:10px;background:var(--sheet2);border:1px solid var(--line);color:var(--ink);white-space:nowrap}
+.pm-item .acts a.v{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.pm-item .acts svg{width:15px;height:15px}
+@media (max-width:560px){.pm-item{grid-template-columns:1fr;gap:6px}.pm-item .no{text-align:left}.pm-item .acts a{flex:1;justify-content:center}}
+
+/* playerul video */
+.pm-video{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:var(--sheet);border:1px solid var(--line);box-shadow:var(--shadow);container-type:inline-size;isolation:isolate;user-select:none;-webkit-user-select:none}
+@media (max-width:700px){.pm-video{aspect-ratio:4/5}}
+.pm-video:fullscreen,.pm-video.fs{aspect-ratio:auto;width:100vw;height:100vh;height:100dvh;border-radius:0;border:0}
+.pm-video.fs{position:fixed;inset:0;z-index:200}
+.pm-bg{position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 85% 10%,color-mix(in srgb,var(--sc,var(--accent)) 22%,transparent),transparent 55%),radial-gradient(circle at 0% 100%,color-mix(in srgb,var(--sc,var(--accent)) 14%,transparent),transparent 50%),var(--sheet)}
+.pm-bg::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:4cqi 4cqi;opacity:.55;animation:pmdrift 40s linear infinite}
+@keyframes pmdrift{to{background-position:4cqi 4cqi}}
+.pm-stage{position:absolute;inset:0;padding:5cqi 6cqi 13cqi;overflow:auto;scrollbar-width:none;font-size:clamp(13px,2.1cqi,24px);line-height:1.45}
+@container (max-width:700px){.pm-stage{font-size:clamp(13px,3.6cqi,20px);padding:6cqi 6cqi 22cqi}}
+.pm-stage::-webkit-scrollbar{display:none}
+.pm-slide{animation:pmin .55s cubic-bezier(.2,.7,.2,1)}
+@keyframes pmin{from{opacity:0;transform:translateY(2.5cqi) scale(.985)}}
+.pm-kick{font-family:var(--mono);font-size:.68em;letter-spacing:.12em;text-transform:uppercase;color:var(--sc,var(--accent));font-weight:600;margin-bottom:.6em;display:flex;gap:.8em;align-items:center}
+.pm-kick i{flex:1;height:2px;background:color-mix(in srgb,var(--sc,var(--accent)) 35%,transparent);border-radius:2px}
+.pm-h{font-family:var(--display);font-weight:700;font-size:2em;line-height:1.08;margin:0 0 .6em;text-wrap:balance}
+.pm-b{opacity:.18;transform:translateY(.5em);transition:opacity .45s,transform .45s,background .3s,box-shadow .3s;margin:0 0 .55em;border-radius:.5em}
+.pm-b.on{opacity:1;transform:none}
+.pm-b.now{background:color-mix(in srgb,var(--sc,var(--accent)) 9%,transparent);box-shadow:0 0 0 .35em color-mix(in srgb,var(--sc,var(--accent)) 9%,transparent)}
+.pm-b.li{padding-left:1.3em;position:relative}
+.pm-b.li::before{content:"";position:absolute;left:.25em;top:.62em;width:.45em;height:.45em;border-radius:50%;background:var(--sc,var(--accent))}
+.pm-b.fx{font-family:var(--mono);font-size:1.18em;font-weight:600;background:var(--sheet2);border:1px solid var(--line);border-left:.25em solid var(--pen);border-radius:0 .5em .5em 0;padding:.45em .8em;overflow-x:auto}
+.pm-b.fx.now{box-shadow:0 0 0 .3em color-mix(in srgb,var(--pen) 16%,transparent)}
+.pm-b.keep{border:2px dashed var(--pen);padding:.5em .8em;background:color-mix(in srgb,var(--pen) 6%,transparent)}
+.pm-b.tbl table{font-size:.8em}
+.pm-b.tbl th,.pm-b.tbl td{padding:.3em .6em}
+.pm-b.pic svg{max-width:100%;height:auto;max-height:38cqi}
+.pm-title{display:grid;place-items:center;text-align:center;min-height:100%;align-content:center;gap:.4em}
+.pm-title .ill{width:26cqi;height:auto;color:var(--sc,var(--accent))}
+.pm-title .pm-h{font-size:2.6em;margin:0}
+.pm-title p{color:var(--muted);margin:0;font-size:1.1em}
+.pm-title .pm-kick{justify-content:center}
+.pm-end .pm-check{list-style:none;padding:0;margin:0;display:grid;gap:.5em}
+.pm-cap{position:absolute;left:50%;bottom:3.2cqi;transform:translateX(-50%);width:min(92%,80ch);text-align:center;font-size:clamp(13px,1.9cqi,21px);line-height:1.35;background:rgba(10,12,18,.82);color:#fff;padding:.45em .9em;border-radius:.6em;pointer-events:none;transition:opacity .25s}
+@container (max-width:700px){.pm-cap{font-size:clamp(12.5px,3.4cqi,17px);bottom:4cqi}}
+.pm-cap:empty,.pm-video.nocap .pm-cap{opacity:0}
+.pm-big{position:absolute;inset:0;margin:auto;width:18cqi;height:18cqi;max-width:110px;max-height:110px;min-width:64px;min-height:64px;border-radius:50%;border:0;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 12px 40px rgba(0,0,0,.3);transition:transform .15s,opacity .2s}
+.pm-big svg{width:42%;height:42%;margin-left:6%}
+.pm-big:hover{transform:scale(1.05)}
+.pm-video.playing .pm-big,.pm-video.started .pm-big{opacity:0;pointer-events:none}
+.pm-tap{position:absolute;inset:0;z-index:1;background:transparent;border:0;cursor:pointer}
+.pm-video .pm-stage{z-index:0}
+.pm-ctrl{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pm-ctrl .pbtn{width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--sheet);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none}
+.pm-ctrl .pbtn.main{background:var(--accent);color:var(--accent-ink);border-color:transparent;width:52px;height:52px;border-radius:50%}
+.pm-ctrl .pbtn svg{width:20px;height:20px}
+.pm-ctrl .pbtn[aria-pressed="true"]{background:var(--sheet2);border-color:var(--accent);color:var(--accent)}
+.pm-bar{flex:1;min-width:160px;height:30px;position:relative;cursor:pointer;touch-action:none}
+.pm-bar .tr{position:absolute;left:0;right:0;top:12px;height:6px;border-radius:99px;background:var(--sheet2);border:1px solid var(--line)}
+.pm-bar .fi{position:absolute;left:0;top:12px;height:6px;border-radius:99px;background:var(--accent);width:0;transition:width .3s}
+.pm-bar .tk{position:absolute;top:9px;width:2px;height:12px;background:var(--muted);opacity:.45;border-radius:1px}
+.pm-bar .kn{position:absolute;top:7px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--sheet);transition:left .3s}
+.pm-time{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:nowrap;min-width:84px;text-align:center}
+.pm-speed{width:auto!important;flex:none;font:600 14px var(--mono);height:44px;padding:0 8px;border-radius:12px;border:1px solid var(--line);background:var(--sheet);color:var(--ink)}
+.pm-note{font-size:14px;color:var(--muted);margin-top:10px}
+.pm-note:empty{display:none}
+@media (max-width:560px){.pm-ctrl .pm-bar{order:-2;flex-basis:100%}.pm-ctrl .pm-time{order:-1;flex-basis:100%;text-align:right;margin-top:-6px;min-width:0}.pm-ctrl .pm-speed{margin-left:auto}}
+
+/* playerul audio */
+.pm-audio{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center}
+@media (max-width:620px){.pm-audio{grid-template-columns:1fr;text-align:center}}
+.pm-cover{aspect-ratio:1;border-radius:20px;display:grid;place-items:center;background:radial-gradient(circle at 30% 20%,color-mix(in srgb,var(--sc,var(--accent)) 40%,var(--sheet)),color-mix(in srgb,var(--sc,var(--accent)) 12%,var(--sheet)));border:1px solid var(--line);position:relative;overflow:hidden;max-width:220px;width:100%;margin:0 auto}
+.pm-cover .ill{width:80%;color:var(--ink)}
+.pm-eq{position:absolute;bottom:10px;left:0;right:0;display:flex;gap:4px;justify-content:center;height:22px;align-items:flex-end;opacity:0;transition:opacity .3s}
+.pm-eq i{width:4px;background:var(--accent);border-radius:2px;height:30%;animation:pmeq 1s ease-in-out infinite}
+.pm-eq i:nth-child(2){animation-delay:-.3s}.pm-eq i:nth-child(3){animation-delay:-.6s}.pm-eq i:nth-child(4){animation-delay:-.15s}.pm-eq i:nth-child(5){animation-delay:-.45s}
+@keyframes pmeq{50%{height:100%}}
+.playing .pm-eq{opacity:1}
+.pm-audio h2{margin:2px 0 4px;font-size:24px}
+.pm-audio .sub{color:var(--muted);margin:0}
+.pm-tr{max-height:60vh;overflow:auto;line-height:1.7;font-size:17px}
+.pm-tr h3{margin:16px 0 4px;font-size:16px;color:var(--sc,var(--accent));text-transform:uppercase;letter-spacing:.05em}
+.pm-tr h3:first-child{margin-top:0}
+.pm-tr span{cursor:pointer;border-radius:5px;padding:1px 2px;transition:background .2s,color .2s}
+.pm-tr span:hover{background:var(--sheet2)}
+.pm-tr span.done{color:var(--muted)}
+.pm-tr span.now{background:color-mix(in srgb,var(--accent) 18%,transparent);color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.pm-slide,.pm-b{animation:none;transition:none}.pm-bg::after,.pm-eq i{animation:none}}
 </style>
 </head>
 <body>
@@ -2955,7 +3066,7 @@ const FC = F.map(([ch,n,f])=>({ch,q:n,a:f})).concat([
 const MENU = [
  {id:'lectii', t:'Clase și BAC', mega:true},
  {id:'exersare', t:'Exersează', items:[['simbac','Simulare BAC','Subiectele I, II și III, cu cronometru și notă'],['quiz','Quiz','Teste pe lecție, capitol, clasă sau din toate'],['flashcards','Flashcards','Formule și definiții de memorat'],['probleme','Probleme rezolvate','Pas cu pas, la toate capitolele']]},
- {id:'unelte', t:'Unelte', items:[['simulator','Simulator','Laboratoare interactive cu animații'],['calculator','Calculator','Rezolvare pas cu pas cu datele tale'],['formule','Fișa de formule','Toate formulele, cu căutare'],['lectii','Caută în lecții','Toate lecțiile, cu căutare']]}
+ {id:'unelte', t:'Unelte', items:[['premium','Lecții video și audio ★','Premium: lecții animate și narate în română'],['simulator','Simulator','Laboratoare interactive cu animații'],['calculator','Calculator','Rezolvare pas cu pas cu datele tale'],['formule','Fișa de formule','Toate formulele, cu căutare'],['lectii','Caută în lecții','Toate lecțiile, cu căutare']]}
 ];
 function buildMenu(){
   const m = $('#menu');
@@ -3329,6 +3440,7 @@ function lectii(arg){
    <nav class="toc" aria-label="Cuprins">${groupsOf(s.id,true).map(gg=>`<h5>${gg.t}</h5>${L.filter(x=>x.g===gg.id).map(x=>`<a href="#lectii-${gi(x)}" class="${progress.read[x.id]?'done':''}" ${x===l?'aria-current="page"':''}><span class="n">${sn(x)}</span>${x.t}</a>`).join('')}`).join('')}</nav>
    <div class="stack">
     <div><h1>${l.t}</h1><p class="lead" style="margin-bottom:0">${l.d} ${l.extra?'<span class="badge extra">Completare din programă</span>':''}${l.nb?'<span class="badge extra">Nu se cere la BAC</span>':''}</p></div>
+    ${premStrip(n)}
     <div class="brief"><h2>Pe scurt</h2><ul>${l.brief.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></div>
     <article class="sheet lesson">${l.html}</article>
     ${l.graph?`<div class="sheet"><h2>Grafice</h2><div class="plots" id="lgraph"></div><div id="lgleg"></div><p class="hint">Schimbă valorile în <a href="#simulator-${s.id}">Simulator</a>.</p></div>`:''}
@@ -4182,6 +4294,272 @@ function fcDraw(){
   $('#fmix').onclick=()=>{shuffle(s.list);s.i=0;fcDraw();};
 }
 document.addEventListener('keydown',e=>{ if(current!=='flashcards'||!$('#fnext')||e.target.matches('input,select'))return; if(e.key==='ArrowRight')$('#fnext').click(); if(e.key==='ArrowLeft')$('#fprev').click(); });
+
+/* =====================================================================
+   PREMIUM: lecții video și audio, deblocate cu un cod.
+   Lecțiile se construiesc din textul fiecărei lecții și sunt narate în română
+   cu vocea telefonului (aplicația nativă: motorul TTS al sistemului; browser: Web Speech).
+   Codul nu apare în fișier, doar amprenta lui SHA-256 (PREM_HASH).
+   ===================================================================== */
+const PREM_HASH='d5534931f099607ef0e49a833a0581a94f9733b19d742a2dc2dd6a7e94d6bc2f';
+const isPrem=()=>store.get('premium',false)===true;
+const IC={
+  play:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.4-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>',
+  pause:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4.5" height="16" rx="1.2"/><rect x="13.5" y="4" width="4.5" height="16" rx="1.2"/></svg>',
+  prev:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h2.2v14H6zM20 5.6v12.8a.8.8 0 0 1-1.2.7L9.4 12.7a.8.8 0 0 1 0-1.4l9.4-6.4a.8.8 0 0 1 1.2.7z"/></svg>',
+  next:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.8 5H18v14h-2.2zM4 5.6v12.8a.8.8 0 0 0 1.2.7l9.4-6.4a.8.8 0 0 0 0-1.4L5.2 4.9A.8.8 0 0 0 4 5.6z"/></svg>',
+  cc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.5 10.2a2.4 2.4 0 1 0 0 3.6M17 10.2a2.4 2.4 0 1 0 0 3.6"/></svg>',
+  fs:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>',
+  video:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="13" height="13" rx="2.5"/><path d="M15.5 10.5l6-3.5v10l-6-3.5z"/></svg>',
+  audio:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><rect x="2.5" y="13.5" width="5" height="7" rx="2"/><rect x="16.5" y="13.5" width="5" height="7" rx="2"/></svg>'
+};
+
+/* ---- deblocare ---- */
+async function premHash(s){ const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)); return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join(''); }
+async function tryUnlock(code){ const v=String(code).replace(/\s+/g,'').toUpperCase(); if(!v) return false; try{ if(await premHash('fizbac-premium:'+v)===PREM_HASH){ store.set('premium',true); return true; } }catch(e){} return false; }
+function unlockBox(onOk){
+  const id='pmc'+Math.random().toString(36).slice(2,7);
+  setTimeout(()=>{ const inp=document.getElementById(id), btn=document.getElementById(id+'b'), er=document.getElementById(id+'e'); if(!inp) return; let tries=0, wait=0;
+    const go=async()=>{ if(Date.now()<wait){ er.textContent='Prea multe încercări. Mai așteaptă puțin.'; return; }
+      if(await tryUnlock(inp.value)){ er.textContent=''; onOk(); return; }
+      tries++; inp.value=''; inp.focus(); er.textContent='Cod greșit.'; if(tries>=5){ tries=0; wait=Date.now()+30000; er.textContent='Cod greșit de 5 ori. Așteaptă 30 de secunde.'; } };
+    btn.onclick=go; inp.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); go(); } }); inp.addEventListener('input',()=>{ er.textContent=''; }); },0);
+  return `<div class="sheet pm-unlock"><span class="pm-tag">★ Premium</span><h2 style="margin:10px 0 4px">Introdu codul Premium</h2><p class="hint" style="margin:0">Codul deblochează toate lecțiile video și audio pe acest dispozitiv.</p>
+    <div class="row"><label class="sr" for="${id}">Cod Premium</label><input id="${id}" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="COD" enterkeyhint="go"><button class="btn" type="button" id="${id}b">Deblochează</button></div><div class="err" id="${id}e" aria-live="polite"></div></div>`;
+}
+function premStrip(n){
+  if(isPrem()) return `<div class="pm-strip"><a class="btn" href="#video-${n}">${IC.video}Lecția video</a><a class="btn ghost" href="#audio-${n}">${IC.audio}Ascultă lecția</a><span class="pm-tag">★ Premium</span></div>`;
+  return `<a class="pm-lockcard" href="#premium-${n}"><span class="ic">🔒</span><span><b>Lecția video și audio</b><small>Animată și narată în română · se deschide cu codul Premium</small></span></a>`;
+}
+
+/* ---- din text scris în text de citit cu voce tare ---- */
+const GREEK={'Δ':'delta ','α':'alfa','β':'beta','γ':'gama','δ':'delta','ε':'epsilon','η':'eta','θ':'teta','λ':'lambda','μ':'miu','ν':'niu','π':'pi','ρ':'ro','σ':'sigma','τ':'tau','φ':'fi','ω':'omega','Φ':'fi','Ω':' ohmi','ℓ':'l'};
+const SUPD='⁰¹²³⁴⁵⁶⁷⁸⁹';
+const UNITS=[['m/s²',' metri pe secundă la pătrat'],['m/s','metri pe secundă'],['km/h','kilometri pe oră'],['rad/s','radiani pe secundă'],['kg/m³','kilograme pe metru cub'],['J/(kg·K)','jouli pe kilogram kelvin'],['J/(mol·K)','jouli pe mol kelvin'],['J/kg','jouli pe kilogram'],['J/mol','jouli pe mol'],['N/m','newtoni pe metru'],['J/s','jouli pe secundă'],['°C',' grade Celsius'],['kWh','kilowați oră']];
+function say(s){
+  s=' '+String(s)+' ';
+  UNITS.forEach(([u,w])=>{ s=s.split(u).join(' '+w+' '); });
+  s=s.replace(/([⁻]?[⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g,m=>{ const neg=m[0]==='⁻', d=[...m.replace('⁻','')].map(c=>SUPD.indexOf(c)).join('');
+      if(!neg&&d==='2') return ' la pătrat '; if(!neg&&d==='3') return ' la cub '; return ' la puterea '+(neg?'minus ':'')+d+' '; });
+  s=s.replace(/\^(-?\d+)/g,(m,d)=>d==='2'?' la pătrat ':d==='3'?' la cub ':' la puterea '+d.replace('-','minus ')+' ');
+  s=s.replace(/√\s*\(/g,' radical din (').replace(/√/g,' radical din ');
+  s=s.replace(/[ΔαβγδεηθλμνπρστφωΦΩℓ]/g,c=>' '+(GREEK[c]||c)+' ');
+  s=s.replace(/\s*[·×]\s*/g,' ori ').replace(/\s*≈\s*/g,' aproximativ egal cu ').replace(/\s*≠\s*/g,' diferit de ').replace(/\s*≤\s*/g,' mai mic sau egal cu ').replace(/\s*≥\s*/g,' mai mare sau egal cu ')
+       .replace(/\s*[⇒→]\s*/g,', deci ').replace(/\s*∝\s*/g,' proporțional cu ').replace(/\s*=\s*/g,' egal ').replace(/\s+<\s+/g,' mai mic decât ').replace(/\s+>\s+/g,' mai mare decât ')
+       .replace(/\s*−\s*/g,' minus ').replace(/(\S)\s*\/\s*(\S)/g,'$1 supra $2').replace(/°/g,' grade').replace(/[|]/g,' ').replace(/\s*;\s*/g,'. ').replace(/[_*#]/g,' ');
+  return s.replace(/\s+/g,' ').trim();
+}
+const sentences=t=>String(t).replace(/\s+/g,' ').trim().split(/(?<=[.!?:])\s+(?=[A-ZĂÂÎȘȚ„(0-9])/).flatMap(x=>x.length>230?x.split(/(?<=[,;])\s+/):[x]).map(x=>x.trim()).filter(x=>x.length>1);
+
+/* ---- scenariul unei lecții: slide-uri, blocuri și propoziții ---- */
+function lessonScript(n){
+  const l=L[n-1], g=grp(l.g), s=subj(g.m), c=klass(s.cls);
+  const box=document.createElement('div');
+  box.innerHTML=l.html.replace(/<sub>(.*?)<\/sub>/g,' $1').replace(/<sup>(.*?)<\/sup>/g,'^$1');
+  const slides=[], segs=[];
+  const addSlide=(o)=>{ o.blocks=o.blocks||[]; slides.push(o); return o; };
+  const addBlock=(sl,type,html,texts)=>{ const b={type,html,segs:[]}; sl.blocks.push(b); (texts||[]).forEach(t=>{ const v=say(t); if(v) { b.segs.push(segs.length); segs.push({slide:slides.indexOf(sl),block:sl.blocks.length-1,say:v,show:t}); } }); return b; };
+  const t0=addSlide({kind:'title',kick:`${c.t} · ${s.t}`,h:l.t,p:l.d});
+  addBlock(t0,'p','',[`Lecția: ${l.t}.`,l.d.replace(/[.]?$/,'.')]);
+  const br=addSlide({kind:'sec',kick:'Pe scurt',h:'Ce reții din lecție'});
+  addBlock(br,'p','',['Pe scurt, iată ce trebuie să reții.']);
+  l.brief.forEach(b=>addBlock(br,'li',esc(b),[b]));
+  let cur=null, count=0;
+  const sec=(h)=>{ cur=addSlide({kind:'sec',kick:s.t,h}); count=0; addBlock(cur,'hd','',[h.replace(/[.:]?$/,'.')]); };
+  const room=()=>{ if(!cur) sec('Introducere'); else if(count>=5){ const h=cur.h.replace(/ \(continuare\)$/,''); cur=addSlide({kind:'sec',kick:s.t,h:h+' (continuare)'}); count=0; } count++; };
+  [...box.childNodes].forEach(el=>{
+    if(el.nodeType===3){ const t=el.textContent.trim(); if(t){ room(); addBlock(cur,'p',esc(t),sentences(t)); } return; }
+    if(el.nodeType!==1) return;
+    const tag=el.tagName, txt=el.textContent.replace(/\s+/g,' ').trim();
+    if(/^H[2-4]$/.test(tag)){ sec(txt); return; }
+    if(tag==='P'){ if(!txt) return; room(); addBlock(cur,'p',el.innerHTML,sentences(txt)); return; }
+    if(tag==='UL'||tag==='OL'){ [...el.children].forEach(li=>{ const t=li.textContent.replace(/\s+/g,' ').trim(); if(!t) return; room(); addBlock(cur,'li',li.innerHTML,sentences(t)); }); return; }
+    if(el.classList.contains('fx')){ room(); addBlock(cur,'fx',el.innerHTML,['Formula: '+txt]); return; }
+    if(el.classList.contains('keep')){ room(); addBlock(cur,'keep',el.innerHTML,sentences('Reține! '+txt)); return; }
+    const tb=el.tagName==='TABLE'?el:el.querySelector('table');
+    if(tb){ room(); const rows=[...tb.querySelectorAll('tbody tr')].slice(0,8).map(tr=>[...tr.children].map(td=>td.textContent.trim()).filter(Boolean).join(': '));
+      addBlock(cur,'tbl','<div class="tw">'+tb.outerHTML+'</div>',['Uită-te în tabel.',...rows.map(r=>r+'.')]); count+=1; return; }
+    if(el.querySelector('svg,canvas,img')){ room(); addBlock(cur,'pic',el.outerHTML,txt?sentences(txt):['Uită-te la desen.']); return; }
+    if(txt){ room(); addBlock(cur,'p',el.innerHTML,sentences(txt)); }
+  });
+  const end=addSlide({kind:'end',kick:'Recapitulare',h:'Gata! Ai terminat lecția'});
+  addBlock(end,'p','',[`Gata, asta a fost lecția ${l.t}.`,'Hai să recapitulăm.']);
+  l.brief.forEach(b=>addBlock(end,'li','✓ '+esc(b),[b]));
+  addBlock(end,'p','<span class="hint">Acum verifică-te cu testul lecției.</span>',['Acum verifică-te cu testul lecției. Succes!']);
+  return {l,g,s,c,slides,segs};
+}
+const words=t=>t.split(/\s+/).length;
+const estMin=(segs,rate=1)=>Math.max(1,Math.round(segs.reduce((a,x)=>a+words(x.say),0)/(150*rate)));
+
+/* ---- vocea: TTS nativ în aplicație, Web Speech în browser, cronometru dacă nu există voce ---- */
+const TTS={
+  plug(){ const C=window.Capacitor; return C&&C.isNativePlatform&&C.isNativePlatform()&&C.Plugins&&C.Plugins.TextToSpeech||null; },
+  web(){ return 'speechSynthesis' in window && typeof SpeechSynthesisUtterance!=='undefined'; },
+  voice(){ if(!this.web()) return null; const vs=speechSynthesis.getVoices(); return vs.find(v=>/^ro([-_]|$)/i.test(v.lang))||null; },
+  timer:0, done:null,
+  speak(text,rate){
+    const P=this.plug();
+    if(P) return P.speak({text,lang:'ro-RO',rate:rate,pitch:1,volume:1,category:'playback'}).then(()=>true,()=>false);
+    if(this.web()){ return new Promise(res=>{ const u=new SpeechSynthesisUtterance(text); u.lang='ro-RO'; const v=this.voice(); if(v) u.voice=v; u.rate=rate;
+        let fin=false; const end=ok=>{ if(fin) return; fin=true; clearTimeout(guard); res(ok); };
+        u.onend=()=>end(true); u.onerror=()=>end(false);
+        const guard=setTimeout(()=>end(true),(words(text)/2.2/rate+6)*1000);  /* unele browsere nu trimit „onend” */
+        speechSynthesis.speak(u); }); }
+    return new Promise(res=>{ this.done=res; this.timer=setTimeout(()=>{ this.done=null; res(true); },Math.max(1600,words(text)/2.6/rate*1000)); });
+  },
+  stop(){ const P=this.plug(); if(P){ try{ P.stop(); }catch(e){} return; } if(this.web()){ try{ speechSynthesis.cancel(); }catch(e){} return; } clearTimeout(this.timer); if(this.done){ const d=this.done; this.done=null; d(false); } },
+  async status(){ const P=this.plug();
+    if(P){ try{ const r=await P.isLanguageSupported({lang:'ro-RO'}); return r&&r.supported?'':'Telefonul nu are vocea în limba română. O poți instala din Setări → Accesibilitate → Transformare text în vorbire (Text-to-speech) → Limbă: Română.'; }catch(e){ return ''; } }
+    if(!this.web()) return 'Browserul tău nu poate citi cu voce. Lecția merge mai departe singură, cu subtitrări.';
+    if(!speechSynthesis.getVoices().length) await new Promise(r=>{ speechSynthesis.addEventListener('voiceschanged',r,{once:true}); setTimeout(r,1500); });
+    return this.voice()?'':'Nu am găsit o voce în limba română pe acest dispozitiv, așa că se folosește vocea implicită. Pe iPhone: Setări → Accesibilitate → Conținut vorbit → Voci → Română.';
+  }
+};
+let pmPlayer=null;
+function pmKill(){ if(pmPlayer){ pmPlayer.destroy(); pmPlayer=null; } }
+addEventListener('hashchange',()=>{ if(pmPlayer&&pmPlayer.owner!==location.hash) pmKill(); });
+addEventListener('pagehide',pmKill);
+function makePlayer(segs,{onSeg,onState,onEnd}){
+  let i=0, playing=false, token=0, rate=+store.get('prate',1)||1;
+  const run=async(my)=>{ while(playing&&my===token&&i<segs.length){ onSeg(i); await TTS.speak(segs[i].say,rate); if(my!==token||!playing) return; i++; }
+    if(my===token&&i>=segs.length){ playing=false; onState(false); i=segs.length; onEnd&&onEnd(); } };
+  const p={ owner:location.hash,
+    get i(){ return i; }, get playing(){ return playing; }, get rate(){ return rate; },
+    play(){ if(i>=segs.length) i=0; playing=true; onState(true); run(++token); },
+    pause(){ playing=false; token++; TTS.stop(); onState(false); },
+    toggle(){ playing?p.pause():p.play(); },
+    seek(k){ k=Math.max(0,Math.min(segs.length-1,k)); const was=playing; token++; TTS.stop(); i=k; onSeg(i); if(was){ const my=++token; setTimeout(()=>run(my),80); } },
+    setRate(r){ rate=r; store.set('prate',r); if(playing) p.seek(i); },
+    destroy(){ playing=false; token++; TTS.stop(); }
+  };
+  return p;
+}
+
+/* ---- pagina Premium ---- */
+function premium(arg){
+  pmKill();
+  const back=parseInt(arg,10);
+  if(!isPrem()){
+    view.innerHTML=`<div class="crumbs"><a href="#acasa">Acasă</a><span>›</span><span>Premium</span></div>
+    <p class="over">PREMIUM</p><h1>Lecții video și audio</h1>
+    <p class="lead">Fiecare lecție din aplicație, ca lecție video animată și ca lecție audio, narate în limba română. Merg și fără internet.</p>
+    <div class="pm-feats"><div class="pm-feat"><b>▶ Lecții video</b><span>Slide-uri animate cu formulele, tabelele și desenele lecției, sincronizate cu vocea, cu subtitrări.</span></div>
+    <div class="pm-feat"><b>🎧 Lecții audio</b><span>Asculți lecția ca pe un podcast, cu textul urmărit pe ecran. Atingi o propoziție ca să sari la ea.</span></div>
+    <div class="pm-feat"><b>⏩ Viteză reglabilă</b><span>De la 0,75× la 1,5×, plus recapitularea de la final a fiecărei lecții.</span></div></div>
+    ${unlockBox(()=>{ location.hash = back ? 'video-'+back : 'premium'; if(!back) route(); })}`;
+    return;
+  }
+  const last=store.get('pmlast',null);
+  const list=ls=>ls.map(l=>{ const n=gi(l); return `<div class="pm-item" data-q="${esc((l.t+' '+l.d).toLowerCase())}"><span class="no">${sn(l)}</span><span class="t">${l.t}<span class="d">${subj(subjOfL(l)).t} · ~${estMin(lessonScript(n).segs)} min</span></span><span class="acts"><a class="v" href="#video-${n}">${IC.video}Video</a><a href="#audio-${n}">${IC.audio}Audio</a></span></div>`; }).join('');
+  view.innerHTML=`<div class="crumbs"><a href="#acasa">Acasă</a><span>›</span><span>Premium</span></div>
+  <p class="over">PREMIUM <span class="pm-tag" style="margin-left:6px">★ Activ</span></p><h1>Lecții video și audio</h1>
+  <p class="lead">${L.length} lecții video și ${L.length} lecții audio, narate în română. Alege o lecție sau caută după nume.</p>
+  ${last&&L[last.n-1]?`<div class="actions" style="margin:0 0 18px"><a class="btn" href="#${last.k}-${last.n}">Continuă: ${L[last.n-1].t} (${last.k==='video'?'video':'audio'}) →</a></div>`:''}
+  <div class="lsearch"><label class="sr" for="pmq">Caută</label><input id="pmq" type="search" placeholder="Caută o lecție (ex.: Ohm, lentile, Carnot)" autocomplete="off"></div>
+  ${CLASE.map(c=>`<section class="pmc"><h2 class="rule">${c.t}</h2><div class="pm-list">${list(lessonsOfClass(c.id))}</div></section>`).join('')}
+  ${(()=>{ const bl=L.filter(l=>grp(l.g).bac); return bl.length?`<section class="pmc"><h2 class="rule">Recapitulare BAC</h2><div class="pm-list">${list(bl)}</div></section>`:''; })()}
+  <p class="note" style="margin-top:24px">Premium e activ pe acest dispozitiv. <button class="badge" type="button" id="pmoff" style="border:0;cursor:pointer">Dezactivează</button></p>`;
+  $('#pmq').addEventListener('input',e=>{ const q=e.target.value.trim().toLowerCase(); view.querySelectorAll('.pm-item').forEach(it=>it.hidden=!!q&&!it.dataset.q.includes(q)); view.querySelectorAll('.pmc').forEach(s=>s.hidden=![...s.querySelectorAll('.pm-item')].some(x=>!x.hidden)); });
+  $('#pmoff').onclick=()=>{ store.set('premium',false); route(); };
+}
+function premGate(kind,n){
+  view.innerHTML=`<div class="crumbs"><a href="#lectii-${n}">Înapoi la lecție</a><span>›</span><span>Premium</span></div><h1>${L[n-1].t}</h1>
+  <p class="lead">Lecția ${kind==='video'?'video':'audio'} face parte din Premium.</p>${unlockBox(()=>route())}`;
+}
+const navLinks=(kind,n)=>`<div class="pager">${n>1?`<a href="#${kind}-${n-1}"><small>← Lecția anterioară</small>${L[n-2].t}</a>`:'<span></span>'}<a class="btn ghost" href="#lectii-${n}" style="text-align:center">Lecția scrisă</a>${n<L.length?`<a class="next" href="#${kind}-${n+1}"><small>Lecția următoare →</small>${L[n].t}</a>`:'<span></span>'}</div>`;
+const speedSel=r=>`<label class="sr" for="pmsp">Viteză</label><select class="pm-speed" id="pmsp">${[.75,1,1.25,1.5].map(v=>`<option value="${v}" ${v===r?'selected':''}>${String(v).replace('.',',')}×</option>`).join('')}</select>`;
+
+/* ---- lecția video ---- */
+function video(arg){
+  pmKill();
+  const n=parseInt(arg,10); if(!n||n<1||n>L.length){ location.hash='premium'; return; }
+  if(!isPrem()){ premGate('video',n); return; }
+  const S=lessonScript(n), {l,s,c}=S; store.set('pmlast',{k:'video',n});
+  view.style.setProperty('--sc','var('+s.c+')');
+  const rate=+store.get('prate',1)||1;
+  view.innerHTML=`<div class="crumbs"><a href="#premium">Premium</a><span>›</span><a href="#materie-${s.id}">${s.t}</a><span>›</span><span>Lecția video</span></div>
+  <h1>${l.t}</h1><p class="lead" style="margin-bottom:14px">${c.t} · ${S.slides.length} slide-uri · ~${estMin(S.segs,rate)} min</p>
+  <div class="pm-video" id="pmv"><div class="pm-bg"></div><div class="pm-stage" id="pmst"></div><button class="pm-tap" type="button" id="pmtap" aria-label="Pauză sau redare"></button><div class="pm-cap" id="pmcap"></div><button class="pm-big" type="button" id="pmbig" aria-label="Pornește lecția">${IC.play}</button></div>
+  <div class="pm-ctrl"><button class="pbtn" type="button" id="pmprev" aria-label="Slide-ul anterior">${IC.prev}</button><button class="pbtn main" type="button" id="pmpp" aria-label="Redă">${IC.play}</button><button class="pbtn" type="button" id="pmnext" aria-label="Slide-ul următor">${IC.next}</button>
+   <div class="pm-bar" id="pmbar" role="slider" aria-label="Progres" tabindex="0"><span class="tr"></span><span class="fi" id="pmfi"></span>${S.slides.map((_,k)=>k?`<span class="tk" style="left:${(S.segs.findIndex(x=>x.slide===k)/S.segs.length*100).toFixed(2)}%"></span>`:'').join('')}<span class="kn" id="pmkn"></span></div>
+   <span class="pm-time" id="pmtime"></span>${speedSel(rate)}<button class="pbtn" type="button" id="pmcc" aria-label="Subtitrări" aria-pressed="${store.get('pmcc',true)}">${IC.cc}</button><button class="pbtn" type="button" id="pmfs" aria-label="Ecran complet">${IC.fs}</button></div>
+  <p class="pm-note" id="pmnote"></p>
+  ${navLinks('video',n)}`;
+  const vb=$('#pmv'), st=$('#pmst'), cap=$('#pmcap');
+  vb.classList.toggle('nocap',!store.get('pmcc',true));
+  let shown=-1;
+  const drawSlide=k=>{ const sl=S.slides[k]; shown=k;
+    if(sl.kind==='title'){ st.innerHTML=`<div class="pm-slide pm-title"><div class="pm-kick">${esc(sl.kick)}</div>${ILL[s.ill]||''}<h2 class="pm-h">${esc(sl.h)}</h2><p>${esc(sl.p)}</p><span class="pm-tag">★ Lecție video</span></div>`; return; }
+    st.innerHTML=`<div class="pm-slide ${sl.kind==='end'?'pm-end':''}"><div class="pm-kick">${esc(sl.kick)}<i></i>${k}/${S.slides.length-1}</div><h2 class="pm-h">${esc(sl.h)}</h2>${sl.blocks.map((b,bi)=>b.html?`<div class="pm-b ${b.type}" data-b="${bi}">${b.html}</div>`:'').join('')}${sl.kind==='end'?`<div class="actions" style="margin-top:.8em"><a class="btn" href="#test-l${n}">Testul lecției →</a>${n<L.length?`<a class="btn ghost" href="#video-${n+1}">Lecția video următoare</a>`:''}</div>`:''}</div>`;
+    st.scrollTop=0; };
+  const show=i=>{ const sg=S.segs[i]; if(!sg) return; if(sg.slide!==shown) drawSlide(sg.slide);
+    st.querySelectorAll('.pm-b').forEach(el=>{ const bi=+el.dataset.b, b=S.slides[shown].blocks[bi], first=b.segs.length?b.segs[0]:-1, lastS=b.segs.length?b.segs[b.segs.length-1]:-1;
+      el.classList.toggle('on', first<=i || (first<0&&S.segs.some((x,k)=>k<=i&&x.slide===shown&&x.block>bi)));
+      el.classList.toggle('now', first<=i&&i<=lastS); });
+    const now=st.querySelector('.pm-b.now'); if(now){ const top=now.offsetTop-st.clientHeight*.3; st.scrollTo({top:Math.max(0,top),behavior:'smooth'}); }
+    cap.textContent=sg.show;
+    const pct=i/(S.segs.length-1||1)*100; $('#pmfi').style.width=pct+'%'; $('#pmkn').style.left=pct+'%';
+    $('#pmtime').textContent=`Slide ${sg.slide+1}/${S.slides.length}`; };
+  const setPP=on=>{ vb.classList.toggle('playing',on); if(on) vb.classList.add('started'); const b=$('#pmpp'); b.innerHTML=on?IC.pause:IC.play; b.setAttribute('aria-label',on?'Pauză':'Redă'); };
+  pmPlayer=makePlayer(S.segs,{onSeg:show,onState:setPP,onEnd:()=>{ cap.textContent=''; }});
+  show(0);
+  $('#pmbig').onclick=$('#pmpp').onclick=$('#pmtap').onclick=()=>pmPlayer.toggle();
+  const slideStart=k=>S.segs.findIndex(x=>x.slide===k);
+  $('#pmprev').onclick=()=>{ const cs=S.segs[pmPlayer.i]?S.segs[pmPlayer.i].slide:0, st0=slideStart(cs); pmPlayer.seek(pmPlayer.i>st0+1?st0:slideStart(Math.max(0,cs-1))); };
+  $('#pmnext').onclick=()=>{ const cs=S.segs[pmPlayer.i]?S.segs[pmPlayer.i].slide:0; if(cs<S.slides.length-1) pmPlayer.seek(slideStart(cs+1)); };
+  const bar=$('#pmbar'); const seekAt=e=>{ const r=bar.getBoundingClientRect(); pmPlayer.seek(Math.round((e.clientX-r.left)/r.width*(S.segs.length-1))); };
+  bar.addEventListener('pointerdown',seekAt);
+  bar.addEventListener('keydown',e=>{ if(e.key==='ArrowRight') $('#pmnext').click(); if(e.key==='ArrowLeft') $('#pmprev').click(); });
+  $('#pmsp').onchange=e=>pmPlayer.setRate(+e.target.value);
+  $('#pmcc').onclick=()=>{ const on=!store.get('pmcc',true); store.set('pmcc',on); $('#pmcc').setAttribute('aria-pressed',on); vb.classList.toggle('nocap',!on); };
+  $('#pmfs').onclick=()=>{ if(document.fullscreenElement){ document.exitFullscreen(); return; } if(vb.classList.contains('fs')){ vb.classList.remove('fs'); return; }
+    if(vb.requestFullscreen) vb.requestFullscreen().catch(()=>vb.classList.add('fs')); else vb.classList.add('fs'); };
+  TTS.status().then(m=>{ const el=$('#pmnote'); if(el) el.textContent=m; });
+}
+
+/* ---- lecția audio ---- */
+function audio(arg){
+  pmKill();
+  const n=parseInt(arg,10); if(!n||n<1||n>L.length){ location.hash='premium'; return; }
+  if(!isPrem()){ premGate('audio',n); return; }
+  const S=lessonScript(n), {l,s,c}=S; store.set('pmlast',{k:'audio',n});
+  view.style.setProperty('--sc','var('+s.c+')');
+  const rate=+store.get('prate',1)||1;
+  let tr='', lastSl=-1;
+  S.segs.forEach((x,k)=>{ if(x.slide!==lastSl){ lastSl=x.slide; const sl=S.slides[x.slide]; tr+=(k?'</p>':'')+`<h3>${esc(sl.kind==='title'?'Început':sl.h)}</h3><p>`; } tr+=`<span data-k="${k}">${esc(x.show)}</span> `; });
+  tr+='</p>';
+  view.innerHTML=`<div class="crumbs"><a href="#premium">Premium</a><span>›</span><a href="#materie-${s.id}">${s.t}</a><span>›</span><span>Lecția audio</span></div>
+  <div class="stack">
+  <div class="sheet"><div class="pm-audio" id="pma"><div class="pm-cover">${ILL[s.ill]||''}<div class="pm-eq"><i></i><i></i><i></i><i></i><i></i></div></div>
+   <div><span class="pm-tag">★ Lecție audio</span><h2>${l.t}</h2><p class="sub">${c.t} · ${s.t} · ~${estMin(S.segs,rate)} min</p>
+   <div class="pm-ctrl"><button class="pbtn" type="button" id="pmprev" aria-label="Propoziția anterioară">${IC.prev}</button><button class="pbtn main" type="button" id="pmpp" aria-label="Redă">${IC.play}</button><button class="pbtn" type="button" id="pmnext" aria-label="Propoziția următoare">${IC.next}</button>
+    <div class="pm-bar" id="pmbar" role="slider" aria-label="Progres" tabindex="0"><span class="tr"></span><span class="fi" id="pmfi"></span><span class="kn" id="pmkn"></span></div>
+    <span class="pm-time" id="pmtime"></span>${speedSel(rate)}</div>
+   <p class="pm-note" id="pmnote"></p></div></div></div>
+  <div class="sheet"><h2 style="font-size:18px">Textul lecției</h2><p class="hint" style="margin-top:0">Atinge o propoziție ca să sari la ea.</p><div class="pm-tr" id="pmtr">${tr}</div></div>
+  <div class="actions" style="margin:0"><a class="btn" href="#test-l${n}">Testul lecției →</a><a class="btn ghost" href="#video-${n}">Varianta video</a></div>
+  ${navLinks('audio',n)}</div>`;
+  const box=$('#pmtr'), spans=[...box.querySelectorAll('span[data-k]')];
+  const left=i=>Math.max(0,Math.round(S.segs.slice(i).reduce((a,x)=>a+words(x.say),0)/(150*pmPlayer.rate)));
+  const show=i=>{ spans.forEach((sp,k)=>{ sp.classList.toggle('now',k===i); sp.classList.toggle('done',k<i); });
+    const sp=spans[i]; if(sp&&pmPlayer&&pmPlayer.playing){ const top=sp.offsetTop-box.offsetTop-box.clientHeight*.35; box.scrollTo({top:Math.max(0,top),behavior:'smooth'}); }
+    const pct=i/(S.segs.length-1||1)*100; $('#pmfi').style.width=pct+'%'; $('#pmkn').style.left=pct+'%';
+    $('#pmtime').textContent=pmPlayer?`~${left(i)} min rămase`:''; };
+  const setPP=on=>{ $('#pma').classList.toggle('playing',on); const b=$('#pmpp'); b.innerHTML=on?IC.pause:IC.play; b.setAttribute('aria-label',on?'Pauză':'Redă'); };
+  pmPlayer=makePlayer(S.segs,{onSeg:show,onState:setPP,onEnd:()=>{ spans.forEach(sp=>{ sp.classList.remove('now'); sp.classList.add('done'); }); $('#pmtime').textContent='Gata ✓'; }});
+  show(0);
+  $('#pmpp').onclick=()=>pmPlayer.toggle();
+  $('#pmprev').onclick=()=>pmPlayer.seek(pmPlayer.i-1);
+  $('#pmnext').onclick=()=>pmPlayer.seek(pmPlayer.i+1);
+  spans.forEach((sp,k)=>sp.onclick=()=>{ pmPlayer.seek(k); if(!pmPlayer.playing) pmPlayer.play(); });
+  const bar=$('#pmbar'); bar.addEventListener('pointerdown',e=>{ const r=bar.getBoundingClientRect(); pmPlayer.seek(Math.round((e.clientX-r.left)/r.width*(S.segs.length-1))); });
+  bar.addEventListener('keydown',e=>{ if(e.key==='ArrowRight') $('#pmnext').click(); if(e.key==='ArrowLeft') $('#pmprev').click(); });
+  $('#pmsp').onchange=e=>{ pmPlayer.setRate(+e.target.value); show(pmPlayer.i); };
+  TTS.status().then(m=>{ const el=$('#pmnote'); if(el) el.textContent=m; });
+}
+document.addEventListener('keydown',e=>{ if(!pmPlayer||!['video','audio'].includes(current)||e.target.matches('input,select,textarea')) return;
+  if(e.key===' '||e.key==='k'){ e.preventDefault(); pmPlayer.toggle(); } });
+Object.assign(routes,{premium,video,audio});
 
 route();
 })();
