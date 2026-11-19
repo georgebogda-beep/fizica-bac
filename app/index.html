@@ -1054,6 +1054,11 @@ html,body{overflow-x:clip}
   #view:has(> #simhost) > .seg{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;max-width:100%}
   #view:has(> #simhost) > .seg a{white-space:nowrap;padding:7px 12px}
 }
+.iconnote{position:fixed;z-index:95;left:12px;right:12px;bottom:calc(12px + var(--sab));display:grid;grid-template-columns:48px 1fr 36px;gap:12px;align-items:start;padding:14px;border-radius:20px;background:var(--sheet);box-shadow:0 20px 50px -12px rgba(0,0,0,.45),inset 0 0 0 2px var(--accent);animation:rise .4s both}
+.iconnote img{width:48px;height:48px;border-radius:12px}
+.iconnote b{display:block;font-family:var(--display);font-size:17px;margin-bottom:2px}
+.iconnote span{font-size:14px;color:var(--muted);line-height:1.45}
+.iconnote button{width:36px;height:36px;border:0;border-radius:50%;background:color-mix(in srgb,var(--ink) 8%,transparent);color:var(--ink);font-size:16px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -5031,6 +5036,20 @@ document.addEventListener('click',e=>{ const b=e.target.closest&&e.target.closes
   setTimeout(()=>{ const ok=b.classList.contains('right'), no=b.classList.contains('wrong'); if(!ok&&!no) return;
     document.querySelectorAll('.fbk').forEach(x=>x.remove()); const t=document.createElement('div'); t.className='fbk '+(ok?'ok':'no'); t.setAttribute('role','status'); t.textContent=ok?'Corect! ✓':'Greșit, vezi explicația'; document.body.appendChild(t); setTimeout(()=>t.remove(),1200); },0); });
 
+/* iPhone: iconița de pe ecranul principal se copiază doar la adăugare și nu se mai schimbă.
+   Cine a adăugat aplicația înainte de logo-ul nou primește o singură dată instrucțiunile. */
+(function(){
+  const ICON_VER=141;
+  const ios=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  if(!ios||navigator.standalone!==true) return;
+  const seen=store.get('iconver',0); if(seen>=ICON_VER) return;
+  const used=Object.keys(progress.read||{}).length||Object.keys(progress.tests||{}).length||store.get('last',null)||store.get('theme',null);
+  if(!used){ store.set('iconver',ICON_VER); return; }  // instalată acum: are deja iconița nouă
+  const b=document.createElement('div'); b.className='iconnote'; b.setAttribute('role','status');
+  b.innerHTML='<img src="icons/apple-touch-icon.png?v='+ICON_VER+'" alt=""><div><b>Aplicația are logo nou</b><span>iPhone păstrează iconița veche până o adaugi din nou: ține apăsat pe iconiță → <i>Elimină aplicația</i>, apoi în Safari: <i>Distribuie → Adaugă pe ecranul principal</i>. Atenție: progresul din aplicația veche nu se mută.</span></div><button type="button" aria-label="Închide">✕</button>';
+  b.querySelector('button').onclick=()=>{ store.set('iconver',ICON_VER); b.remove(); };
+  document.body.appendChild(b);
+})();
 route();
 })();
 </script>

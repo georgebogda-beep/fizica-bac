@@ -3,7 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Fizică BAC — descarcă aplicația</title>
+<title>Fizică BAC</title>
+<meta name="apple-mobile-web-app-title" content="Fizică BAC">
+<meta name="application-name" content="Fizică BAC">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="site.webmanifest">
 <meta name="description" content="Fizică pentru clasele IX–XII și pentru bacalaureat. Aplicație pentru Android, iPhone și calculator.">
 <meta property="og:title" content="Fizică BAC">
 <meta property="og:description" content="Lecții, teste și simulări BAC la fizică. Pentru Android, iPhone și calculator.">
@@ -84,6 +89,8 @@ footer{color:var(--muted);font-size:13.5px;text-align:center;margin-top:30px}
 </style>
 </head>
 <body>
+<script>/* deschisă de pe ecranul principal (iPhone/Android): mergi direct în aplicație */
+if(navigator.standalone===true||matchMedia("(display-mode: standalone)").matches)location.replace("app/");</script>
 <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
 <div class="wrap">
   <div class="head">
