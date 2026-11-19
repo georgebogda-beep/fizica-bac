@@ -588,6 +588,127 @@ footer{padding-bottom:calc(30px + var(--sab))}
 /* în aplicația nativă nu are sens hover-ul „lipicios” de pe ecranele tactile */
 @media (hover:none){.ch:hover{transform:none;box-shadow:none}}
 
+/* ---------- FIZICA ÎN NATURĂ: scene animate ---------- */
+.nt-svg{display:block;width:100%;height:auto;aspect-ratio:16/10;background:#0b1026}
+.nt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.nt-card{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);background:var(--sheet);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .15s,box-shadow .15s,border-color .15s}
+.nt-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--sc,var(--accent))}
+.nt-card .b{padding:12px 14px 14px;display:grid;gap:3px}
+.nt-card .tag{font-size:11.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--sc,var(--accent))}
+.nt-card .t{font-family:var(--display);font-weight:700;font-size:18px;line-height:1.2}
+.nt-card .num{font-size:13.5px;color:var(--muted)}
+.nt-card .num b{font-family:var(--mono);color:var(--pen)}
+.nt-chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
+.nt-chips button{font:inherit;font-weight:700;font-size:14px;padding:7px 13px;border-radius:99px;border:1px solid var(--line);background:var(--sheet);color:var(--ink);cursor:pointer}
+.nt-chips button[aria-pressed="true"]{background:var(--sc,var(--accent));border-color:transparent;color:#fff}
+.nt-hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px;align-items:start}
+@media (max-width:900px){.nt-hero{grid-template-columns:minmax(0,1fr)}}
+.nt-frame{border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
+.nt-num{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.nt-num b{font-family:var(--mono);font-size:30px;line-height:1;color:var(--pen)}
+.nt-num span{color:var(--muted)}
+.nt-calc label{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-weight:600}
+.nt-calc label b{font-family:var(--mono);color:var(--accent)}
+.nt-out{font-size:17.5px;margin:12px 0 0;min-height:26px}
+.nt-out b{font-family:var(--mono);color:var(--pen)}
+.nt-row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(230px,290px);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+.nt-row .nt-card{scroll-snap-align:start}
+.nt-daily{display:block;margin-top:16px;text-decoration:none;color:var(--ink);border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--sheet)}
+.nt-daily span{display:block;padding:10px 14px 2px;font-size:11.5px;font-weight:800;letter-spacing:.08em;color:var(--accent)}
+.nt-daily b{display:block;padding:0 14px 12px;font-family:var(--display);font-size:18px}
+.pm-b.nat{opacity:1}
+.pm-b.nat .nt-frame{max-width:min(100%,72cqi);margin:0 auto}
+/* animațiile scenelor */
+.nt-svg .nt-rain{animation:ntRain .7s linear infinite}
+@keyframes ntRain{from{transform:translate(4px,-24px)}to{transform:translate(-6px,30px)}}
+.nt-svg .nt-pulse{animation:ntPulse 3s ease-in-out infinite alternate}
+@keyframes ntPulse{to{transform:scale(1.07)}}
+.nt-svg .nt-twinkle{animation:ntTw 2.4s ease-in-out infinite alternate}
+@keyframes ntTw{from{opacity:.25}to{opacity:1}}
+.nt-svg .nt-dive{animation:ntDive 2.8s linear infinite}
+@keyframes ntDive{from{transform:translate(-40px,-40px)}to{transform:translate(380px,290px)}}
+.nt-svg .nt-swim{animation:ntSwim 7s linear infinite}
+@keyframes ntSwim{from{transform:translateX(150px)}to{transform:translateX(-230px)}}
+.nt-svg .nt-wig{animation:ntWig .5s ease-in-out infinite alternate}
+@keyframes ntWig{from{transform:translateY(-1.6px)}to{transform:translateY(1.6px)}}
+.nt-svg .nt-jet{transform-box:fill-box;animation:ntJet .75s linear infinite}
+@keyframes ntJet{from{transform:translateX(0);opacity:1}to{transform:translateX(46px);opacity:0}}
+.nt-svg .nt-flow{animation:ntFlow 5s linear infinite}
+@keyframes ntFlow{to{stroke-dashoffset:-240}}
+.nt-svg .nt-down{animation:ntDown .55s linear infinite}
+@keyframes ntDown{to{stroke-dashoffset:-44}}
+.nt-svg .nt-down2{animation:ntDown2 .6s linear infinite}
+@keyframes ntDown2{to{stroke-dashoffset:-26}}
+.nt-svg .nt-slide{animation:ntSlide 2.8s ease-in infinite}
+@keyframes ntSlide{0%{transform:translate(0,0);opacity:0}8%{opacity:1}90%{opacity:1}100%{transform:translate(-220px,94px);opacity:0}}
+.nt-svg .nt-ripple{transform-box:fill-box;transform-origin:center!important;animation:ntRip 2s ease-out infinite}
+.nt-svg .nt-ripple2{transform-box:fill-box;transform-origin:center;animation:ntRip 3s ease-out infinite}
+@keyframes ntRip{from{transform:scale(.1);opacity:1}to{transform:scale(1);opacity:0}}
+.nt-svg .nt-mist{transform-box:fill-box;transform-origin:center;animation:ntMist 2s ease-out infinite}
+@keyframes ntMist{from{transform:translateY(0) scale(.6);opacity:.8}to{transform:translateY(-26px) scale(1.6);opacity:0}}
+.nt-svg .nt-orbit{animation:ntSpin 14s linear infinite}
+.nt-svg .nt-spin{animation:ntSpin 24s linear infinite}
+.nt-svg .nt-spin2{transform-box:fill-box;transform-origin:center;animation:ntSpin 1.4s linear infinite}
+@keyframes ntSpin{to{transform:rotate(360deg)}}
+.nt-svg .nt-sway{animation:ntSway 3s ease-in-out infinite alternate}
+@keyframes ntSway{from{transform:rotate(-2deg)}to{transform:rotate(2deg)}}
+.nt-svg .nt-zig{animation:ntZig0 7s linear infinite}
+.nt-svg .nt-zig1{animation-name:ntZig1}.nt-svg .nt-zig2{animation-name:ntZig2}
+@keyframes ntZig0{0%{transform:translate(0,0);opacity:0}8%{opacity:1}20%{transform:translate(30px,-14px)}40%{transform:translate(44px,18px)}60%{transform:translate(96px,-6px)}80%{transform:translate(130px,24px)}95%{opacity:1}100%{transform:translate(200px,4px);opacity:0}}
+@keyframes ntZig1{0%{transform:translate(0,0);opacity:0}8%{opacity:1}25%{transform:translate(22px,20px)}45%{transform:translate(70px,-4px)}65%{transform:translate(84px,-30px)}85%{transform:translate(150px,-16px)}95%{opacity:1}100%{transform:translate(210px,-34px);opacity:0}}
+@keyframes ntZig2{0%{transform:translate(0,0);opacity:0}8%{opacity:1}15%{transform:translate(18px,-26px)}35%{transform:translate(60px,-40px)}55%{transform:translate(70px,10px)}75%{transform:translate(124px,30px)}95%{opacity:1}100%{transform:translate(190px,40px);opacity:0}}
+.nt-svg .nt-rise{transform-box:fill-box;transform-origin:center;animation:ntRise 4s linear infinite}
+@keyframes ntRise{from{transform:translateY(0) scale(1);opacity:.95}to{transform:translateY(-162px) scale(2.4);opacity:.5}}
+.nt-svg .nt-rise2{animation:ntRise2 6s linear infinite}
+@keyframes ntRise2{from{transform:translateY(20px);opacity:0}15%{opacity:1}to{transform:translateY(-190px);opacity:0}}
+.nt-svg .nt-swim2{animation:ntSwim2 4s ease-in-out infinite alternate}
+@keyframes ntSwim2{from{transform:translateX(0)}to{transform:translateX(-46px)}}
+.nt-svg .nt-cap{animation:ntCap 6s ease-in-out infinite}
+@keyframes ntCap{0%,20%{opacity:0}45%,80%{opacity:1}100%{opacity:0}}
+.nt-svg .nt-parcel{transform-box:fill-box;transform-origin:center;animation:ntParcel 6s ease-in-out infinite}
+@keyframes ntParcel{0%{transform:translate(0,0) scale(.8)}30%{transform:translate(110px,-116px) scale(1.15)}50%{transform:translate(136px,-142px) scale(1.4)}70%{transform:translate(172px,-106px) scale(1.15)}100%{transform:translate(276px,-2px) scale(.8)}}
+.nt-svg .nt-snow{animation:ntSnow 5s linear infinite}
+@keyframes ntSnow{from{transform:translate(0,-10px)}to{transform:translate(14px,60px)}}
+.nt-svg .nt-flash{animation:ntFlash 4s linear infinite}
+.nt-svg .nt-flash2{animation:ntFlash2 4s linear infinite}
+@keyframes ntFlash{0%,100%{opacity:0}3%{opacity:1}6%{opacity:.15}9%{opacity:1}15%{opacity:0}}
+@keyframes ntFlash2{0%,100%{opacity:0}3%{opacity:.3}6%{opacity:0}9%{opacity:.22}14%{opacity:0}}
+.nt-svg .nt-wig2{animation:ntWig2 1.4s ease-in-out infinite alternate}
+@keyframes ntWig2{from{transform:translateY(-4px)}to{transform:translateY(4px)}}
+.nt-svg .nt-flee{animation:ntFlee 4s ease-in infinite}
+@keyframes ntFlee{0%,10%{transform:translateX(0);opacity:1}100%{transform:translateX(50px);opacity:0}}
+.nt-svg .nt-fly{animation:ntFly 9s linear infinite}
+@keyframes ntFly{from{transform:translateX(-90px)}to{transform:translateX(150px)}}
+.nt-svg .nt-needle{transform-box:fill-box;transform-origin:center;animation:ntNeedle 6s ease-out infinite}
+@keyframes ntNeedle{0%{transform:rotate(50deg)}15%{transform:rotate(-30deg)}30%{transform:rotate(18deg)}45%{transform:rotate(-9deg)}60%{transform:rotate(4deg)}75%,100%{transform:rotate(0)}}
+.nt-svg .nt-wing{transform-box:fill-box;transform-origin:center bottom;animation:ntWing .12s linear infinite alternate}
+@keyframes ntWing{to{transform:scaleY(.35)}}
+.nt-svg .nt-tsu{transform-box:fill-box;transform-origin:center bottom;animation:ntTsu 7s ease-in infinite}
+@keyframes ntTsu{0%{transform:translateX(0) scaleY(1);opacity:1}65%{transform:translateX(220px) scaleY(1.4)}92%{transform:translateX(286px) scaleY(3.4);opacity:1}100%{transform:translateX(300px) scaleY(3.6);opacity:0}}
+.nt-svg .nt-pend{animation:ntPend 1.3s ease-in-out infinite alternate}
+@keyframes ntPend{from{transform:rotate(-24deg)}to{transform:rotate(24deg)}}
+.nt-svg .nt-photon{animation:ntPhoton 2.4s linear infinite}
+@keyframes ntPhoton{0%{transform:translate(0,0);opacity:0}10%{opacity:1}85%{opacity:1}100%{transform:translate(140px,96px);opacity:0}}
+.nt-svg .nt-flare{animation:ntFlare 3s ease-in-out infinite alternate}
+@keyframes ntFlare{from{opacity:.35}to{opacity:1}}
+.nt-svg .nt-fuseL{transform-box:fill-box;transform-origin:center;animation:ntFuseL 3s ease-in infinite}
+.nt-svg .nt-fuseR{transform-box:fill-box;transform-origin:center;animation:ntFuseR 3s ease-in infinite}
+@keyframes ntFuseL{0%{transform:translateX(-34px);opacity:1}55%{transform:translateX(-4px);opacity:1}60%,100%{transform:translateX(0);opacity:0}}
+@keyframes ntFuseR{0%{transform:translateX(34px);opacity:1}55%{transform:translateX(4px);opacity:1}60%,100%{transform:translateX(0);opacity:0}}
+.nt-svg .nt-boom{transform-box:fill-box;transform-origin:center;animation:ntBoom 3s ease-out infinite}
+@keyframes ntBoom{0%,55%{transform:scale(0);opacity:0}62%{transform:scale(1);opacity:1}85%,100%{transform:scale(1.8);opacity:0}}
+.nt-svg .nt-decay{animation:ntDecay 8s linear infinite}
+@keyframes ntDecay{0%,55%{opacity:1}58%{opacity:1;fill:#fff}64%,100%{opacity:0}}
+.nt-svg .nt-draw{stroke-dasharray:1;stroke-dashoffset:1;animation:ntDraw 6s ease-out infinite}
+@keyframes ntDraw{0%{stroke-dashoffset:1}45%,100%{stroke-dashoffset:0}}
+.nt-svg .nt-shimmer{animation:ntShim 1.4s ease-in-out infinite alternate}
+@keyframes ntShim{from{transform:scaleX(.88);opacity:.45}to{transform:scaleX(1.1);opacity:.9}}
+.nt-svg .nt-bob{animation:ntBob 2.2s ease-in-out infinite alternate}
+@keyframes ntBob{from{transform:translateY(-3px)}to{transform:translateY(3px)}}
+.nt-svg .nt-aurora{animation:ntAur 7s ease-in-out infinite alternate}
+@keyframes ntAur{0%{transform:skewX(-8deg) translateX(-10px);opacity:.55}50%{opacity:1}100%{transform:skewX(8deg) translateX(10px);opacity:.7}}
+@media (prefers-reduced-motion:reduce){.nt-svg *{animation:none!important}.nt-card{transition:none}}
+
 /* ---------- PREMIUM: lecții video și audio ---------- */
 :root[data-theme="dark"],:root[data-theme="noapte"],:root[data-theme="neon"],:root[data-theme="cafea"]{--gold:#f2c14e}
 @media (prefers-color-scheme:dark){:root:not([data-theme]){--gold:#f2c14e}}
@@ -626,7 +747,7 @@ footer{padding-bottom:calc(30px + var(--sab))}
 .pm-video:fullscreen,.pm-video.fs{aspect-ratio:auto;width:100vw;height:100vh;height:100dvh;border-radius:0;border:0}
 .pm-video.fs{position:fixed;inset:0;z-index:200}
 .pm-bg{position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 85% 10%,color-mix(in srgb,var(--sc,var(--accent)) 22%,transparent),transparent 55%),radial-gradient(circle at 0% 100%,color-mix(in srgb,var(--sc,var(--accent)) 14%,transparent),transparent 50%),var(--sheet)}
-.pm-bg::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:4cqi 4cqi;opacity:.55;animation:pmdrift 40s linear infinite}
+.pm-bg::after{content:none}
 @keyframes pmdrift{to{background-position:4cqi 4cqi}}
 .pm-stage{position:absolute;inset:0;padding:5cqi 6cqi 13cqi;overflow:auto;scrollbar-width:none;font-size:clamp(13px,2.1cqi,24px);line-height:1.45}
 @container (max-width:700px){.pm-stage{font-size:clamp(13px,3.6cqi,20px);padding:6cqi 6cqi 22cqi}}
@@ -678,6 +799,20 @@ footer{padding-bottom:calc(30px + var(--sab))}
 .pm-note:empty{display:none}
 @media (max-width:560px){.pm-ctrl .pm-bar{order:-2;flex-basis:100%}.pm-ctrl .pm-time{order:-1;flex-basis:100%;text-align:right;margin-top:-6px;min-width:0}.pm-ctrl .pm-speed{margin-left:auto}}
 
+/* panoul de voce */
+.pm-vp{margin-top:12px}
+.vp{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.vp-lab{display:block;font-weight:700;font-size:14px;margin:4px 0 6px}
+.vp-sel{width:100%;font:inherit;font-size:16px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--sheet2);color:var(--ink);margin-bottom:10px}
+.vp .seg{display:flex;flex-wrap:wrap;gap:6px}
+.vp .seg button{font:inherit;font-weight:600;font-size:14px;padding:7px 12px;border-radius:10px;border:1px solid var(--line);background:var(--sheet2);color:var(--ink);cursor:pointer}
+.vp .seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.vp-warn{border:1.5px dashed var(--warn);background:color-mix(in srgb,var(--warn) 8%,transparent);border-radius:12px;padding:10px 14px;margin-bottom:10px}
+.vp ol{margin:8px 0 0;padding-left:20px}
+.vp li{margin:4px 0}
+.vp-more{margin-top:12px;font-size:14.5px;color:var(--muted)}
+.vp-more summary{cursor:pointer;font-weight:600}
+.pm-ctrl #pmvo{font-size:19px}
 /* playerul audio */
 .pm-audio{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center}
 @media (max-width:620px){.pm-audio{grid-template-columns:1fr;text-align:center}}
@@ -698,10 +833,170 @@ footer{padding-bottom:calc(30px + var(--sab))}
 .pm-tr span.done{color:var(--muted)}
 .pm-tr span.now{background:color-mix(in srgb,var(--accent) 18%,transparent);color:var(--ink)}
 @media (prefers-reduced-motion:reduce){.pm-slide,.pm-b{animation:none;transition:none}.pm-bg::after,.pm-eq i{animation:none}}
+
+/* =====================================================================
+   v6: viu, fără linii și pătrățele. Suprafețe moi cu umbre, fundal cu lumini
+   colorate care se mișcă lent, butoane de minim 44 px, mod desktop cu bară laterală.
+   ===================================================================== */
+:root{--r-lg:24px;--r-md:18px;--r-sm:13px;
+ --soft:0 1px 2px color-mix(in srgb,var(--ink) 5%,transparent),0 10px 30px -8px color-mix(in srgb,var(--ink) 14%,transparent);
+ --lift:0 2px 4px color-mix(in srgb,var(--ink) 6%,transparent),0 22px 44px -12px color-mix(in srgb,var(--sc,var(--accent)) 38%,transparent);
+ --glass:color-mix(in srgb,var(--sheet) 82%,transparent);--side:0px}
+html{scroll-behavior:smooth}
+body{background:var(--paper);background-image:none!important;isolation:isolate}
+/* fundal: trei lumini colorate, estompate, care plutesc încet */
+.aura{position:fixed;inset:-20vmax;z-index:-1;pointer-events:none;overflow:hidden}
+.aura i{position:absolute;width:62vmax;height:62vmax;border-radius:50%;filter:blur(80px);opacity:.17;will-change:transform}
+.aura i:nth-child(1){left:-6vmax;top:-10vmax;background:var(--accent);animation:aur1 26s ease-in-out infinite alternate}
+.aura i:nth-child(2){right:-14vmax;top:8vmax;background:var(--c1);animation:aur2 32s ease-in-out infinite alternate}
+.aura i:nth-child(3){left:22vmax;bottom:-22vmax;background:var(--c3);opacity:.13;animation:aur3 38s ease-in-out infinite alternate}
+@keyframes aur1{to{transform:translate(18vmax,12vmax) scale(1.15)}}
+@keyframes aur2{to{transform:translate(-16vmax,18vmax) scale(.9)}}
+@keyframes aur3{to{transform:translate(12vmax,-16vmax) scale(1.1)}}
+:root[data-theme="dark"] .aura i,:root[data-theme="noapte"] .aura i,:root[data-theme="neon"] .aura i,:root[data-theme="cafea"] .aura i{opacity:.20}
+@media (prefers-color-scheme:dark){:root:not([data-theme]) .aura i{opacity:.20}}
+
+/* bara de sus: sticlă, fără linie */
+.topbar{background:var(--glass);backdrop-filter:saturate(1.6) blur(16px);-webkit-backdrop-filter:saturate(1.6) blur(16px);box-shadow:0 6px 24px -14px color-mix(in srgb,var(--ink) 30%,transparent);border:0}
+.logo .mark{background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 55%,var(--c4)));box-shadow:0 6px 16px -4px color-mix(in srgb,var(--accent) 60%,transparent)}
+.iconbtn{width:44px;height:44px;border:0;background:color-mix(in srgb,var(--ink) 6%,transparent)}
+.iconbtn:hover{background:color-mix(in srgb,var(--accent) 14%,transparent)}
+.panel{border:0;box-shadow:0 24px 60px -16px color-mix(in srgb,var(--ink) 35%,transparent)}
+.menu > a,.menu > .dd > button{min-height:44px}
+.mnav{background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.mnav details{border:0}.mnav > a{border:0}
+.mnav a,.mnav summary{min-height:44px;display:flex;align-items:center;border-radius:12px}
+.mnav summary{justify-content:space-between}
+
+/* suprafețe: fără chenare, cu umbre moi */
+.sheet,.ch,.plot,.toc,.pager a,.pm-item,.pm-feat,.nt-card,.nt-num,.nt-daily,.vp,.kpi,.pickarea button,.face,.tpanel,.pm-unlock,.pm-video,.nt-frame{border:0!important;box-shadow:var(--soft)}
+.sheet{border-radius:var(--r-lg);background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.ch{border-radius:var(--r-md);background:var(--sheet);min-height:64px}
+.ch:hover{box-shadow:var(--lift);transform:translateY(-3px)}
+.ch .no{border-radius:12px;background:linear-gradient(135deg,color-mix(in srgb,var(--sc) 24%,transparent),color-mix(in srgb,var(--sc) 10%,transparent))}
+.ch.test{border:0!important;background:linear-gradient(135deg,color-mix(in srgb,var(--sc,var(--accent)) 16%,var(--sheet)),var(--sheet));box-shadow:var(--soft),inset 0 0 0 2px color-mix(in srgb,var(--sc,var(--accent)) 30%,transparent)}
+.tile{border:0;background:color-mix(in srgb,var(--sc,var(--accent)) 7%,var(--sheet));border-radius:var(--r-sm)}
+.plot{border-radius:var(--r-md);background:var(--sheet)}
+.toc{border-radius:var(--r-md);background:var(--glass)}
+.toc a{min-height:40px;align-items:center}
+.brief,.keep{border:0;box-shadow:inset 4px 0 0 color-mix(in srgb,var(--sc,var(--accent)) 70%,transparent)}
+.fx{border:0;box-shadow:inset 4px 0 0 var(--sc,var(--accent));background:color-mix(in srgb,var(--sc,var(--accent)) 7%,var(--sheet))}
+.explain{border:0;background:color-mix(in srgb,var(--sc,var(--accent)) 8%,var(--sheet))}
+.rule{border:0!important;display:flex;align-items:center;gap:12px}
+.rule::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--sc,var(--accent));box-shadow:0 0 0 5px color-mix(in srgb,var(--sc,var(--accent)) 20%,transparent);flex:none}
+.contents .dots{display:none}
+.group-h{border:0}
+/* tabele: rânduri alternate în loc de linii */
+table{border-collapse:separate;border-spacing:0 4px}
+th,td{border:0!important}
+thead th{background:none;color:var(--muted)}
+tbody tr td{background:color-mix(in srgb,var(--ink) 3.5%,transparent)}
+tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--ink) 6%,transparent)}
+tbody tr td:first-child{border-radius:10px 0 0 10px}tbody tr td:last-child{border-radius:0 10px 10px 0}
+tbody tr td:only-child{border-radius:10px}
+
+/* cardurile mari (clase, BAC, capitole) */
+.subjects{gap:16px}
+.subj{border:0!important;border-radius:28px;background:radial-gradient(120% 140% at 100% 0%,color-mix(in srgb,var(--sc) 34%,var(--sheet)) 0%,color-mix(in srgb,var(--sc) 12%,var(--sheet)) 55%,var(--sheet) 100%);box-shadow:var(--soft);min-height:210px}
+.subj::after{content:"";position:absolute;width:180px;height:180px;right:-60px;bottom:-70px;border-radius:50%;background:color-mix(in srgb,var(--sc) 22%,transparent);filter:blur(4px);transition:transform .5s cubic-bezier(.2,.8,.2,1);z-index:0}
+.subj>*{position:relative;z-index:1}
+.subj:hover{transform:translateY(-6px);box-shadow:var(--lift)}
+.subj:hover::after{transform:scale(1.35)}
+.subj .let{background:linear-gradient(135deg,var(--sc),color-mix(in srgb,var(--sc) 60%,var(--c4)));box-shadow:0 8px 18px -6px color-mix(in srgb,var(--sc) 70%,transparent)}
+.subj .ill{width:150px;height:100px;opacity:.9}
+.subjects.five>.klass:last-child{background:radial-gradient(120% 160% at 100% 0%,color-mix(in srgb,var(--accent) 40%,var(--sheet)),color-mix(in srgb,var(--c4) 14%,var(--sheet)) 60%,var(--sheet))}
+.chips i{background:color-mix(in srgb,var(--sheet) 70%,transparent)}
+.final{box-shadow:var(--soft);background:radial-gradient(120% 160% at 100% 0%,color-mix(in srgb,var(--sc,var(--accent)) 30%,var(--sheet)),var(--sheet) 75%)}
+.daily{background:linear-gradient(145deg,#1f2440,#2c1f3d 60%,color-mix(in srgb,var(--accent) 35%,#2c1f3d));color:#fff;box-shadow:var(--soft)}.daily .f,:root .daily .f{color:#fff!important}.daily a{color:#fff}
+
+/* bare de progres */
+.meter{height:10px;border:0!important;background:color-mix(in srgb,var(--ink) 9%,transparent)}
+.meter i{background:linear-gradient(90deg,var(--sc,var(--accent)),color-mix(in srgb,var(--sc,var(--accent)) 55%,var(--c3)));box-shadow:0 0 12px color-mix(in srgb,var(--sc,var(--accent)) 50%,transparent)}
+.prog{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px;margin:0 0 26px}
+.prog .pc{background:var(--glass);border-radius:var(--r-md);padding:14px 16px;box-shadow:var(--soft);display:grid;gap:8px}
+.prog .pc b{font-family:var(--display);font-size:26px;line-height:1}
+.prog .pc span{color:var(--muted);font-size:14px}
+.prog .pc .meter{height:12px}
+
+/* butoane și controale: minim 44 px, apăsare vizibilă */
+.btn{min-height:44px;border:0;background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 70%,var(--c4)))}
+.btn.ghost{background:var(--sheet);box-shadow:var(--soft);border:0}
+.seg{background:color-mix(in srgb,var(--ink) 6%,transparent)}
+.seg button,.seg a{min-height:44px;display:inline-flex;align-items:center}
+.opt{min-height:52px;border:0!important;background:var(--sheet);box-shadow:var(--soft),inset 0 0 0 1.5px color-mix(in srgb,var(--ink) 8%,transparent)}
+.opt:hover:not(:disabled){box-shadow:var(--soft),inset 0 0 0 2px var(--accent)}
+.opt.right{box-shadow:0 0 0 3px color-mix(in srgb,var(--good) 35%,transparent),inset 0 0 0 2px var(--good);background:color-mix(in srgb,var(--good) 14%,var(--sheet))}
+.opt.right .L{background:var(--good);color:#fff}
+.opt.wrong{box-shadow:0 0 0 3px color-mix(in srgb,var(--pen) 30%,transparent),inset 0 0 0 2px var(--pen)}
+.opt.wrong .L{background:var(--pen);color:#fff}
+.opt[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--accent)}
+.fbk{position:fixed;left:50%;bottom:calc(26px + var(--sab));z-index:90;transform:translateX(-50%);font-weight:800;padding:10px 20px;border-radius:999px;color:#fff;box-shadow:0 14px 34px -10px rgba(0,0,0,.45);animation:fbk 1.1s cubic-bezier(.2,.8,.2,1) both;pointer-events:none}
+.fbk.ok{background:var(--good)}.fbk.no{background:var(--pen)}
+@keyframes fbk{0%{opacity:0;transform:translate(-50%,16px) scale(.9)}15%{opacity:1;transform:translate(-50%,0) scale(1.04)}25%{transform:translate(-50%,0) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-10px)}}
+select,input[type=number],input[type=search],input[type=text],.pm-unlock input{min-height:46px;border:0!important;background:var(--sheet);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--ink) 10%,transparent)}
+select:focus,input:focus{box-shadow:inset 0 0 0 2px var(--accent),0 0 0 5px color-mix(in srgb,var(--accent) 16%,transparent)!important}
+input[aria-invalid="true"]{box-shadow:inset 0 0 0 2px var(--pen)!important}
+.err-msg{margin:4px 0 12px;padding:10px 14px;border-radius:12px;background:color-mix(in srgb,var(--pen) 12%,var(--sheet));color:var(--ink);font-size:15px;font-weight:600}
+.step{border:0;box-shadow:var(--soft);background:var(--sheet)}
+.badge{min-height:24px;display:inline-flex;align-items:center}
+.crumbs a{padding:6px 2px;display:inline-block}
+.tgrid button{min-height:76px;border:0;box-shadow:var(--soft);background:var(--sheet)}
+.tgrid button[aria-pressed="true"]{box-shadow:0 0 0 3px var(--accent)}
+.tpanel .tinst{margin-top:12px;width:100%;justify-content:center}
+.pm-ask{display:grid;gap:8px;margin-top:16px;padding-top:14px}
+.pm-ask .btn{justify-content:center}
+.pm-ask small{color:var(--muted);font-size:13.5px;line-height:1.45}
+.linkbtn{font:inherit;color:var(--accent);background:none;border:0;padding:0;text-decoration:underline;cursor:pointer;font-weight:700}
+.pm-lockcard{border:0;box-shadow:var(--soft),inset 0 0 0 2px color-mix(in srgb,var(--gold) 45%,transparent)}
+.pm-item .acts a{min-height:44px;border:0;box-shadow:var(--soft)}
+footer{border:0}
+
+/* ---------- MOD DESKTOP: bară laterală fixă, conținut lat ---------- */
+.side{display:none}
+@media (min-width:1200px){
+  :root{--side:272px}
+  .side{display:flex;flex-direction:column;gap:4px;position:fixed;z-index:55;left:0;top:0;bottom:0;width:var(--side);padding:calc(18px + var(--sat)) 14px 18px;background:var(--glass);backdrop-filter:saturate(1.5) blur(18px);-webkit-backdrop-filter:saturate(1.5) blur(18px);box-shadow:8px 0 40px -24px color-mix(in srgb,var(--ink) 35%,transparent);overflow-y:auto;scrollbar-width:thin}
+  .side .logo{padding:6px 10px 14px}
+  .side h6{margin:14px 12px 4px;font:800 11.5px var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  .side a.si{display:flex;align-items:center;gap:12px;min-height:44px;padding:8px 12px;border-radius:14px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px;transition:background .18s,transform .18s}
+  .side a.si:hover{background:color-mix(in srgb,var(--accent) 10%,transparent);transform:translateX(3px)}
+  .side a.si[aria-current="page"]{background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 20%,transparent),color-mix(in srgb,var(--accent) 6%,transparent));color:var(--accent)}
+  .side .dot{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;flex:none;font:800 12px var(--body);color:#fff;background:var(--k,var(--accent))}
+  .side .sm{display:grid;flex:1;min-width:0}
+  .side .sm small{color:var(--muted);font-weight:500;font-size:12px}
+  .side .mini{height:5px;border-radius:9px;background:color-mix(in srgb,var(--ink) 10%,transparent);overflow:hidden;margin-top:4px}
+  .side .mini i{display:block;height:100%;background:var(--k,var(--accent));border-radius:9px}
+  .side .sfoot{margin-top:auto;padding-top:14px;display:grid;gap:8px}
+  .topbar,main,footer{margin-left:var(--side)}
+  .topbar .logo,.topbar .menu,.topbar .burger{display:none!important}
+  .topbar .bar{justify-content:flex-end}
+  main{max-width:1240px;padding-left:44px;padding-right:44px}
+  .panel.mega{left:calc(50% + var(--side)/2)}
+  .front{grid-template-columns:minmax(0,1.8fr) minmax(300px,1fr)}
+  .subjects.five{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .subjects.five>.klass:last-child{grid-column:1/-1}
+  .tpanel{right:24px}
+}
+@media (min-width:1600px){main{max-width:1380px}}
+@media (max-width:1199px){.side{display:none!important}}
+
+/* telefon: fără scroll orizontal, câmpuri de 16 px (fără zoom pe iOS) */
+html,body{overflow-x:hidden}
+@media (max-width:560px){
+  select,input{font-size:16px!important}
+  main{padding-top:22px}
+  .subj{min-height:180px;padding:20px}
+  .subj .ill{width:110px;height:74px;opacity:.75}
+  .sheet{padding:18px}
+}
+@media (max-width:820px),(hover:none){.aura i{animation:none;filter:blur(60px)}.sheet,.toc,.prog .pc{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--sheet)}}
+@media (prefers-reduced-motion:reduce){.aura i{animation:none}html{scroll-behavior:auto}.fbk{animation:none;opacity:0}}
 </style>
 </head>
 <body>
 <script>try{var _t=JSON.parse(localStorage.getItem("tbac:theme"));if(_t)document.documentElement.setAttribute("data-theme",_t);}catch(e){}</script>
+<div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+<nav class="side" id="side" aria-label="Navigare principală"></nav>
 <header class="topbar">
   <div class="bar">
     <a class="logo" href="#acasa"><span class="mark">F</span>Fizică BAC</a>
@@ -715,6 +1010,7 @@ footer{padding-bottom:calc(30px + var(--sab))}
 <main id="view" tabindex="-1"></main>
 <footer>Fizică pentru clasele IX–XII și pentru bacalaureat. Pagina de BAC păstrează doar cele patru arii din programa de examen: A. Mecanică, B. Elemente de termodinamică, C. Producerea și utilizarea curentului continuu, D. Optică. Termodinamica pornește de la notițele tale.</footer>
 
+<script src="natura.js"></script>
 <script>
 (() => {
 'use strict';
@@ -744,7 +1040,7 @@ function setTheme(t){ if(t==='auto') document.documentElement.removeAttribute('d
 $('#themebtn').addEventListener('click',e=>{ e.stopPropagation(); let p=$('#tpanel'); if(p){ p.remove(); return; }
   const cur=document.documentElement.getAttribute('data-theme')||'auto';
   p=document.createElement('div'); p.className='tpanel'; p.id='tpanel'; p.setAttribute('role','dialog'); p.setAttribute('aria-label','Alege tema');
-  p.innerHTML='<h3>Alege stilul</h3><div class="tgrid">'+THEMES.map(([id,n,g])=>`<button type="button" data-t="${id}" aria-pressed="${id===cur}"><span class="sw" style="background:${g}"></span>${n}</button>`).join('')+'</div>';
+  p.innerHTML='<h3>Alege stilul</h3><div class="tgrid">'+THEMES.map(([id,n,g])=>`<button type="button" data-t="${id}" aria-pressed="${id===cur}"><span class="sw" style="background:${g}"></span>${n}</button>`).join('')+'</div>'+installBtn();
   document.body.appendChild(p);
   p.querySelectorAll('button').forEach(b=>b.onclick=()=>{ setTheme(b.dataset.t); p.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b)); });
   p.addEventListener('click',ev=>ev.stopPropagation());
@@ -1768,7 +2064,7 @@ const L_B = [
 <p>Punctul aflat la distanța x de sursă repetă oscilația sursei cu întârzierea x/v. Două puncte la distanța Δx au defazajul Δφ = 2π·Δx/λ.</p>
 <h3>Viteza de propagare</h3>
 <div class="tw"><table><thead><tr><th>Mediu</th><th>Viteza</th></tr></thead><tbody>
-<tr><td>Coardă întinsă (unde transversale)</td><td class="m">v = √(T/μ), μ = m/l</td></tr>
+<tr><td>Coardă întinsă (unde transversale)</td><td class="m">v = √(F/μ), F = forța de tensiune, μ = m/l</td></tr>
 <tr><td>Bară solidă (unde longitudinale)</td><td class="m">v = √(E/ρ)</td></tr>
 <tr><td>Sunetul în aer, la 15–20 °C</td><td class="m">v ≈ 340 m/s</td></tr>
 </tbody></table></div>
@@ -2558,7 +2854,7 @@ F.push(
  ['ca-putere','Puterea activă','P = U·I·cos φ = R·I²'],['ca-putere','Puterea reactivă','Q = U·I·sin φ'],['ca-putere','Puterea aparentă','S = U·I ; S² = P² + Q²'],['ca-putere','Factorul de putere','cos φ = R/Z'],['ca-putere','Transformatorul','U₁/U₂ = N₁/N₂ = I₂/I₁'],
  ['os-armonic','Legea mișcării','x = A·sin(ωt + φ₀)'],['os-armonic','Pulsația proprie','ω = √(k/m)'],['os-armonic','Perioada oscilatorului elastic','T = 2π·√(m/k)'],['os-armonic','Viteza maximă','v_max = ω·A'],['os-armonic','Accelerația','a = −ω²·x'],['os-armonic','Energia oscilatorului','E = k·A²/2'],['os-armonic','Viteza în funcție de elongație','v = ω·√(A² − x²)'],
  ['os-pendul','Perioada pendulului gravitațional','T = 2π·√(l/g)'],['os-pendul','Compunerea oscilațiilor','A² = A₁² + A₂² + 2A₁A₂·cos Δφ'],['os-pendul','Amortizarea','A(t) = A₀·e^(−δt)'],
- ['os-unde','Lungimea de undă','λ = v·T = v/ν'],['os-unde','Ecuația undei plane','y = A·sin 2π(t/T − x/λ)'],['os-unde','Viteza în coardă','v = √(T/μ)'],['os-unde','Viteza în bară solidă','v = √(E/ρ)'],['os-unde','Refracția undelor','sin i/sin r = v₁/v₂'],['os-unde','Defazajul între două puncte','Δφ = 2π·Δx/λ'],
+ ['os-unde','Lungimea de undă','λ = v·T = v/ν'],['os-unde','Ecuația undei plane','y = A·sin 2π(t/T − x/λ)'],['os-unde','Viteza în coardă','v = √(F/μ) (F = tensiunea din coardă, μ = m/l)'],['os-unde','Viteza în bară solidă','v = √(E/ρ)'],['os-unde','Refracția undelor','sin i/sin r = v₁/v₂'],['os-unde','Defazajul între două puncte','Δφ = 2π·Δx/λ'],
  ['os-interf','Maxim de interferență','Δ = k·λ'],['os-interf','Minim de interferență','Δ = (2k + 1)·λ/2'],['os-interf','Coardă fixată la capete','ν_n = n·v/(2l)'],['os-interf','Tub închis la un capăt','ν_n = (2n − 1)·v/(4l)'],['os-interf','Nivelul de intensitate sonoră','N = 10·lg(I/I₀) dB'],
  ['em-circuit','Formula lui Thomson','T = 2π·√(L·C)'],['em-circuit','Frecvența proprie','ν₀ = 1/(2π√(L·C))'],['em-circuit','Energia circuitului oscilant','W = q_m²/(2C) = L·I_m²/2'],['em-circuit','Curentul maxim','I_m = ω₀·q_m'],
  ['em-unde','Viteza undelor electromagnetice','c = 1/√(ε₀·μ₀)'],['em-unde','Lungimea de undă','λ = c/ν'],['em-unde','Viteza într-un mediu','v = c/n'],['em-unde','Lungimea de undă emisă de antenă','λ = 2π·c·√(L·C)'],
@@ -2991,7 +3287,7 @@ const FC = F.map(([ch,n,f])=>({ch,q:n,a:f})).concat([
 const MENU = [
  {id:'lectii', t:'Clase și BAC', mega:true},
  {id:'exersare', t:'Exersează', items:[['simbac','Simulare BAC','Subiectele I, II și III, cu cronometru și notă'],['quiz','Quiz','Teste pe lecție, capitol, clasă sau din toate'],['flashcards','Flashcards','Formule și definiții de memorat'],['probleme','Probleme rezolvate','Pas cu pas, la toate capitolele']]},
- {id:'unelte', t:'Unelte', items:[['premium','Lecții video și audio ★','Premium: lecții animate și narate în română'],['simulator','Simulator','Laboratoare interactive cu animații'],['calculator','Calculator','Rezolvare pas cu pas cu datele tale'],['formule','Fișa de formule','Toate formulele, cu căutare'],['lectii','Caută în lecții','Toate lecțiile, cu căutare']]}
+ {id:'unelte', t:'Unelte', items:[['natura','Fizica în natură','Fenomene reale, animate, legate de lecții'],['premium','Lecții video și audio ★','Premium: lecții animate și narate în română'],['simulator','Simulator','Laboratoare interactive cu animații'],['calculator','Calculator','Rezolvare pas cu pas cu datele tale'],['formule','Fișa de formule','Toate formulele, cu căutare'],['lectii','Caută în lecții','Toate lecțiile, cu căutare']]}
 ];
 function buildMenu(){
   const m = $('#menu');
@@ -3016,6 +3312,7 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ const o=document.
 function toggleM(force){ const mn=$('#mnav'), open = force ?? !mn.classList.contains('open'); mn.classList.toggle('open',open); $('#burger').setAttribute('aria-expanded',open); }
 $('#burger').addEventListener('click',()=>toggleM());
 function markMenu(r){
+  buildSide();
   document.querySelectorAll('#menu > a').forEach(a=>a.dataset.r===r?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
   document.querySelectorAll('#menu .dd').forEach(d=>{ const s=MENU.find(x=>x.id===d.dataset.dd); d.classList.toggle('on', s.mega ? ['lectii','materie','clasa','bac','test','simbac'].includes(r) : s.items.some(i=>i[0]===r)); });
 }
@@ -3189,6 +3486,7 @@ function acasa(){
    </div>
    <aside class="front-side">
     <div class="daily"><p class="over" style="margin:0">FORMULA ZILEI</p><div class="f">${esc(f[2])}</div><a href="#lectii-${gi(fl)}">${esc(f[1])} · ${fl.t}</a></div>
+    ${NAT.length?(()=>{ const ns=NAT[day%NAT.length]; return `<a class="nt-daily" href="#natura-${ns.id}">${ns.svg}<span>FIZICA ÎN NATURĂ · AZI</span><b>${ns.t}</b></a>`; })():''}
     <div class="sheet" style="margin-top:16px"><h2 style="font-size:19px">Progresul tău</h2><table class="ptable"><thead><tr><th></th><th>Citite</th><th>Teste trecute</th></tr></thead><tbody>${CLASE.map(c=>{const st=classStats(c.id);return `<tr><td>${c.t}</td><td>${st.r}/${st.n}</td><td>${st.tp}/${st.tn}</td></tr>`;}).join('')}${(()=>{const st=bacStats();return `<tr><td>Bacalaureat</td><td>${st.r}/${st.n}</td><td>${st.tp}/${st.tn}</td></tr>`;})()}</tbody></table>
     ${wrongQ().length?`<a class="btn ghost" style="margin-top:14px" href="#quiz-gresit">Reia greșelile (${wrongQ().length})</a>`:''}
     <p class="note" style="margin:14px 0 0">${L.length} lecții · ${F.length} formule · ${P.length} probleme · ${Q.length} întrebări. Progresul rămâne doar în acest browser.</p>
@@ -3210,7 +3508,7 @@ function clasa(arg){
   view.style.setProperty('--sc','var('+c.c+')');
   const ss=subjOfClass(c.id), ls=lessonsOfClass(c.id), st=classStats(c.id);
   view.innerHTML=`<div class="crumbs"><a href="#acasa">Acasă</a><span>›</span><span>${c.t}</span></div><h1>${c.t}</h1>
-  <p class="lead">${c.d}. ${ss.length} capitole, ${ls.length} lecții, ${qCount(ls.map(l=>l.id))} întrebări de test. Ai citit ${st.r} din ${st.n} lecții și ai trecut ${st.tp} teste de lecție.</p>
+  <p class="lead">${c.d}. ${ss.length} capitole, ${ls.length} lecții, ${qCount(ls.map(l=>l.id))} întrebări de test. </p>${progHero(st,'din '+c.t.replace('Clasa','clasa'))}
   <h2 class="rule">Capitole</h2>
   <div class="subjects">${ss.map((s,k)=>{const sl2=lessonsOf(s.id).filter(l=>!grp(l.g).bac);return bigCard('#materie-'+s.id,s.c,s.ill,String(k+1),s.t,s.d,groupsOf(s.id).map(g=>g.t),listStats(sl2,sl2.map(l=>'l:'+l.id)));}).join('')}</div>
   <h2 class="rule">Instrumente pentru ${c.t.replace('Clasa','clasa')}</h2>
@@ -3238,7 +3536,7 @@ function materie(arg){
   const s=subj(arg); if(!s){ location.hash='acasa'; return; }
   const c=klass(s.cls), ls=lessonsOf(s.id);
   view.style.setProperty('--sc','var('+s.c+')');
-  view.innerHTML=`<div class="crumbs"><a href="#acasa">Acasă</a><span>›</span><a href="#clasa-${c.id}">${c.t}</a><span>›</span><span>Capitol</span></div><h1>${s.t}</h1><p class="lead">${s.long}</p>
+  view.innerHTML=`<div class="crumbs"><a href="#acasa">Acasă</a><span>›</span><a href="#clasa-${c.id}">${c.t}</a><span>›</span><span>Capitol</span></div><h1>${s.t}</h1><p class="lead">${s.long}</p>${(()=>{ const sl2=ls.filter(l=>!grp(l.g).bac); return progHero(listStats(sl2,sl2.map(l=>'l:'+l.id)),'din capitol'); })()}
   ${toolsHTML(s.id)}`+groupsHTML(s.id)+`<h2 class="rule">La finalul capitolului</h2>${finalCard('m'+s.id,'Testul final al capitolului: '+s.t,Math.min(20,qCount(ls.map(l=>l.id)))+' întrebări din toate lecțiile capitolului.')}`;
 }
 
@@ -3368,6 +3666,7 @@ function lectii(arg){
     ${premStrip(n)}
     <div class="brief"><h2>Pe scurt</h2><ul>${l.brief.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></div>
     <article class="sheet lesson">${l.html}</article>
+    ${natSection(l)}
     ${l.graph?`<div class="sheet"><h2>Grafice</h2><div class="plots" id="lgraph"></div><div id="lgleg"></div><p class="hint">Schimbă valorile în <a href="#simulator-${s.id}">Simulator</a>.</p></div>`:''}
     ${probs.length?`<div class="sheet"><h2>Probleme rezolvate din această lecție</h2><div class="cards">${probs.map(p=>`${row('#probleme-'+p.id,p.id.toUpperCase(),p.t,p.ask,p.src)}`).join('')}</div></div>`:''}
     <div class="sheet"><h2>Verifică-te pe loc</h2><div id="mini"></div></div>
@@ -3507,7 +3806,7 @@ function simTermo(){
     <div class="seg" id="sim-type" role="group" aria-label="Transformare"></div>
     <div class="field"><label for="sim-gas">Gaz</label><select id="sim-gas"><option value="3">Monoatomic (i = 3, ex. He)</option><option value="5" selected>Biatomic (i = 5, ex. O₂, aer)</option><option value="6">Poliatomic (i = 6)</option></select></div>
     <div class="row2"><div class="field"><label for="sim-nu">ν (mol)</label><input id="sim-nu" type="number" step="0.1" min="0.1" value="1"></div><div class="field"><label for="sim-p1">p₁ (kPa)</label><input id="sim-p1" type="number" step="10" min="1" value="200"></div></div>
-    <div class="field"><label for="sim-v1">V₁ (litri)</label><input id="sim-v1" type="number" step="0.5" min="0.1" value="12.5"></div>
+    <div class="field"><label for="sim-v1">V₁ (litri)</label><input id="sim-v1" type="number" step="0.5" min="0.1" value="12.5"></div><p class="err-msg" id="sim-err" role="alert" hidden></p>
     <div class="field"><label for="sim-r" id="sim-r-label">V₂ / V₁</label><input id="sim-r" type="range" min="0.4" max="3" step="0.05" value="2"><div class="mono" id="sim-r-val"></div></div>
     <div class="fx" id="sim-law"></div><p class="hint" id="sim-hint"></p>
   </div><div class="sheet"><div class="plots" id="sim-plots"></div><div class="results" id="sim-res"></div></div></section>
@@ -3530,7 +3829,9 @@ function simTermo(){
 let simData=null, cycData=null;
 function drawSim(){
   if(!$('#sim-gas')) return;
-  const i=+$('#sim-gas').value,nu=Math.max(+$('#sim-nu').value||1,.01),p1=(+$('#sim-p1').value||100)*1e3,V1=(+$('#sim-v1').value||1)*1e-3,r=+$('#sim-r').value,t=TYPES[simType];
+  const chk=[['#sim-nu','ν'],['#sim-p1','p₁'],['#sim-v1','V₁']].map(([id,n])=>{ const el=$(id), raw=el.value.trim(), v=parseFloat(raw); const ok=raw!==''&&isFinite(v)&&v>0; el.setAttribute('aria-invalid',!ok); return ok?null:(raw===''?n+' este gol':n+' trebuie să fie un număr pozitiv'); }).filter(Boolean);
+  const er=$('#sim-err'); if(chk.length){ er.hidden=false; er.textContent='Verifică datele: '+chk.join('; ')+'. Graficele arată ultima variantă corectă.'; return; } er.hidden=true;
+  const i=+$('#sim-gas').value,nu=+$('#sim-nu').value,p1=+$('#sim-p1').value*1e3,V1=+$('#sim-v1').value*1e-3,r=+$('#sim-r').value,t=TYPES[simType];
   $('#sim-r-label').textContent=t.rl; $('#sim-r-val').textContent=r.toFixed(2).replace('.',','); $('#sim-law').textContent=t.law; $('#sim-hint').textContent=t.hint;
   const s=state(simType,i,nu,p1,V1,r); simData=s; redraw();
   $('#sim-res').innerHTML=tile('T₁',fmt(s.T1,1),'K')+tile('T₂',fmt(s.T2,1),'K')+tile('p₂',fmt(s.p2/1e3,1),'kPa')+tile('V₂',fmt(s.V2*1e3,2),'L')+tile('L',fmt(s.L,0),'J',s.L)+tile('Q',fmt(s.Q,0),'J',s.Q)+tile('ΔU',fmt(s.dU,0),'J',s.dU)+tile('γ',fmt(s.g,3),'');
@@ -4068,12 +4369,12 @@ const stp=(n,w,f,r)=>`<div class="step"><span class="n">${n}</span><div><div cla
 function calc(){
   const raw=k=>document.getElementById('cf-'+k)?.value, g=k=>parseFloat(raw(k)), has=k=>raw(k)!==undefined&&raw(k)!==''&&isFinite(g(k));
   $('#calc-title').textContent='Rezolvare: '+CALCS[calcType].name.toLowerCase();
-  const o=[]; let n=1; const bad=m=>{$('#calc-steps').innerHTML=stp('!','Date incomplete',m);};
+  const o=[]; let n=1; const bad=m=>{$('#calc-steps').innerHTML=stp('!','Verifică datele',m);};
   const ct=calcType;
   if(CALCS[ct].run){ const res=CALCS[ct].run(g,has); if(typeof res==='string') return bad(res); $('#calc-steps').innerHTML=res.map((x,k)=>stp(k+1,x[0],x[1],x[2])).join(''); return; }
   if(ct==='stare'){
     const ks=['p','V','nu','T'],miss=ks.filter(k=>!has(k)); if(miss.length!==1) return bad('Lasă gol exact un câmp dintre p, V, ν și T.');
-    const [p,V,nu,T]=ks.map(g),m=miss[0];
+    const [p,V,nu,T]=ks.map(g),m=miss[0]; if(ks.filter(k=>k!==m).some(k=>!(g(k)>0))) return bad('p, V, ν și T trebuie să fie numere pozitive (V și T nu pot fi 0).'); if(has('mu')&&!(g('mu')>0)) return bad('Masa molară μ trebuie să fie pozitivă sau lasă câmpul gol.');
     if(m==='p')o.push(stp(n++,'Presiunea','p = νRT/V = '+fmt(nu)+'·8,31·'+fmt(T,1)+'/'+fmt(V,4),'p = '+fmt(nu*R*T/V,1)+' Pa'));
     if(m==='V')o.push(stp(n++,'Volumul','V = νRT/p = '+fmt(nu)+'·8,31·'+fmt(T,1)+'/'+fmt(p,0),'V = '+fmt(nu*R*T/p,4)+' m³'));
     if(m==='nu')o.push(stp(n++,'Numărul de moli','ν = pV/(RT) = '+fmt(p,0)+'·'+fmt(V,4)+'/(8,31·'+fmt(T,1)+')','ν = '+fmt(p*V/(R*T),3)+' mol'));
@@ -4103,7 +4404,7 @@ function calc(){
     o.push(stp(n++,'Căldura schimbată','Q = m₁c₁(θ − t₁)','Q = '+fmt(m1*c1*(th-t1),0)+' J'));
   } else if(ct==='motor'){
     const Tc=g('Tc'),Tr=g('Tr'),Qp=g('Qp'); if(!(Tc>Tr&&Tr>0&&Qp>0)) return bad('Trebuie T_c > T_r > 0 și Q primit pozitiv.');
-    const ec=1-Tr/Tc;
+    const ec=1-Tr/Tc; if(has('eta')&&!(g('eta')>0&&g('eta')<=100)) return bad('η real se dă în procente, între 0 și 100 (sau lasă câmpul gol).');
     o.push(stp(n++,'Randamentul Carnot (maxim posibil)','η_C = 1 − T_r/T_c = 1 − '+fmt(Tr,0)+'/'+fmt(Tc,0),'η_C = '+fmt(ec*100,1)+' %'));
     const e=has('eta')?g('eta')/100:ec; if(has('eta')&&e>ec) o.push(stp('!','Atenție','η real > η Carnot este imposibil (Principiul II).',''));
     o.push(stp(n++,has('eta')?'Lucrul mecanic cu η dat':'Lucrul mecanic pentru un motor Carnot','L = η·Q_p = '+fmt(e,3)+'·'+fmt(Qp,0),'L = '+fmt(e*Qp,1)+' J'));
@@ -4119,7 +4420,8 @@ function calc(){
     const nu=g('nu'),i=g('i'),T1=g('T1'); if(!(nu>0&&T1>0)) return bad('ν și T₁ trebuie să fie pozitive.');
     const Cv=i/2*R,Cp=Cv+R,gm=(i+2)/i; let T2,Lm,Qh;
     o.push(stp(n++,'Căldurile molare','C_V = (i/2)R ; C_p = C_V + R ; γ = (i+2)/i','C_V = '+fmt(Cv)+' · C_p = '+fmt(Cp)+' J/(mol·K) · γ = '+fmt(gm,3)));
-    if(ct==='izocora'||ct==='izobara')T2=g('T2');
+    if(ct==='izocora'||ct==='izobara'){T2=g('T2'); if(!(T2>0)) return bad('T₂ trebuie să fie o temperatură absolută pozitivă (în kelvin).');}
+    if((ct==='adiabatica'||ct==='pav')&&!(g('V1')>0&&g('V2')>0)) return bad('Volumele V₁ și V₂ trebuie să fie pozitive.');
     if(ct==='adiabatica'){const V1=g('V1'),V2=g('V2');T2=T1*Math.pow(V1/V2,gm-1);o.push(stp(n++,'Temperatura finală din TV^(γ−1) = ct','T₂ = T₁·(V₁/V₂)^(γ−1) = '+fmt(T1,0)+'·('+fmt(V1)+'/'+fmt(V2)+')^'+fmt(gm-1,3),'T₂ = '+fmt(T2,1)+' K'));}
     if(ct==='pav'){const V1=g('V1'),V2=g('V2');T2=T1*(V2/V1)**2;o.push(stp(n++,'Temperatura finală: p = aV ⇒ T ~ V²','T₂ = T₁·(V₂/V₁)² = '+fmt(T1,0)+'·('+fmt(V2)+'/'+fmt(V1)+')²','T₂ = '+fmt(T2,1)+' K'));}
     if(!(T2>0)) return bad('Completează toate câmpurile cu valori pozitive.');
@@ -4221,13 +4523,71 @@ function fcDraw(){
 document.addEventListener('keydown',e=>{ if(current!=='flashcards'||!$('#fnext')||e.target.matches('input,select'))return; if(e.key==='ArrowRight')$('#fnext').click(); if(e.key==='ArrowLeft')$('#fprev').click(); });
 
 /* =====================================================================
+   FIZICA ÎN NATURĂ: scene animate (din natura.js) legate de lecții.
+   ===================================================================== */
+const NAT=(window.NATURA||[]).filter(s=>s.ls.some(id=>L.some(l=>l.id===id)));
+const NAT_AREAS=[['Mecanică','--c1'],['Termodinamică','--pen'],['Electricitate','--amber'],['Optică','--c3'],['Unde','--c2'],['Fizică modernă','--c4']];
+const natColor=a=>(NAT_AREAS.find(x=>x[0]===a)||[0,'--accent'])[1];
+const natOf=lid=>NAT.filter(s=>s.ls.includes(lid));
+const natCard=s=>`<a class="nt-card" href="#natura-${s.id}" style="--sc:var(${natColor(s.a)})">${s.svg}<span class="b"><span class="tag">${s.a}</span><span class="t">${s.t}</span><span class="num"><b>${s.num[0]}</b> · ${s.num[1]}</span></span></a>`;
+const natSection=l=>{ const ss=natOf(l.id); return ss.length?`<div class="sheet"><h2>🌍 Unde vezi asta în natură</h2><p class="hint" style="margin-top:0">Fenomene reale explicate cu ce ai învățat în lecție. Atinge o scenă ca s-o deschizi.</p><div class="nt-row">${ss.map(natCard).join('')}</div></div>`:''; };
+let natFilter='Toate';
+function natura(arg){
+  pmKill();
+  const k=NAT.findIndex(x=>x.id===arg), s=NAT[k];
+  if(!s){
+    view.innerHTML=`<div class="crumbs"><a href="#acasa">Acasă</a><span>›</span><span>Fizica în natură</span></div>
+    <p class="over">FIZICA DIN JURUL TĂU</p><h1>Fizica în natură</h1>
+    <p class="lead">${NAT.length} fenomene reale, animate, explicate cu formulele din lecții: de la curcubeu și fulger la aurora boreală și Soare. Fiecare are o cifră reală, un calculator și trimiteri la lecțiile în care înveți fenomenul.</p>
+    <div class="nt-chips" id="ntch">${['Toate',...NAT_AREAS.map(a=>a[0])].map(a=>`<button type="button" data-a="${a}" aria-pressed="${a===natFilter}" style="--sc:var(${a==='Toate'?'--accent':natColor(a)})">${a}</button>`).join('')}</div>
+    <div class="nt-grid" id="ntgrid">${NAT.map(natCard).join('')}</div>`;
+    const apply=()=>{ view.querySelectorAll('#ntch button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.a===natFilter)); view.querySelectorAll('#ntgrid .nt-card').forEach((c,i)=>c.hidden=natFilter!=='Toate'&&NAT[i].a!==natFilter); };
+    view.querySelectorAll('#ntch button').forEach(b=>b.onclick=()=>{ natFilter=b.dataset.a; apply(); });
+    apply(); return;
+  }
+  view.style.setProperty('--sc','var('+natColor(s.a)+')');
+  const ls=s.ls.map(id=>L.find(l=>l.id===id)).filter(Boolean), prev=NAT[(k-1+NAT.length)%NAT.length], next=NAT[(k+1)%NAT.length];
+  const c=s.calc;
+  view.innerHTML=`<div class="crumbs"><a href="#acasa">Acasă</a><span>›</span><a href="#natura">Fizica în natură</a><span>›</span><span>${s.a}</span></div>
+  <p class="over">${s.a.toUpperCase()} ÎN NATURĂ</p><h1>${s.t}</h1>
+  <div class="nt-hero"><div class="nt-frame">${s.svg}</div>
+   <div class="stack"><p class="lead" style="margin:0;font-size:17px">${s.txt}</p>
+    <div class="fx big" style="white-space:normal">${s.fx}</div>
+    <div class="nt-num"><b>${s.num[0]}</b><span>${s.num[1]}</span></div></div></div>
+  ${c?`<div class="sheet nt-calc" style="margin-top:18px"><h2 style="font-size:19px">Încearcă tu</h2><label for="ntr"><span>${c.lab}</span><b id="ntv"></b></label><input type="range" id="ntr" min="${c.min}" max="${c.max}" step="${c.step}" value="${c.val}"><p class="nt-out" id="nto" aria-live="polite"></p></div>`:''}
+  <h2 class="rule">Înveți asta în lecțiile</h2>
+  <div class="cards">${ls.map(l=>row('#lectii-'+gi(l),sn(l),l.t,subj(subjOfL(l)).t+' · '+klass(subj(subjOfL(l)).cls).t,progress.read[l.id]?'<span class="badge good">Citit</span>':'')).join('')}</div>
+  <div class="pager"><a href="#natura-${prev.id}"><small>← Fenomenul anterior</small>${prev.t}</a><a class="btn ghost" href="#natura" style="text-align:center">Toate fenomenele</a><a class="next" href="#natura-${next.id}"><small>Următorul →</small>${next.t}</a></div>`;
+  if(c){ const r=$('#ntr'), upd=()=>{ const v=+r.value; $('#ntv').textContent=(Number.isInteger(c.step)?String(v):String(v).replace('.',','))+(c.unit?' '+c.unit:''); $('#nto').innerHTML=c.out(v); fillRange(r); }; r.addEventListener('input',upd); upd(); }
+}
+
+/* =====================================================================
    PREMIUM: lecții video și audio, deblocate cu un cod.
    Lecțiile se construiesc din textul fiecărei lecții și sunt narate în română
    cu vocea telefonului (aplicația nativă: motorul TTS al sistemului; browser: Web Speech).
    Codul nu apare în fișier, doar amprenta lui SHA-256 (PREM_HASH).
    ===================================================================== */
 const PREM_HASH='d5534931f099607ef0e49a833a0581a94f9733b19d742a2dc2dd6a7e94d6bc2f';
-const isPrem=()=>store.get('premium',false)===true;
+/* SHA-256 sincron (merge și unde crypto.subtle lipsește: file://, WebView-uri vechi) */
+function sha256s(str){
+  const r=(n,x)=>(x>>>n)|(x<<(32-n)); const K=[],H=[]; let p=2,c=0; const isP=n=>{for(let f=2;f*f<=n;f++)if(n%f===0)return false;return true;};
+  while(c<64){ if(isP(p)){ if(c<8)H[c]=(Math.pow(p,1/2)*4294967296)|0; K[c]=(Math.pow(p,1/3)*4294967296)|0; c++; } p++; }
+  const b=unescape(encodeURIComponent(str)), w=[], l=b.length*8; let i,j;
+  for(i=0;i<b.length;i++) w[i>>2]|=b.charCodeAt(i)<<((3-i%4)*8);
+  w[l>>5]|=0x80<<(24-l%32); w[((l+64>>9)<<4)+15]=l;
+  for(j=0;j<w.length;j+=16){ let a=H.slice(0); const W=[]; for(i=0;i<64;i++){
+    if(i<16) W[i]=w[j+i]|0; else { const s0=r(7,W[i-15])^r(18,W[i-15])^(W[i-15]>>>3), s1=r(17,W[i-2])^r(19,W[i-2])^(W[i-2]>>>10); W[i]=(W[i-16]+s0+W[i-7]+s1)|0; }
+    const t1=a[7]+(r(6,a[4])^r(11,a[4])^r(25,a[4]))+((a[4]&a[5])^(~a[4]&a[6]))+K[i]+W[i], t2=(r(2,a[0])^r(13,a[0])^r(22,a[0]))+((a[0]&a[1])^(a[0]&a[2])^(a[1]&a[2]));
+    a=[(t1+t2)|0].concat(a); a[4]=(a[4]+t1)|0; a.pop(); }
+    for(i=0;i<8;i++) H[i]=(H[i]+a[i])|0; }
+  let o=''; for(i=0;i<8;i++) o+=('00000000'+(H[i]>>>0).toString(16)).slice(-8); return o;
+}
+/* Premium e activ doar dacă pe dispozitiv e salvat un cod care se potrivește cu amprenta.
+   Înainte era un simplu „premium: true” în localStorage, care se putea seta de mână. */
+let premMemo=null;
+const isPrem=()=>{ if(premMemo===null){ const c=store.get('premcode',''); premMemo=typeof c==='string'&&c!==''&&sha256s('fizbac-premium:'+c)===PREM_HASH; } return premMemo; };
+const CODE_MAIL='georgebogdadanaila@gmail.com';
+const codeMailHref='mailto:'+CODE_MAIL+'?subject='+encodeURIComponent('Cerere cod Premium Fizică BAC')+'&body='+encodeURIComponent('Salut! Aș vrea codul Premium pentru aplicația Fizică BAC.\n\nNumele meu: ');
 const IC={
   play:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.4-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>',
   pause:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4.5" height="16" rx="1.2"/><rect x="13.5" y="4" width="4.5" height="16" rx="1.2"/></svg>',
@@ -4241,7 +4601,7 @@ const IC={
 
 /* ---- deblocare ---- */
 async function premHash(s){ const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)); return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join(''); }
-async function tryUnlock(code){ const v=String(code).replace(/\s+/g,'').toUpperCase(); if(!v) return false; try{ if(await premHash('fizbac-premium:'+v)===PREM_HASH){ store.set('premium',true); return true; } }catch(e){} return false; }
+async function tryUnlock(code){ const v=String(code).replace(/\s+/g,'').toUpperCase(); if(!v) return false; if(sha256s('fizbac-premium:'+v)===PREM_HASH){ store.set('premcode',v); store.set('premium',true); premMemo=true; return true; } return false; }
 function unlockBox(onOk){
   const id='pmc'+Math.random().toString(36).slice(2,7);
   setTimeout(()=>{ const inp=document.getElementById(id), btn=document.getElementById(id+'b'), er=document.getElementById(id+'e'); if(!inp) return; let tries=0, wait=0;
@@ -4250,7 +4610,8 @@ function unlockBox(onOk){
       tries++; inp.value=''; inp.focus(); er.textContent='Cod greșit.'; if(tries>=5){ tries=0; wait=Date.now()+30000; er.textContent='Cod greșit de 5 ori. Așteaptă 30 de secunde.'; } };
     btn.onclick=go; inp.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); go(); } }); inp.addEventListener('input',()=>{ er.textContent=''; }); },0);
   return `<div class="sheet pm-unlock"><span class="pm-tag">★ Premium</span><h2 style="margin:10px 0 4px">Introdu codul Premium</h2><p class="hint" style="margin:0">Codul deblochează toate lecțiile video și audio pe acest dispozitiv.</p>
-    <div class="row"><label class="sr" for="${id}">Cod Premium</label><input id="${id}" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="COD" enterkeyhint="go"><button class="btn" type="button" id="${id}b">Deblochează</button></div><div class="err" id="${id}e" aria-live="polite"></div></div>`;
+    <div class="row"><label class="sr" for="${id}">Cod Premium</label><input id="${id}" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="COD" enterkeyhint="go"><button class="btn" type="button" id="${id}b">Deblochează</button></div><div class="err" id="${id}e" aria-live="polite"></div>
+    <div class="pm-ask"><a class="btn ghost" href="${codeMailHref}">✉️ Nu ai codul? Cere-l pe email</a><small>Se deschide aplicația de email cu un mesaj gata scris către <b>${CODE_MAIL}</b>. Primești codul ca răspuns. Dacă nu se deschide nimic, <button type="button" class="linkbtn" data-copy="${CODE_MAIL}">copiază adresa</button> și scrie-ne din aplicația ta de email.</small></div></div>`;
 }
 function premStrip(n){
   if(isPrem()) return `<div class="pm-strip"><a class="btn" href="#video-${n}">${IC.video}Lecția video</a><a class="btn ghost" href="#audio-${n}">${IC.audio}Ascultă lecția</a><span class="pm-tag">★ Premium</span></div>`;
@@ -4264,6 +4625,8 @@ const UNITS=[['m/s²',' metri pe secundă la pătrat'],['m/s','metri pe secundă
 function say(s){
   s=' '+String(s)+' ';
   UNITS.forEach(([u,w])=>{ s=s.split(u).join(' '+w+' '); });
+  const UW={nm:'nanometri',km:'kilometri',kg:'kilograme',kJ:'kilojouli',kHz:'kilohertzi',MHz:'megahertzi',Hz:'hertzi',eV:'electronvolți',μs:'microsecunde',cm:'centimetri',mm:'milimetri',mV:'milivolți',kV:'kilovolți',GW:'gigawați',MW:'megawați',kW:'kilowați',K:'kelvin',V:'volți',A:'amperi',W:'wați',J:'jouli',N:'newtoni',s:'secunde',m:'metri',Ω:'ohmi'};
+  s=s.replace(/(\d)\s*(nm|km|kg|kJ|kHz|MHz|Hz|eV|μs|cm|mm|mV|kV|GW|MW|kW|K|V|A|W|J|N|s|m|Ω)(?![\wăâîșț])/g,(x,d,u)=>d+' '+UW[u]);
   s=s.replace(/([⁻]?[⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g,m=>{ const neg=m[0]==='⁻', d=[...m.replace('⁻','')].map(c=>SUPD.indexOf(c)).join('');
       if(!neg&&d==='2') return ' la pătrat '; if(!neg&&d==='3') return ' la cub '; return ' la puterea '+(neg?'minus ':'')+d+' '; });
   s=s.replace(/\^(-?\d+)/g,(m,d)=>d==='2'?' la pătrat ':d==='3'?' la cub ':' la puterea '+d.replace('-','minus ')+' ');
@@ -4271,7 +4634,8 @@ function say(s){
   s=s.replace(/[ΔαβγδεηθλμνπρστφωΦΩℓ]/g,c=>' '+(GREEK[c]||c)+' ');
   s=s.replace(/\s*[·×]\s*/g,' ori ').replace(/\s*≈\s*/g,' aproximativ egal cu ').replace(/\s*≠\s*/g,' diferit de ').replace(/\s*≤\s*/g,' mai mic sau egal cu ').replace(/\s*≥\s*/g,' mai mare sau egal cu ')
        .replace(/\s*[⇒→]\s*/g,', deci ').replace(/\s*∝\s*/g,' proporțional cu ').replace(/\s*=\s*/g,' egal ').replace(/\s+<\s+/g,' mai mic decât ').replace(/\s+>\s+/g,' mai mare decât ')
-       .replace(/\s*−\s*/g,' minus ').replace(/(\S)\s*\/\s*(\S)/g,'$1 supra $2').replace(/°/g,' grade').replace(/[|]/g,' ').replace(/\s*;\s*/g,'. ').replace(/[_*#]/g,' ');
+       .replace(/\s*−\s*/g,' minus ').replace(/\s*\+\s*/g,' plus ').replace(/(\S)\s*\/\s*(\S)/g,'$1 supra $2')
+       .replace(/(\d)([a-zA-Z])/g,'$1 $2').replace(/(?<!\p{L})[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z]{2,4}(?!\p{L})/gu,w=>w.split('').join(' ')).replace(/°/g,' grade').replace(/[|]/g,' ').replace(/\s*;\s*/g,'. ').replace(/[_*#]/g,' ');
   return s.replace(/\s+/g,' ').trim();
 }
 const sentences=t=>String(t).replace(/\s+/g,' ').trim().split(/(?<=[.!?:])\s+(?=[A-ZĂÂÎȘȚ„(0-9])/).flatMap(x=>x.length>230?x.split(/(?<=[,;])\s+/):[x]).map(x=>x.trim()).filter(x=>x.length>1);
@@ -4307,6 +4671,9 @@ function lessonScript(n){
     if(el.querySelector('svg,canvas,img')){ room(); addBlock(cur,'pic',el.outerHTML,txt?sentences(txt):['Uită-te la desen.']); return; }
     if(txt){ room(); addBlock(cur,'p',el.innerHTML,sentences(txt)); }
   });
+  natOf(l.id).slice(0,2).forEach(sc=>{ const sl=addSlide({kind:'sec',kick:'În natură',h:sc.t});
+    addBlock(sl,'pic nat',`<div class="nt-frame">${sc.svg}</div>`,[`Unde vezi asta în natură? ${sc.t}.`]);
+    sentences(sc.txt).slice(0,3).forEach(t=>addBlock(sl,'p',esc(t),[t])); });
   const end=addSlide({kind:'end',kick:'Recapitulare',h:'Gata! Ai terminat lecția'});
   addBlock(end,'p','',[`Gata, asta a fost lecția ${l.t}.`,'Hai să recapitulăm.']);
   l.brief.forEach(b=>addBlock(end,'li','✓ '+esc(b),[b]));
@@ -4319,13 +4686,34 @@ const estMin=(segs,rate=1)=>Math.max(1,Math.round(segs.reduce((a,x)=>a+words(x.s
 /* ---- vocea: TTS nativ în aplicație, Web Speech în browser, cronometru dacă nu există voce ---- */
 const TTS={
   plug(){ const C=window.Capacitor; return C&&C.isNativePlatform&&C.isNativePlatform()&&C.Plugins&&C.Plugins.TextToSpeech||null; },
+  platform(){ const C=window.Capacitor; return C&&C.getPlatform?C.getPlatform():'web'; },
   web(){ return 'speechSynthesis' in window && typeof SpeechSynthesisUtterance!=='undefined'; },
-  voice(){ if(!this.web()) return null; const vs=speechSynthesis.getVoices(); return vs.find(v=>/^ro([-_]|$)/i.test(v.lang))||null; },
+  isRo:l=>/^ro([-_]|$)/i.test(l||''),
+  list:null,
+  /* vocile românești de pe dispozitiv: {id, label, idx(nativ), v(web), net} */
+  async voices(force){
+    if(this.list&&!force) return this.list;
+    const P=this.plug(); let out=[];
+    if(P){ try{ const r=await P.getSupportedVoices(); (r.voices||[]).forEach((v,idx)=>{ if(this.isRo(v.lang)) out.push({id:v.voiceURI||v.name,name:v.name||v.voiceURI,idx,net:v.localService===false}); }); }catch(e){} }
+    else if(this.web()){
+      if(!speechSynthesis.getVoices().length) await new Promise(r=>{ speechSynthesis.addEventListener('voiceschanged',r,{once:true}); setTimeout(r,1500); });
+      speechSynthesis.getVoices().forEach(v=>{ if(this.isRo(v.lang)) out.push({id:v.voiceURI||v.name,name:v.name,v,net:v.localService===false}); });
+    }
+    /* nume prietenoase */
+    const nice=(x,k)=>{ const n=String(x.name);
+      if(/ioana|alina|emil|andrei|carmen/i.test(n)) return n.replace(/^Microsoft\s+/,'').replace(/\s*-\s*Romanian.*$/i,'').replace(/\(Enhanced\)|\(Premium\)/i,m=>/enh/i.test(m)?'(îmbunătățită)':'(premium)');
+      if(/google/i.test(n)) return 'Google română';
+      return 'Vocea '+(k+1); };
+    out.forEach((x,k)=>{ x.label=nice(x,k)+(x.net?' · online, mai naturală':''); });
+    out.sort((a,b)=>(b.net-a.net)||a.label.localeCompare(b.label));
+    this.list=out; return out;
+  },
+  chosen(){ const id=store.get('pvoice',null), l=this.list||[]; return l.find(x=>x.id===id)||l[0]||null; },
   timer:0, done:null,
   speak(text,rate){
-    const P=this.plug();
-    if(P) return P.speak({text,lang:'ro-RO',rate:rate,pitch:1,volume:1,category:'playback'}).then(()=>true,()=>false);
-    if(this.web()){ return new Promise(res=>{ const u=new SpeechSynthesisUtterance(text); u.lang='ro-RO'; const v=this.voice(); if(v) u.voice=v; u.rate=rate;
+    const P=this.plug(), ch=this.chosen(), pitch=+store.get('ppitch',1)||1;
+    if(P){ const o={text,lang:'ro-RO',rate:rate,pitch,volume:1,category:'playback'}; if(ch&&ch.idx>=0) o.voice=ch.idx; return P.speak(o).then(()=>true,()=>false); }
+    if(this.web()){ return new Promise(res=>{ const u=new SpeechSynthesisUtterance(text); u.lang='ro-RO'; if(ch&&ch.v) u.voice=ch.v; u.rate=rate; u.pitch=pitch;
         let fin=false; const end=ok=>{ if(fin) return; fin=true; clearTimeout(guard); res(ok); };
         u.onend=()=>end(true); u.onerror=()=>end(false);
         const guard=setTimeout(()=>end(true),(words(text)/2.2/rate+6)*1000);  /* unele browsere nu trimit „onend” */
@@ -4333,13 +4721,49 @@ const TTS={
     return new Promise(res=>{ this.done=res; this.timer=setTimeout(()=>{ this.done=null; res(true); },Math.max(1600,words(text)/2.6/rate*1000)); });
   },
   stop(){ const P=this.plug(); if(P){ try{ P.stop(); }catch(e){} return; } if(this.web()){ try{ speechSynthesis.cancel(); }catch(e){} return; } clearTimeout(this.timer); if(this.done){ const d=this.done; this.done=null; d(false); } },
-  async status(){ const P=this.plug();
-    if(P){ try{ const r=await P.isLanguageSupported({lang:'ro-RO'}); return r&&r.supported?'':'Telefonul nu are vocea în limba română. O poți instala din Setări → Accesibilitate → Transformare text în vorbire (Text-to-speech) → Limbă: Română.'; }catch(e){ return ''; } }
-    if(!this.web()) return 'Browserul tău nu poate citi cu voce. Lecția merge mai departe singură, cu subtitrări.';
-    if(!speechSynthesis.getVoices().length) await new Promise(r=>{ speechSynthesis.addEventListener('voiceschanged',r,{once:true}); setTimeout(r,1500); });
-    return this.voice()?'':'Nu am găsit o voce în limba română pe acest dispozitiv, așa că se folosește vocea implicită. Pe iPhone: Setări → Accesibilitate → Conținut vorbit → Voci → Română.';
+  async status(){ const vs=await this.voices();
+    if(!this.plug()&&!this.web()) return 'Browserul tău nu poate citi cu voce. Lecția merge mai departe singură, cu subtitrări.';
+    if(vs.length) return '';
+    if(this.plug()){ try{ const r=await this.plug().isLanguageSupported({lang:'ro-RO'}); if(r&&r.supported) return ''; }catch(e){} }
+    return 'Telefonul nu are încă o voce în limba română. Apasă „🔊 Voce” ca să vezi cum o instalezi (durează un minut, o singură dată).';
+  },
+  /* pașii de instalare a vocii române, pentru fiecare tip de dispozitiv */
+  guide(){
+    const p=this.platform(), ua=navigator.userAgent||'';
+    if(p==='ios'||/iPhone|iPad/.test(ua)) return `<ol><li>Deschide <b>Setări</b> → <b>Accesibilitate</b> → <b>Conținut vorbit</b> → <b>Voci</b>.</li><li>Alege <b>Română</b> și descarcă vocea <b>Ioana (îmbunătățită)</b>, care sună cel mai natural.</li><li>Revino aici și apasă <b>Caută din nou</b>.</li></ol>`;
+    if(p==='android'||/Android/.test(ua)) return `<ol><li>Apasă <b>Deschide setările de voce</b> de mai jos și descarcă limba <b>Română</b>.</li><li>Pe <b>Samsung</b>: Setări → Administrare generală → <b>Text în vorbire</b> → Motor preferat: <b>Google</b> (Serviciile de vorbire de la Google).</li><li>Pe alte telefoane: Setări → Sistem → Limbi → <b>Text în vorbire</b> → Motor preferat: <b>Google</b>.</li><li>Revino aici și apasă <b>Caută din nou</b>.</li></ol>`;
+    return `<ol><li>În <b>Chrome</b> sau <b>Edge</b> vocile românești sunt incluse (în Edge: „Microsoft Alina/Emil Online”, foarte naturale).</li><li>Pe Windows: Setări → Oră și limbă → Vorbire → <b>Adaugă voci</b> → Română.</li><li>Repornește browserul și apasă <b>Caută din nou</b>.</li></ol>`;
   }
 };
+
+/* ---- panoul „Voce”: alegi vocea, viteza și tonul, asculți un exemplu ---- */
+const VOICE_SAMPLE='Salut! Eu îți voi citi lecțiile de fizică. Energia cinetică este E c egal m v la pătrat supra 2.';
+function voicePanel(onChange){
+  const id='vp'+Math.random().toString(36).slice(2,6);
+  setTimeout(async ()=>{ const box=document.getElementById(id); if(!box) return;
+    const draw=async force=>{ box.querySelector('.vp-body').innerHTML='<p class="hint">Caut vocile românești de pe dispozitiv…</p>';
+      const vs=await TTS.voices(force), ch=TTS.chosen(), pitch=+store.get('ppitch',1)||1;
+      box.querySelector('.vp-body').innerHTML=(vs.length?`<label class="vp-lab" for="${id}s">Vocea</label><select id="${id}s" class="vp-sel">${vs.map(v=>`<option value="${esc(v.id)}" ${ch&&ch.id===v.id?'selected':''}>${esc(v.label)}</option>`).join('')}</select>`
+          :`<div class="vp-warn"><b>Nu am găsit nicio voce în limba română.</b> O instalezi gratuit, o singură dată:${TTS.guide()}</div>`)+
+        `<label class="vp-lab" for="${id}p">Tonul vocii</label><div class="seg" id="${id}p">${[[0.85,'Mai grav'],[1,'Normal'],[1.15,'Mai subțire']].map(([v,t])=>`<button type="button" data-v="${v}" aria-pressed="${v===pitch}">${t}</button>`).join('')}</div>
+        <div class="actions" style="margin:12px 0 0"><button class="btn" type="button" id="${id}t">▶ Ascultă un exemplu</button>${TTS.plug()&&TTS.platform()==='android'?`<button class="btn ghost" type="button" id="${id}i">Deschide setările de voce</button>`:''}<button class="btn ghost" type="button" id="${id}r">Caută din nou</button></div>
+        ${vs.length?`<details class="vp-more"><summary>Vocea nu sună bine sau lipsesc voci?</summary>${TTS.guide()}</details>`:''}`;
+      const sel=document.getElementById(id+'s'); if(sel) sel.onchange=()=>{ store.set('pvoice',sel.value); onChange&&onChange(); };
+      box.querySelectorAll(`#${id}p button`).forEach(b=>b.onclick=()=>{ store.set('ppitch',+b.dataset.v); box.querySelectorAll(`#${id}p button`).forEach(x=>x.setAttribute('aria-pressed',x===b)); onChange&&onChange(); });
+      document.getElementById(id+'t').onclick=()=>{ if(pmPlayer&&pmPlayer.playing) pmPlayer.pause(); TTS.stop(); setTimeout(()=>TTS.speak(say(VOICE_SAMPLE),+store.get('prate',1)||1),120); };
+      const ib=document.getElementById(id+'i'); if(ib) ib.onclick=()=>{ try{ TTS.plug().openInstall(); }catch(e){} };
+      document.getElementById(id+'r').onclick=()=>draw(true);
+    };
+    draw(false);
+  },0);
+  return `<div class="vp" id="${id}"><div class="vp-body"></div></div>`;
+}
+function voiceWire(){
+  const b=$('#pmvo'), panel=$('#pmvp'); if(!b||!panel) return;
+  const show=on=>{ panel.hidden=!on; b.setAttribute('aria-expanded',on); b.setAttribute('aria-pressed',on); };
+  b.onclick=()=>show(panel.hidden);
+  TTS.status().then(m=>{ const el=$('#pmnote'); if(el) el.textContent=m; if(m&&(TTS.plug()||TTS.web())) show(true); });
+}
 let pmPlayer=null;
 function pmKill(){ if(pmPlayer){ pmPlayer.destroy(); pmPlayer=null; } }
 addEventListener('hashchange',()=>{ if(pmPlayer&&pmPlayer.owner!==location.hash) pmKill(); });
@@ -4380,12 +4804,13 @@ function premium(arg){
   <p class="over">PREMIUM <span class="pm-tag" style="margin-left:6px">★ Activ</span></p><h1>Lecții video și audio</h1>
   <p class="lead">${L.length} lecții video și ${L.length} lecții audio, narate în română. Alege o lecție sau caută după nume.</p>
   ${last&&L[last.n-1]?`<div class="actions" style="margin:0 0 18px"><a class="btn" href="#${last.k}-${last.n}">Continuă: ${L[last.n-1].t} (${last.k==='video'?'video':'audio'}) →</a></div>`:''}
+  <details class="sheet" style="margin:0 0 18px;padding:14px 18px"><summary style="cursor:pointer;font-weight:700;font-family:var(--display);font-size:18px">🔊 Vocea care citește lecțiile</summary><p class="hint">Se folosește vocea românească a telefonului tău. Alege-o pe cea care îți place și ascultă un exemplu.</p>${voicePanel()}</details>
   <div class="lsearch"><label class="sr" for="pmq">Caută</label><input id="pmq" type="search" placeholder="Caută o lecție (ex.: Ohm, lentile, Carnot)" autocomplete="off"></div>
   ${CLASE.map(c=>`<section class="pmc"><h2 class="rule">${c.t}</h2><div class="pm-list">${list(lessonsOfClass(c.id))}</div></section>`).join('')}
   ${(()=>{ const bl=L.filter(l=>grp(l.g).bac); return bl.length?`<section class="pmc"><h2 class="rule">Recapitulare BAC</h2><div class="pm-list">${list(bl)}</div></section>`:''; })()}
   <p class="note" style="margin-top:24px">Premium e activ pe acest dispozitiv. <button class="badge" type="button" id="pmoff" style="border:0;cursor:pointer">Dezactivează</button></p>`;
   $('#pmq').addEventListener('input',e=>{ const q=e.target.value.trim().toLowerCase(); view.querySelectorAll('.pm-item').forEach(it=>it.hidden=!!q&&!it.dataset.q.includes(q)); view.querySelectorAll('.pmc').forEach(s=>s.hidden=![...s.querySelectorAll('.pm-item')].some(x=>!x.hidden)); });
-  $('#pmoff').onclick=()=>{ store.set('premium',false); route(); };
+  $('#pmoff').onclick=()=>{ store.set('premium',false); store.set('premcode',''); premMemo=false; route(); };
 }
 function premGate(kind,n){
   view.innerHTML=`<div class="crumbs"><a href="#lectii-${n}">Înapoi la lecție</a><span>›</span><span>Premium</span></div><h1>${L[n-1].t}</h1>
@@ -4407,8 +4832,8 @@ function video(arg){
   <div class="pm-video" id="pmv"><div class="pm-bg"></div><div class="pm-stage" id="pmst"></div><button class="pm-tap" type="button" id="pmtap" aria-label="Pauză sau redare"></button><div class="pm-cap" id="pmcap"></div><button class="pm-big" type="button" id="pmbig" aria-label="Pornește lecția">${IC.play}</button></div>
   <div class="pm-ctrl"><button class="pbtn" type="button" id="pmprev" aria-label="Slide-ul anterior">${IC.prev}</button><button class="pbtn main" type="button" id="pmpp" aria-label="Redă">${IC.play}</button><button class="pbtn" type="button" id="pmnext" aria-label="Slide-ul următor">${IC.next}</button>
    <div class="pm-bar" id="pmbar" role="slider" aria-label="Progres" tabindex="0"><span class="tr"></span><span class="fi" id="pmfi"></span>${S.slides.map((_,k)=>k?`<span class="tk" style="left:${(S.segs.findIndex(x=>x.slide===k)/S.segs.length*100).toFixed(2)}%"></span>`:'').join('')}<span class="kn" id="pmkn"></span></div>
-   <span class="pm-time" id="pmtime"></span>${speedSel(rate)}<button class="pbtn" type="button" id="pmcc" aria-label="Subtitrări" aria-pressed="${store.get('pmcc',true)}">${IC.cc}</button><button class="pbtn" type="button" id="pmfs" aria-label="Ecran complet">${IC.fs}</button></div>
-  <p class="pm-note" id="pmnote"></p>
+   <span class="pm-time" id="pmtime"></span>${speedSel(rate)}<button class="pbtn" type="button" id="pmvo" aria-label="Alege vocea" aria-expanded="false" title="Voce">🔊</button><button class="pbtn" type="button" id="pmcc" aria-label="Subtitrări" aria-pressed="${store.get('pmcc',true)}">${IC.cc}</button><button class="pbtn" type="button" id="pmfs" aria-label="Ecran complet">${IC.fs}</button></div>
+  <div id="pmvp" class="pm-vp" hidden>${voicePanel(()=>{ if(pmPlayer&&pmPlayer.playing) pmPlayer.seek(pmPlayer.i); })}</div><p class="pm-note" id="pmnote"></p>
   ${navLinks('video',n)}`;
   const vb=$('#pmv'), st=$('#pmst'), cap=$('#pmcap');
   vb.classList.toggle('nocap',!store.get('pmcc',true));
@@ -4439,7 +4864,7 @@ function video(arg){
   $('#pmcc').onclick=()=>{ const on=!store.get('pmcc',true); store.set('pmcc',on); $('#pmcc').setAttribute('aria-pressed',on); vb.classList.toggle('nocap',!on); };
   $('#pmfs').onclick=()=>{ if(document.fullscreenElement){ document.exitFullscreen(); return; } if(vb.classList.contains('fs')){ vb.classList.remove('fs'); return; }
     if(vb.requestFullscreen) vb.requestFullscreen().catch(()=>vb.classList.add('fs')); else vb.classList.add('fs'); };
-  TTS.status().then(m=>{ const el=$('#pmnote'); if(el) el.textContent=m; });
+  voiceWire();
 }
 
 /* ---- lecția audio ---- */
@@ -4459,8 +4884,8 @@ function audio(arg){
    <div><span class="pm-tag">★ Lecție audio</span><h2>${l.t}</h2><p class="sub">${c.t} · ${s.t} · ~${estMin(S.segs,rate)} min</p>
    <div class="pm-ctrl"><button class="pbtn" type="button" id="pmprev" aria-label="Propoziția anterioară">${IC.prev}</button><button class="pbtn main" type="button" id="pmpp" aria-label="Redă">${IC.play}</button><button class="pbtn" type="button" id="pmnext" aria-label="Propoziția următoare">${IC.next}</button>
     <div class="pm-bar" id="pmbar" role="slider" aria-label="Progres" tabindex="0"><span class="tr"></span><span class="fi" id="pmfi"></span><span class="kn" id="pmkn"></span></div>
-    <span class="pm-time" id="pmtime"></span>${speedSel(rate)}</div>
-   <p class="pm-note" id="pmnote"></p></div></div></div>
+    <span class="pm-time" id="pmtime"></span>${speedSel(rate)}<button class="pbtn" type="button" id="pmvo" aria-label="Alege vocea" aria-expanded="false" title="Voce">🔊</button></div>
+   <div id="pmvp" class="pm-vp" hidden>${voicePanel(()=>{ if(pmPlayer&&pmPlayer.playing) pmPlayer.seek(pmPlayer.i); })}</div><p class="pm-note" id="pmnote"></p></div></div></div>
   <div class="sheet"><h2 style="font-size:18px">Textul lecției</h2><p class="hint" style="margin-top:0">Atinge o propoziție ca să sari la ea.</p><div class="pm-tr" id="pmtr">${tr}</div></div>
   <div class="actions" style="margin:0"><a class="btn" href="#test-l${n}">Testul lecției →</a><a class="btn ghost" href="#video-${n}">Varianta video</a></div>
   ${navLinks('audio',n)}</div>`;
@@ -4480,11 +4905,43 @@ function audio(arg){
   const bar=$('#pmbar'); bar.addEventListener('pointerdown',e=>{ const r=bar.getBoundingClientRect(); pmPlayer.seek(Math.round((e.clientX-r.left)/r.width*(S.segs.length-1))); });
   bar.addEventListener('keydown',e=>{ if(e.key==='ArrowRight') $('#pmnext').click(); if(e.key==='ArrowLeft') $('#pmprev').click(); });
   $('#pmsp').onchange=e=>{ pmPlayer.setRate(+e.target.value); show(pmPlayer.i); };
-  TTS.status().then(m=>{ const el=$('#pmnote'); if(el) el.textContent=m; });
+  voiceWire();
 }
 document.addEventListener('keydown',e=>{ if(!pmPlayer||!['video','audio'].includes(current)||e.target.matches('input,select,textarea')) return;
   if(e.key===' '||e.key==='k'){ e.preventDefault(); pmPlayer.toggle(); } });
-Object.assign(routes,{premium,video,audio});
+Object.assign(routes,{premium,video,audio,natura});
+/* pentru generarea fișierelor audio: textul de citit al fiecărei lecții */
+document.addEventListener('click',e=>{ const b=e.target.closest&&e.target.closest('[data-copy]'); if(!b) return; const t=b.dataset.copy, done=()=>{ b.textContent='adresa a fost copiată ✓'; };
+  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(done).catch(()=>{ const i=document.createElement('textarea'); i.value=t; document.body.appendChild(i); i.select(); try{ document.execCommand('copy'); done(); }catch(_){ b.textContent=t; } i.remove(); }); });
+window.FB_NARRATION=n=>{ const S=lessonScript(n); return {id:S.l.id,t:S.l.t,segs:S.segs.map(x=>x.say)}; };
+
+/* ===== v6: bară laterală pentru desktop, progres, feedback animat, instalare ===== */
+const SIDE_IC={home:'⌂',bac:'★',sim:'⏱',quiz:'?',fc:'⇄',pr:'✎',lab:'⚗',calc:'∑',fx:'ƒ',ls:'☰',nat:'❀',prem:'▶'};
+let installEv=null;
+addEventListener('beforeinstallprompt',e=>{ e.preventDefault(); installEv=e; document.querySelectorAll('.tinst').forEach(b=>b.hidden=false); });
+addEventListener('appinstalled',()=>{ installEv=null; document.querySelectorAll('.tinst').forEach(b=>b.hidden=true); });
+const installBtn=cls=>`<button type="button" class="btn ghost tinst ${cls||''}" ${installEv?'':'hidden'}>⬇ Instalează pe acest calculator</button>`;
+document.addEventListener('click',e=>{ const b=e.target.closest&&e.target.closest('.tinst'); if(!b||!installEv) return; installEv.prompt(); installEv.userChoice.finally(()=>{ installEv=null; document.querySelectorAll('.tinst').forEach(x=>x.hidden=true); }); });
+function buildSide(){
+  const sd=$('#side'); if(!sd) return;
+  const it=(h,ic,t,sub,k,pct)=>`<a class="si" href="#${h}" data-h="${h}"${k?` style="--k:var(${k})"`:''}><span class="dot">${ic}</span><span class="sm">${t}${sub?`<small>${sub}</small>`:''}${pct!==undefined?`<span class="mini"><i style="width:${pct}%"></i></span>`:''}</span></a>`;
+  const bs=bacStats();
+  sd.innerHTML=`<a class="logo" href="#acasa"><span class="mark">F</span>Fizică BAC</a>`
+   +it('acasa',SIDE_IC.home,'Acasă','','--accent')
+   +'<h6>Clase</h6>'+CLASE.map(c=>{ const st=classStats(c.id); return it('clasa-'+c.id,c.s,c.t,st.r+'/'+st.n+' lecții · '+st.pct+'%',c.c,st.pct); }).join('')
+   +'<h6>Bacalaureat</h6>'+it('bac',SIDE_IC.bac,'Pregătire BAC',bs.r+'/'+bs.n+' lecții','--accent',bs.pct)+it('simbac',SIDE_IC.sim,'Simulare BAC','cu notă și cronometru','--c2')
+   +'<h6>Exersează</h6>'+it('quiz',SIDE_IC.quiz,'Quiz','','--c1')+it('flashcards',SIDE_IC.fc,'Flashcards','','--c3')+it('probleme',SIDE_IC.pr,'Probleme rezolvate','','--c4')
+   +'<h6>Unelte</h6>'+it('simulator',SIDE_IC.lab,'Simulator','','--c3')+it('calculator',SIDE_IC.calc,'Calculator','','--c1')+it('formule',SIDE_IC.fx,'Fișa de formule','','--c2')+it('lectii',SIDE_IC.ls,'Caută în lecții','','--c4')+it('natura',SIDE_IC.nat,'Fizica în natură','','--c3')+it('premium',SIDE_IC.prem,'Lecții video și audio','Premium','--gold')
+   +`<div class="sfoot">${installBtn()}</div>`;
+  const h=location.hash.replace('#','')||'acasa', r=h.split('-')[0];
+  sd.querySelectorAll('a.si').forEach(a=>{ const d=a.dataset.h; const on = d===h || (d===r&&!['clasa','bac'].includes(r)) || (r==='bac'&&d==='bac') || (r==='materie'&&d==='clasa-'+(subj(h.split('-')[1])||{}).cls) || (r==='lectii'&&(()=>{ const l=L[parseInt(h.split('-')[1],10)-1]; return l&&d==='clasa-'+subj(subjOfL(l)).cls; })());
+    on?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'); });
+}
+const progHero=(st,label)=>`<div class="prog"><div class="pc"><span>Lecții citite ${label}</span><b>${st.pct}%</b><span class="meter"><i style="width:${st.pct}%"></i></span><span>${st.r} din ${st.n} lecții</span></div><div class="pc"><span>Teste de lecție trecute</span><b>${st.tn?Math.round(st.tp/st.tn*100):0}%</b><span class="meter"><i style="width:${st.tn?Math.round(st.tp/st.tn*100):0}%"></i></span><span>${st.tp} din ${st.tn} teste, cu cel puțin ${PASS}%</span></div></div>`;
+/* feedback animat la răspuns corect/greșit (teste, quiz, verifică-te pe loc) */
+document.addEventListener('click',e=>{ const b=e.target.closest&&e.target.closest('.opt'); if(!b||b.closest('.sbarea')) return;
+  setTimeout(()=>{ const ok=b.classList.contains('right'), no=b.classList.contains('wrong'); if(!ok&&!no) return;
+    document.querySelectorAll('.fbk').forEach(x=>x.remove()); const t=document.createElement('div'); t.className='fbk '+(ok?'ok':'no'); t.setAttribute('role','status'); t.textContent=ok?'Corect! ✓':'Greșit, vezi explicația'; document.body.appendChild(t); setTimeout(()=>t.remove(),1200); },0); });
 
 route();
 })();

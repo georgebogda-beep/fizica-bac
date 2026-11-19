@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Fizică BAC — descarcă aplicația</title>
-<meta name="description" content="Fizică pentru clasele IX–XII și pentru bacalaureat. Aplicație pentru Android și iPhone.">
+<meta name="description" content="Fizică pentru clasele IX–XII și pentru bacalaureat. Aplicație pentru Android, iPhone și calculator.">
 <meta property="og:title" content="Fizică BAC">
-<meta property="og:description" content="Lecții, teste și simulări BAC la fizică. Pentru Android și iPhone.">
+<meta property="og:description" content="Lecții, teste și simulări BAC la fizică. Pentru Android, iPhone și calculator.">
 <meta property="og:image" content="app/icons/icon-512.png">
 <meta name="theme-color" content="#14151b">
 <link rel="icon" type="image/png" href="app/icons/favicon-32.png">
@@ -14,79 +14,113 @@
 <link rel="stylesheet" href="app/fonts/fonts.css">
 <style>
 :root{
-  --paper:#fbf6ec; --sheet:#ffffff; --ink:#1b1d26; --muted:#5d6170; --line:#e6dfcf; --grid:#efe8d8;
-  --accent:#e4572e; --accent-ink:#fffaf2; --good:#1f8a5b; --soft:#f6efe1;
+  --paper:#fbf6ec; --sheet:#ffffff; --ink:#1b1d26; --muted:#5d6170; --soft:#f3ece0;
+  --accent:#e4572e; --accent2:#8b5cf6; --blue:#2f6fed; --teal:#12a594; --good:#1f8a5b;
   --display:"Fraunces",Georgia,serif; --body:"Plus Jakarta Sans","Segoe UI",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --shadow:0 1px 2px rgba(27,29,38,.05),0 18px 40px -14px rgba(27,29,38,.18);
   color-scheme:light;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --paper:#14151b; --sheet:#1d1f28; --ink:#f1ede4; --muted:#a3a7b5; --line:#323645; --grid:#1b1d25;
-  --accent:#ff7a52; --accent-ink:#14151b; --good:#4ed6a0; --soft:#262935; color-scheme:dark}}
-:root[data-theme="dark"]{--paper:#14151b; --sheet:#1d1f28; --ink:#f1ede4; --muted:#a3a7b5; --line:#323645; --grid:#1b1d25;
-  --accent:#ff7a52; --accent-ink:#14151b; --good:#4ed6a0; --soft:#262935; color-scheme:dark}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#14151b; --sheet:#1d1f28; --ink:#f1ede4; --muted:#a3a7b5; --soft:#262935;
+  --accent:#ff7a52; --accent2:#b79bff; --blue:#7aa7ff; --teal:#4fd1c1; --good:#4ed6a0;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 18px 40px -14px rgba(0,0,0,.6); color-scheme:dark}}
 *{box-sizing:border-box}
-html,body{margin:0}
-body{background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px;color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.55;min-height:100vh;-webkit-tap-highlight-color:transparent}
-.wrap{max-width:760px;margin:0 auto;padding:calc(36px + env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) calc(48px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
-.head{display:flex;align-items:center;gap:16px;margin-bottom:22px}
-.head img{width:76px;height:76px;border-radius:20px;box-shadow:0 10px 28px rgba(228,87,46,.28);flex:none}
-h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,7vw,44px);line-height:1.05;margin:0;letter-spacing:-.01em}
-.sub{margin:4px 0 0;color:var(--muted)}
-.lead{font-size:18px;margin:0 0 24px;max-width:60ch}
-.card{background:var(--sheet);border:1px solid var(--line);border-radius:20px;padding:22px;margin-bottom:16px}
-.card h2{font-family:var(--display);font-weight:600;font-size:23px;margin:0 0 4px;display:flex;align-items:center;gap:10px}
-.card h2 svg{width:24px;height:24px;flex:none}
-.card .hint{color:var(--muted);margin:0 0 16px;font-size:15px}
-.card.mine{border:2px solid var(--accent);box-shadow:0 14px 40px rgba(228,87,46,.14)}
-.tag{display:none;font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);border-radius:99px;padding:2px 9px}
+html,body{margin:0;overflow-x:hidden}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.55;min-height:100vh;-webkit-tap-highlight-color:transparent;isolation:isolate}
+.aura{position:fixed;inset:-20vmax;z-index:-1;pointer-events:none}
+.aura i{position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(80px);opacity:.2}
+.aura i:nth-child(1){left:-8vmax;top:-12vmax;background:var(--accent);animation:a1 24s ease-in-out infinite alternate}
+.aura i:nth-child(2){right:-12vmax;top:10vmax;background:var(--blue);animation:a2 30s ease-in-out infinite alternate}
+.aura i:nth-child(3){left:24vmax;bottom:-24vmax;background:var(--teal);opacity:.14;animation:a1 36s ease-in-out infinite alternate-reverse}
+@keyframes a1{to{transform:translate(16vmax,12vmax) scale(1.1)}}
+@keyframes a2{to{transform:translate(-14vmax,16vmax) scale(.92)}}
+.wrap{max-width:1080px;margin:0 auto;padding:calc(40px + env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) calc(48px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
+.head{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+.head img{width:80px;height:80px;border-radius:22px;box-shadow:0 14px 30px -8px rgba(228,87,46,.5);flex:none}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(34px,7vw,58px);line-height:1;margin:0;letter-spacing:-.02em}
+h1 em{font-style:italic;font-weight:400;color:var(--accent)}
+.sub{margin:6px 0 0;color:var(--muted)}
+.lead{font-size:clamp(17px,2.2vw,20px);margin:0 0 22px;max-width:62ch}
+.pick{display:inline-flex;gap:4px;padding:5px;border-radius:999px;background:color-mix(in srgb,var(--ink) 7%,transparent);margin:0 0 22px;flex-wrap:wrap}
+.pick button{font:inherit;font-weight:700;font-size:15px;min-height:44px;padding:0 18px;border:0;border-radius:999px;background:none;color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background .2s,color .2s,box-shadow .2s}
+.pick button svg{width:18px;height:18px}
+.pick button[aria-selected="true"]{background:var(--sheet);color:var(--accent);box-shadow:var(--shadow)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}
+@media (max-width:980px){.grid{grid-template-columns:1fr}}
+.card{background:color-mix(in srgb,var(--sheet) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:26px;padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+.card::before{content:"";position:absolute;width:200px;height:200px;right:-70px;top:-80px;border-radius:50%;background:var(--k);opacity:.16}
+.card>*{position:relative}
+.card:hover{transform:translateY(-4px)}
+.card h2{font-family:var(--display);font-weight:600;font-size:25px;margin:0 0 4px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.card h2 .ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--k);color:#fff;flex:none;box-shadow:0 10px 22px -8px var(--k)}
+.card h2 svg{width:24px;height:24px}
+.card .hint{color:var(--muted);margin:0 0 18px;font-size:15px}
+.card.mine{box-shadow:var(--shadow),0 0 0 3px color-mix(in srgb,var(--k) 60%,transparent)}
+.tag{display:none;font-family:var(--body);font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--k);color:#fff;border-radius:99px;padding:3px 10px}
 .card.mine .tag{display:inline-block}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:700;font-size:17px;text-decoration:none;border:0;border-radius:14px;padding:14px 20px;background:var(--accent);color:var(--accent-ink);cursor:pointer;width:100%}
-.btn.ghost{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:700;font-size:17px;text-decoration:none;border:0;border-radius:16px;min-height:52px;padding:12px 20px;background:linear-gradient(135deg,var(--k),color-mix(in srgb,var(--k) 65%,var(--accent2)));color:#fff;cursor:pointer;width:100%;box-shadow:0 12px 26px -10px var(--k);transition:transform .16s,box-shadow .16s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:var(--soft);color:var(--ink);box-shadow:none}
 .btn svg{width:20px;height:20px}
 .meta{font-family:var(--mono);font-size:13px;color:var(--muted);margin-top:10px;text-align:center}
 ol{margin:0;padding-left:0;list-style:none;counter-reset:s;display:grid;gap:12px}
 ol li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}
-ol li::before{content:counter(s);width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--soft);border:1px solid var(--line);font-family:var(--mono);font-weight:600;font-size:14px;color:var(--accent)}
-.ico{display:inline-block;vertical-align:-4px;width:20px;height:20px;color:var(--accent)}
-details{margin-top:14px;border-top:1px solid var(--line);padding-top:12px;color:var(--muted);font-size:15px}
-summary{cursor:pointer;font-weight:600;color:var(--ink)}
+ol li::before{content:counter(s);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--k) 16%,transparent);font-weight:800;font-size:14px;color:var(--k)}
+.ico{display:inline-block;vertical-align:-4px;width:20px;height:20px;color:var(--k)}
+details{margin-top:16px;color:var(--muted);font-size:15px}
+summary{cursor:pointer;font-weight:700;color:var(--ink);min-height:44px;display:flex;align-items:center}
 .row{display:grid;gap:10px;margin-top:16px}
+.share-card{margin-top:18px;--k:var(--accent)}
 .share{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.share input{flex:1;min-width:0;font:500 15px var(--mono);padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--soft);color:var(--ink)}
+.share input{flex:1;min-width:0;font:500 16px var(--mono);min-height:52px;padding:0 14px;border-radius:14px;border:0;background:var(--soft);color:var(--ink)}
 .share .btn{width:auto}
 .toast{min-height:22px;font-size:14px;color:var(--good);margin-top:8px}
-footer{color:var(--muted);font-size:13.5px;text-align:center;margin-top:28px}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.feats{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+.feats span{font-size:14px;font-weight:700;padding:7px 13px;border-radius:999px;background:color-mix(in srgb,var(--sheet) 80%,transparent);box-shadow:var(--shadow)}
+footer{color:var(--muted);font-size:13.5px;text-align:center;margin-top:30px}
+:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 60%,transparent);outline-offset:3px;border-radius:12px}
+@media (prefers-reduced-motion:reduce){.aura i{animation:none}.card,.btn{transition:none}}
+@media (max-width:820px),(hover:none){.aura i{animation:none}}
 </style>
 </head>
 <body>
+<div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
 <div class="wrap">
   <div class="head">
     <img src="app/icons/icon-192.png" alt="">
     <div>
-      <h1>Fizică BAC</h1>
+      <h1>Fizică <em>BAC</em></h1>
       <p class="sub">Clasele IX–XII și bacalaureatul</p>
     </div>
   </div>
-  <p class="lead">Lecții pe capitole, teste după fiecare lecție, flashcards, probleme rezolvate și simulări BAC. Merge și fără internet după instalare.</p>
+  <p class="lead">Lecții pe capitole, teste după fiecare lecție, flashcards, probleme rezolvate, simulatoare și simulări BAC. Merge pe telefon, pe tabletă și pe calculator, și fără internet după instalare.</p>
+  <div class="feats"><span>📚 70 de lecții</span><span>✅ Teste cu scor</span><span>🧪 7 laboratoare</span><span>∑ 39 de calculatoare</span><span>🎓 Simulare BAC cu notă</span></div>
 
-  <section class="card" id="android">
-    <h2><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.38.38 0 0 0-.66-.38l-1.86 3.22A11.4 11.4 0 0 0 12 8.1c-1.77 0-3.43.38-4.92 1.04L5.22 5.92a.38.38 0 0 0-.66.38L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>Android <span class="tag">telefonul tău</span></h2>
+  <div class="pick" role="tablist" aria-label="Alege dispozitivul">
+    <button role="tab" type="button" data-p="android" aria-selected="false" aria-controls="android"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.38.38 0 0 0-.66-.38l-1.86 3.22A11.4 11.4 0 0 0 12 8.1c-1.77 0-3.43.38-4.92 1.04L5.22 5.92a.38.38 0 0 0-.66.38L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52z"/></svg>Android</button>
+    <button role="tab" type="button" data-p="iphone" aria-selected="false" aria-controls="iphone"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8a4.6 4.6 0 0 0-3.6-2c-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9a4.9 4.9 0 0 0-4.1 2.5c-1.8 3-.5 7.6 1.3 10.1.8 1.2 1.8 2.6 3.1 2.5 1.3 0 1.7-.8 3.3-.8 1.5 0 2 .8 3.3.8 1.4 0 2.2-1.2 3-2.5a10 10 0 0 0 1.4-2.8 4.3 4.3 0 0 1-2.7-4zM14 5.2A4.3 4.3 0 0 0 15 2a4.4 4.4 0 0 0-2.9 1.5 4.1 4.1 0 0 0-1 3.1A3.6 3.6 0 0 0 14 5.2z"/></svg>iPhone</button>
+    <button role="tab" type="button" data-p="desktop" aria-selected="false" aria-controls="desktop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="13" rx="2.5"/><path d="M8 21h8M12 17v4"/></svg>Calculator</button>
+  </div>
+
+  <div class="grid" id="cards">
+  <section class="card" id="android" role="tabpanel" style="--k:#1f9d6b">
+    <h2><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.38.38 0 0 0-.66-.38l-1.86 3.22A11.4 11.4 0 0 0 12 8.1c-1.77 0-3.43.38-4.92 1.04L5.22 5.92a.38.38 0 0 0-.66.38L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg></span>Android <span class="tag">dispozitivul tău</span></h2>
     <p class="hint">Aplicația propriu-zisă, ca fișier APK.</p>
     <a class="btn" href="FizicaBAC.apk" download="FizicaBAC.apk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>Descarcă pentru Android</a>
-    <div class="meta">FizicaBAC.apk · 4 MB · Android 7 sau mai nou</div>
+    <div class="meta">FizicaBAC.apk · versiunea 1.3 · Android 7 sau mai nou</div>
     <details>
       <summary>Cum o instalez?</summary>
       <ol style="margin-top:12px">
         <li><span>Apasă butonul de mai sus și deschide fișierul descărcat.</span></li>
         <li><span>Dacă telefonul cere voie, apasă <b>Setări</b> și pornește <b>Permite din această sursă</b>, apoi revino.</span></li>
-        <li><span>Apasă <b>Instalează</b>. Dacă apare Play Protect, alege <b>Detalii</b> → <b>Instalează oricum</b> (aplicația nu e din Magazin Play, de aceea întreabă).</span></li>
+        <li><span>Apasă <b>Instalează</b> (sau <b>Actualizează</b>, dacă o ai deja). Dacă apare Play Protect, alege <b>Detalii</b> → <b>Instalează oricum</b>: aplicația nu e din Magazin Play, de aceea întreabă.</span></li>
       </ol>
     </details>
   </section>
 
-  <section class="card" id="iphone">
-    <h2><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8a4.6 4.6 0 0 0-3.6-2c-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9a4.9 4.9 0 0 0-4.1 2.5c-1.8 3-.5 7.6 1.3 10.1.8 1.2 1.8 2.6 3.1 2.5 1.3 0 1.7-.8 3.3-.8 1.5 0 2 .8 3.3.8 1.4 0 2.2-1.2 3-2.5a10 10 0 0 0 1.4-2.8 4.3 4.3 0 0 1-2.7-4zM14 5.2A4.3 4.3 0 0 0 15 2a4.4 4.4 0 0 0-2.9 1.5 4.1 4.1 0 0 0-1 3.1A3.6 3.6 0 0 0 14 5.2z"/></svg>iPhone și iPad <span class="tag">telefonul tău</span></h2>
+  <section class="card" id="iphone" role="tabpanel" style="--k:#2f6fed">
+    <h2><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8a4.6 4.6 0 0 0-3.6-2c-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9a4.9 4.9 0 0 0-4.1 2.5c-1.8 3-.5 7.6 1.3 10.1.8 1.2 1.8 2.6 3.1 2.5 1.3 0 1.7-.8 3.3-.8 1.5 0 2 .8 3.3.8 1.4 0 2.2-1.2 3-2.5a10 10 0 0 0 1.4-2.8 4.3 4.3 0 0 1-2.7-4zM14 5.2A4.3 4.3 0 0 0 15 2a4.4 4.4 0 0 0-2.9 1.5 4.1 4.1 0 0 0-1 3.1A3.6 3.6 0 0 0 14 5.2z"/></svg></span>iPhone și iPad <span class="tag">dispozitivul tău</span></h2>
     <p class="hint">Se adaugă pe ecranul principal din Safari și arată ca o aplicație.</p>
     <ol>
       <li><span>Deschide pagina asta în <b>Safari</b>.</span></li>
@@ -97,9 +131,25 @@ footer{color:var(--muted);font-size:13.5px;text-align:center;margin-top:28px}
     <div class="row"><a class="btn ghost" href="app/">Deschide aplicația în browser</a></div>
   </section>
 
-  <section class="card">
-    <h2>Trimite-o mai departe</h2>
-    <p class="hint">Același link merge și pe Android, și pe iPhone.</p>
+  <section class="card" id="desktop" role="tabpanel" style="--k:#8b5cf6">
+    <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="13" rx="2.5"/><path d="M8 21h8M12 17v4"/></svg></span>Calculator <span class="tag">dispozitivul tău</span></h2>
+    <p class="hint">Windows, Mac, Linux sau Chromebook. Pe ecran mare are meniul într-o bară laterală, cu progresul pe fiecare clasă.</p>
+    <a class="btn" href="app/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Deschide aplicația pe calculator</a>
+    <details open>
+      <summary>Instalează-o ca aplicație (opțional)</summary>
+      <ol style="margin-top:12px">
+        <li><span>Deschide aplicația în <b>Chrome</b> sau <b>Edge</b>.</span></li>
+        <li><span>Apasă iconița <b>Instalează</b> din dreapta barei de adrese sau butonul <b>Instalează pe acest calculator</b> din aplicație (bara laterală sau panoul de teme).</span></li>
+        <li><span>Fizică BAC apare în meniul Start sau pe Desktop, se deschide în fereastra ei și merge și fără internet.</span></li>
+      </ol>
+      <p style="margin:12px 0 0">Pe Mac, în Safari: <b>Fișier → Adaugă în Dock</b>.</p>
+    </details>
+  </section>
+  </div>
+
+  <section class="card share-card">
+    <h2 style="font-size:22px">Trimite-o mai departe</h2>
+    <p class="hint">Același link merge pe Android, pe iPhone și pe calculator.</p>
     <div class="share">
       <input id="link" readonly aria-label="Linkul paginii">
       <button class="btn" type="button" id="sharebtn">Trimite</button>
@@ -107,25 +157,31 @@ footer{color:var(--muted);font-size:13.5px;text-align:center;margin-top:28px}
     <div class="toast" id="toast" aria-live="polite"></div>
   </section>
 
-  <footer>Lecțiile video și audio se deblochează în aplicație cu un cod Premium.</footer>
+  <footer>Lecțiile video și audio se deblochează în aplicație cu un cod Premium, pe care îl ceri pe email din aplicație.</footer>
 </div>
 <script>
 (function(){
   var ua = navigator.userAgent || '';
   var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   var android = /Android/.test(ua);
-  var mine = ios ? 'iphone' : (android ? 'android' : null);
-  if (mine) {
-    var el = document.getElementById(mine);
-    el.classList.add('mine');
-    el.parentNode.insertBefore(el, el.parentNode.querySelector('.card'));
+  var mine = ios ? 'iphone' : (android ? 'android' : 'desktop');
+  var tabs = [].slice.call(document.querySelectorAll('.pick button'));
+  var grid = document.getElementById('cards');
+  function show(id, scroll){
+    tabs.forEach(function(t){ t.setAttribute('aria-selected', t.dataset.p === id); });
+    [].slice.call(grid.querySelectorAll('.card')).forEach(function(c){ c.classList.toggle('mine', c.id === mine); });
+    grid.insertBefore(document.getElementById(id), grid.firstChild);
+    if (scroll) document.getElementById(id).scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' });
   }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ show(t.dataset.p, true); }); });
+  show(mine, false);
+
   var url = location.href.split('#')[0].split('?')[0];
   var link = document.getElementById('link'), toast = document.getElementById('toast');
   link.value = url;
   document.getElementById('sharebtn').addEventListener('click', function(){
     if (navigator.share) {
-      navigator.share({ title: 'Fizică BAC', text: 'Aplicația de fizică pentru BAC (Android și iPhone):', url: url }).catch(function(){});
+      navigator.share({ title: 'Fizică BAC', text: 'Aplicația de fizică pentru BAC (Android, iPhone și calculator):', url: url }).catch(function(){});
       return;
     }
     link.select();

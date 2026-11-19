@@ -1,8 +1,8 @@
 /* Service worker: păstrează aplicația în telefon ca să meargă și fără internet.
    Când schimbi ceva în aplicație, mărește VERSION ca telefoanele să ia varianta nouă. */
-const VERSION = 'fizbac-v3';
+const VERSION = 'fizbac-v5';
 const FILES = [
-  './', './index.html', './manifest.webmanifest', './fonts/fonts.css',
+  './', './index.html', './natura.js', './manifest.webmanifest', './fonts/fonts.css',
   './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png',
   ...Array.from({ length: 12 }, (_, i) => `./fonts/f${i + 1}.woff2`)
 ];
