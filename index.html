@@ -41,10 +41,6 @@ h1{font-family:var(--display);font-weight:600;font-size:clamp(34px,7vw,58px);lin
 h1 em{font-style:italic;font-weight:400;color:var(--accent)}
 .sub{margin:6px 0 0;color:var(--muted)}
 .lead{font-size:clamp(17px,2.2vw,20px);margin:0 0 22px;max-width:62ch}
-.pick{display:inline-flex;gap:4px;padding:5px;border-radius:999px;background:color-mix(in srgb,var(--ink) 7%,transparent);margin:0 0 22px;flex-wrap:wrap}
-.pick button{font:inherit;font-weight:700;font-size:15px;min-height:44px;padding:0 18px;border:0;border-radius:999px;background:none;color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background .2s,color .2s,box-shadow .2s}
-.pick button svg{width:18px;height:18px}
-.pick button[aria-selected="true"]{background:var(--sheet);color:var(--accent);box-shadow:var(--shadow)}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}
 @media (max-width:980px){.grid{grid-template-columns:1fr}}
 .card{background:color-mix(in srgb,var(--sheet) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:26px;padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
@@ -78,6 +74,9 @@ summary{cursor:pointer;font-weight:700;color:var(--ink);min-height:44px;display:
 .toast{min-height:22px;font-size:14px;color:var(--good);margin-top:8px}
 .feats{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
 .feats span{font-size:14px;font-weight:700;padding:7px 13px;border-radius:999px;background:color-mix(in srgb,var(--sheet) 80%,transparent);box-shadow:var(--shadow)}
+.feats .prem{display:inline-flex;align-items:center;gap:8px;min-height:36px;font-size:14px;font-weight:800;padding:7px 8px 7px 14px;border-radius:999px;text-decoration:none;color:#fff;background:linear-gradient(135deg,#e0a21a,#e4572e 55%,#8b5cf6);box-shadow:0 10px 24px -8px rgba(228,87,46,.7);transition:transform .16s}
+.feats .prem:hover{transform:translateY(-2px)}
+.feats .prem b{font-size:11px;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.25);padding:3px 8px;border-radius:99px}
 footer{color:var(--muted);font-size:13.5px;text-align:center;margin-top:30px}
 :focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 60%,transparent);outline-offset:3px;border-radius:12px}
 @media (prefers-reduced-motion:reduce){.aura i{animation:none}.card,.btn{transition:none}}
@@ -95,20 +94,15 @@ footer{color:var(--muted);font-size:13.5px;text-align:center;margin-top:30px}
     </div>
   </div>
   <p class="lead">Lecții pe capitole, teste după fiecare lecție, flashcards, probleme rezolvate, simulatoare și simulări BAC. Merge pe telefon, pe tabletă și pe calculator, și fără internet după instalare.</p>
-  <div class="feats"><span>📚 70 de lecții</span><span>✅ Teste cu scor</span><span>🧪 7 laboratoare</span><span>∑ 39 de calculatoare</span><span>🎓 Simulare BAC cu notă</span></div>
+  <div class="feats"><span>📚 70 de lecții</span><span>✅ Teste cu scor</span><span>🧪 7 laboratoare</span><span>∑ 39 de calculatoare</span><span>🎓 Simulare BAC cu notă</span><a class="prem" href="app/#premium">▶ Lecții video și audio <b>Premium</b></a></div>
 
-  <div class="pick" role="tablist" aria-label="Alege dispozitivul">
-    <button role="tab" type="button" data-p="android" aria-selected="false" aria-controls="android"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.38.38 0 0 0-.66-.38l-1.86 3.22A11.4 11.4 0 0 0 12 8.1c-1.77 0-3.43.38-4.92 1.04L5.22 5.92a.38.38 0 0 0-.66.38L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52z"/></svg>Android</button>
-    <button role="tab" type="button" data-p="iphone" aria-selected="false" aria-controls="iphone"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8a4.6 4.6 0 0 0-3.6-2c-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9a4.9 4.9 0 0 0-4.1 2.5c-1.8 3-.5 7.6 1.3 10.1.8 1.2 1.8 2.6 3.1 2.5 1.3 0 1.7-.8 3.3-.8 1.5 0 2 .8 3.3.8 1.4 0 2.2-1.2 3-2.5a10 10 0 0 0 1.4-2.8 4.3 4.3 0 0 1-2.7-4zM14 5.2A4.3 4.3 0 0 0 15 2a4.4 4.4 0 0 0-2.9 1.5 4.1 4.1 0 0 0-1 3.1A3.6 3.6 0 0 0 14 5.2z"/></svg>iPhone</button>
-    <button role="tab" type="button" data-p="desktop" aria-selected="false" aria-controls="desktop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="13" rx="2.5"/><path d="M8 21h8M12 17v4"/></svg>Calculator</button>
-  </div>
 
   <div class="grid" id="cards">
-  <section class="card" id="android" role="tabpanel" style="--k:#1f9d6b">
+  <section class="card" id="android" style="--k:#1f9d6b">
     <h2><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.38.38 0 0 0-.66-.38l-1.86 3.22A11.4 11.4 0 0 0 12 8.1c-1.77 0-3.43.38-4.92 1.04L5.22 5.92a.38.38 0 0 0-.66.38L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg></span>Android <span class="tag">dispozitivul tău</span></h2>
     <p class="hint">Aplicația propriu-zisă, ca fișier APK.</p>
     <a class="btn" href="FizicaBAC.apk" download="FizicaBAC.apk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>Descarcă pentru Android</a>
-    <div class="meta">FizicaBAC.apk · versiunea 1.3.1 · Android 7 sau mai nou</div>
+    <div class="meta">FizicaBAC.apk · versiunea 1.4 · Android 7 sau mai nou · se actualizează singură de pe site</div>
     <details>
       <summary>Cum o instalez?</summary>
       <ol style="margin-top:12px">
@@ -119,7 +113,7 @@ footer{color:var(--muted);font-size:13.5px;text-align:center;margin-top:30px}
     </details>
   </section>
 
-  <section class="card" id="iphone" role="tabpanel" style="--k:#2f6fed">
+  <section class="card" id="iphone" style="--k:#2f6fed">
     <h2><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8a4.6 4.6 0 0 0-3.6-2c-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9a4.9 4.9 0 0 0-4.1 2.5c-1.8 3-.5 7.6 1.3 10.1.8 1.2 1.8 2.6 3.1 2.5 1.3 0 1.7-.8 3.3-.8 1.5 0 2 .8 3.3.8 1.4 0 2.2-1.2 3-2.5a10 10 0 0 0 1.4-2.8 4.3 4.3 0 0 1-2.7-4zM14 5.2A4.3 4.3 0 0 0 15 2a4.4 4.4 0 0 0-2.9 1.5 4.1 4.1 0 0 0-1 3.1A3.6 3.6 0 0 0 14 5.2z"/></svg></span>iPhone și iPad <span class="tag">dispozitivul tău</span></h2>
     <p class="hint">Se adaugă pe ecranul principal din Safari și arată ca o aplicație.</p>
     <ol>
@@ -131,7 +125,7 @@ footer{color:var(--muted);font-size:13.5px;text-align:center;margin-top:30px}
     <div class="row"><a class="btn ghost" href="app/">Deschide aplicația în browser</a></div>
   </section>
 
-  <section class="card" id="desktop" role="tabpanel" style="--k:#8b5cf6">
+  <section class="card" id="desktop" style="--k:#8b5cf6">
     <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="13" rx="2.5"/><path d="M8 21h8M12 17v4"/></svg></span>Calculator <span class="tag">dispozitivul tău</span></h2>
     <p class="hint">Windows, Mac, Linux sau Chromebook. Pe ecran mare are meniul într-o bară laterală, cu progresul pe fiecare clasă.</p>
     <a class="btn" href="app/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Deschide aplicația pe calculator</a>
@@ -165,16 +159,9 @@ footer{color:var(--muted);font-size:13.5px;text-align:center;margin-top:30px}
   var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   var android = /Android/.test(ua);
   var mine = ios ? 'iphone' : (android ? 'android' : 'desktop');
-  var tabs = [].slice.call(document.querySelectorAll('.pick button'));
-  var grid = document.getElementById('cards');
-  function show(id, scroll){
-    tabs.forEach(function(t){ t.setAttribute('aria-selected', t.dataset.p === id); });
-    [].slice.call(grid.querySelectorAll('.card')).forEach(function(c){ c.classList.toggle('mine', c.id === mine); });
-    grid.insertBefore(document.getElementById(id), grid.firstChild);
-    if (scroll) document.getElementById(id).scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' });
-  }
-  tabs.forEach(function(t){ t.addEventListener('click', function(){ show(t.dataset.p, true); }); });
-  show(mine, false);
+  /* cardul dispozitivului pe care e deschisă pagina apare primul și e marcat */
+  var grid = document.getElementById('cards'), el = document.getElementById(mine);
+  el.classList.add('mine'); grid.insertBefore(el, grid.firstChild);
 
   var url = location.href.split('#')[0].split('?')[0];
   var link = document.getElementById('link'), toast = document.getElementById('toast');
