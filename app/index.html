@@ -978,7 +978,7 @@ footer{border:0}
 @media (max-width:1199px){.side{display:none!important}}
 
 /* telefon: fără scroll orizontal, câmpuri de 16 px (fără zoom pe iOS) */
-html,body{overflow-x:hidden}
+html,body{overflow-x:clip}
 @media (max-width:560px){
   select,input{font-size:16px!important}
   main{padding-top:22px}
@@ -989,10 +989,75 @@ html,body{overflow-x:hidden}
 @media (max-width:820px),(hover:none){.aura i{animation:none;filter:blur(60px)}.sheet,.toc,.prog .pc{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--sheet)}}
 @media (prefers-reduced-motion:reduce){.aura i{animation:none}html{scroll-behavior:auto}.fbk{animation:none;opacity:0}}
 .logo .mark{background:none!important;box-shadow:none!important;padding:0;border-radius:0;width:36px;height:36px;filter:drop-shadow(0 6px 12px color-mix(in srgb,#e4572e 45%,transparent))}.logo .mark svg{width:100%;height:100%;display:block}
+@media (min-width:1000px){
+  #view:has(> #simhost) > h1{font-size:34px;margin:0 0 4px}
+  #view:has(> #simhost) > .lead{font-size:15px;margin:0 0 10px;max-width:none}
+  #view:has(> #simhost) > .seg{margin-bottom:12px}
+  main:has(#simhost){padding-top:18px}
+  #simhost .grid2.fit{height:var(--labh);align-items:stretch;grid-template-columns:minmax(330px,380px) minmax(0,1fr)}
+  #simhost .grid2.fit > .sheet{padding:16px 18px;overflow:auto;scrollbar-width:thin}
+  #simhost .grid2.fit > .sheet:first-child h2{font-size:20px;margin-bottom:8px}
+  #simhost .grid2.fit .field{margin-bottom:6px}
+  #simhost .grid2.fit .inst-s{display:none}
+  #simhost .grid2.fit input[type=range]{height:24px}
+  #simhost .grid2.fit .fx{margin:8px 0;padding-top:8px;padding-bottom:8px;font-size:16px}
+  #simhost .grid2.fit .hint{font-size:13.5px;margin-top:6px}
+  #simhost .grid2.fit .actions{margin-top:8px}
+  #simhost .grid2.fit .plots{gap:10px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+  #simhost .grid2.fit .plot{padding:8px 10px}
+  #simhost .grid2.fit .plot h4{margin-bottom:2px;font-size:13.5px}
+  #simhost .grid2.fit .results{margin-top:10px;gap:8px;grid-template-columns:repeat(auto-fit,minmax(118px,1fr))}
+  #simhost .grid2.fit .tile{padding:6px 10px}
+  #simhost .grid2.fit .tile .v{font-size:16px}
+  #simhost .grid2.fit select,#simhost .grid2.fit input[type=number]{min-height:36px;padding:5px 10px}
+  #simhost .grid2.fit label{font-size:13px;margin-bottom:2px}
+  #simhost .grid2.fit .row2{gap:8px}
+  #simhost .grid2.fit .seg{margin-bottom:8px}
+  #simhost .grid2.fit .seg button{min-height:36px;padding:5px 11px;font-size:13.5px}
+  #simhost .grid2.fit .tile .k{font-size:12px}
+  #simhost .grid2.fit .results{grid-template-columns:repeat(auto-fit,minmax(104px,1fr))}
+}
+/* carduri: aerisite, cu contur în culoarea temei când sunt terminate */
+.ch{position:relative;overflow:hidden}
+.ch::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(var(--sc,var(--accent)),color-mix(in srgb,var(--sc,var(--accent)) 40%,var(--c4)));opacity:.55;transition:opacity .2s,width .2s}
+.ch:hover::before{opacity:1;width:6px}
+.cards .ch{grid-template-columns:44px minmax(0,1fr);row-gap:4px;align-items:start;padding:16px 18px 16px 20px}
+.cards .ch .no{grid-row:1/4;align-self:start}
+.cards .ch .t{font-size:18px;line-height:1.25}
+.cards .ch .d{font-size:14.5px;line-height:1.45}
+.cards .ch .st{grid-column:2;grid-row:auto;justify-content:flex-start;text-align:left;flex-wrap:wrap;gap:6px;margin-top:4px}
+.ch .st .src{color:var(--muted);font-size:12.5px}
+.ch.done{box-shadow:var(--soft),inset 0 0 0 2.5px var(--accent),0 0 0 4px color-mix(in srgb,var(--accent) 14%,transparent)}
+.ch.done::before{opacity:1;width:5px;background:var(--accent)}
+.ch.done::after{content:"✓";position:absolute;right:14px;top:12px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800;background:var(--accent);color:var(--accent-ink)}
+.ch.done .no{background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent)}
+/* poziția meniului + teme în bara laterală */
+.sidepos{display:flex;align-items:center;gap:4px;padding:4px;border-radius:14px;background:color-mix(in srgb,var(--ink) 6%,transparent)}
+.sidepos span{font-size:12.5px;font-weight:700;color:var(--muted);padding:0 6px;flex:1}
+.sidepos button{font:inherit;font-size:13px;font-weight:700;min-height:36px;padding:0 10px;border:0;border-radius:10px;background:none;color:var(--muted);cursor:pointer}
+.sidepos button[aria-pressed="true"]{background:var(--sheet);color:var(--accent);box-shadow:var(--soft)}
+.sidepos.tp{margin-top:12px;display:none}
+.sthemes{justify-content:center}
+@media (min-width:1200px){
+  .sidepos.tp{display:flex}
+  .topbar{display:none}
+  .topbar,main,footer{margin-left:auto!important;margin-right:auto!important}
+  body{padding-left:var(--side)}
+  :root[data-side="right"] body{padding-left:0;padding-right:var(--side)}
+  :root[data-side="right"] .side{left:auto;right:0;box-shadow:-8px 0 40px -24px color-mix(in srgb,var(--ink) 35%,transparent)}
+  :root[data-side="right"] .side a.si:hover{transform:translateX(-3px)}
+  main{padding-top:28px}
+  .tpanel{top:auto;bottom:20px;left:calc(var(--side) + 16px);right:auto}
+  :root[data-side="right"] .tpanel{left:auto;right:calc(var(--side) + 16px)}
+  .sbtop{top:12px}.toc{top:20px}.front-side{top:24px}
+  #view:has(> #simhost) > .lead{display:none}
+  #view:has(> #simhost) > .seg{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;max-width:100%}
+  #view:has(> #simhost) > .seg a{white-space:nowrap;padding:7px 12px}
+}
 </style>
 </head>
 <body>
-<script>try{var _t=JSON.parse(localStorage.getItem("tbac:theme"));if(_t)document.documentElement.setAttribute("data-theme",_t);}catch(e){}</script>
+<script>try{var _t=JSON.parse(localStorage.getItem("tbac:theme"));if(_t)document.documentElement.setAttribute("data-theme",_t);var _s=JSON.parse(localStorage.getItem("tbac:sidepos"));if(_s)document.documentElement.setAttribute("data-side",_s);}catch(e){}</script>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="fbLogoG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a4c"/><stop offset=".55" stop-color="#e4572e"/><stop offset="1" stop-color="#8b3fd9"/></linearGradient><symbol id="fbLogo" viewBox="0 0 120 120"><rect width="120" height="120" rx="28" fill="url(#fbLogoG)"/><g fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".94"><ellipse cx="60" cy="60" rx="44" ry="17"/><ellipse cx="60" cy="60" rx="44" ry="17" transform="rotate(60 60 60)"/><ellipse cx="60" cy="60" rx="44" ry="17" transform="rotate(-60 60 60)"/></g><circle cx="60" cy="60" r="18" fill="#fff"/><path d="M51 47.5H70.5V55H66.5V52.5H58.5V58H65V63H58.5V67.5H62.5V72.5H51V67.5H53V52.5H51Z" fill="#e4572e"/><circle cx="104" cy="60" r="6" fill="#ffd166"/></symbol></defs></svg>
 <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
 <nav class="side" id="side" aria-label="Navigare principală"></nav>
@@ -1039,8 +1104,9 @@ function setTheme(t){ if(t==='auto') document.documentElement.removeAttribute('d
 $('#themebtn').addEventListener('click',e=>{ e.stopPropagation(); let p=$('#tpanel'); if(p){ p.remove(); return; }
   const cur=document.documentElement.getAttribute('data-theme')||'auto';
   p=document.createElement('div'); p.className='tpanel'; p.id='tpanel'; p.setAttribute('role','dialog'); p.setAttribute('aria-label','Alege tema');
-  p.innerHTML='<h3>Alege stilul</h3><div class="tgrid">'+THEMES.map(([id,n,g])=>`<button type="button" data-t="${id}" aria-pressed="${id===cur}"><span class="sw" style="background:${g}"></span>${n}</button>`).join('')+'</div>'+installBtn();
+  p.innerHTML='<h3>Alege stilul</h3><div class="tgrid">'+THEMES.map(([id,n,g])=>`<button type="button" data-t="${id}" aria-pressed="${id===cur}"><span class="sw" style="background:${g}"></span>${n}</button>`).join('')+'</div><div class="sidepos tp" role="group" aria-label="Poziția meniului"><span>Meniul lateral</span><button type="button" data-pos="left" aria-pressed="'+(sidePos()==='left')+'">◧ Stânga</button><button type="button" data-pos="right" aria-pressed="'+(sidePos()==='right')+'">Dreapta ◨</button></div>'+installBtn();
   document.body.appendChild(p);
+  p.querySelectorAll('[data-pos]').forEach(b=>b.onclick=()=>setSidePos(b.dataset.pos));
   p.querySelectorAll('button').forEach(b=>b.onclick=()=>{ setTheme(b.dataset.t); p.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b)); });
   p.addEventListener('click',ev=>ev.stopPropagation());
 });
@@ -3325,7 +3391,7 @@ function addPlot(container,title,fn,aspect){
   const cv=d.querySelector('canvas'); if(aspect) cv.dataset.aspect=aspect; const run=()=>fn(cv); drawers.push(run); run(); return cv;
 }
 function prep(cv){
-  const dpr=Math.max(1,window.devicePixelRatio||1), W=Math.max(200,cv.clientWidth||cv.parentElement.clientWidth-20), H=Math.round(Math.max(130,Math.min(W*(+cv.dataset.aspect||0.86),520)));
+  const dpr=Math.max(1,window.devicePixelRatio||1), W=Math.max(200,cv.clientWidth||cv.parentElement.clientWidth-20), H=Math.round(Math.max(+cv.dataset.minh||130,Math.min(W*(+cv.dataset.aspect||0.86),520,+cv.dataset.maxh||Infinity)));
   cv.style.height=H+'px'; cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
   const ctx=cv.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,W,H); return {ctx,W,H};
 }
@@ -3496,8 +3562,8 @@ function acasa(){
   pr.onclick=()=>{ if(!armed){ armed=true; pr.textContent='Sigur? Apasă din nou ca să ștergi tot'; setTimeout(()=>{armed=false; if(pr.isConnected) pr.textContent='Șterge progresul';},4000); return; }
     progress={read:{},best:{},tests:{},wrong:{},simbac:[]}; saveP(); store.set('last',null); route(); };
 }
-function chapterCard(l){ const b=progress.best[l.id]; return row('#lectii-'+gi(l),sn(l),l.t,l.d,(l.nb?'<span class="badge extra">Nu se cere la BAC</span>':'')+(l.extra?'<span class="badge extra">Completare</span>':'')+(progress.read[l.id]?'<span class="badge good">Citit</span>':'')+tbadge('l:'+l.id)); }
-const testRow=(arg,label,t,ids,n)=>row('#test-'+arg,'✎',t,Math.min(n,qCount(ids))+' întrebări · treci cu '+PASS+'%',tbadge(testScope(arg).key)||'<span class="badge">'+label+'</span>','test');
+function chapterCard(l){ const b=progress.best[l.id]; return row('#lectii-'+gi(l),sn(l),l.t,l.d,(l.nb?'<span class="badge extra">Nu se cere la BAC</span>':'')+(l.extra?'<span class="badge extra">Completare</span>':'')+(progress.read[l.id]?'<span class="badge good">Citit</span>':'')+tbadge('l:'+l.id),progress.read[l.id]||progress.tests['l:'+l.id]>=PASS?'done':''); }
+const testRow=(arg,label,t,ids,n)=>row('#test-'+arg,'✎',t,Math.min(n,qCount(ids))+' întrebări · treci cu '+PASS+'%',tbadge(testScope(arg).key)||'<span class="badge">'+label+'</span>','test'+((progress.tests[testScope(arg).key]>=PASS)?' done':''));
 const groupsHTML = m => groupsOf(m,true).map(g=>{ const ls=L.filter(l=>l.g===g.id); return `<section class="group"><div class="group-h"><h2>${g.t}</h2><span>${g.d}</span></div><div class="cards">${ls.map(chapterCard).join('')}${ls.length>1?testRow('g'+g.id,'Test de modul','Testul modulului: '+g.t,ls.map(l=>l.id),12):''}</div></section>`; }).join('');
 const toolsHTML=(sid,extra)=>`<div class="actions" style="margin:0 0 24px">${extra||''}<a class="btn ghost" href="#simulator-${sid}">Simulator</a><a class="btn ghost" href="#calculator-${sid}">Calculator</a><a class="btn ghost" href="#formule-${sid}">Formule</a><a class="btn ghost" href="#probleme-${sid}">Probleme rezolvate</a></div>`;
 const finalCard=(arg,t,d)=>`<a class="final" href="#test-${arg}"><span class="over" style="margin:0">TEST FINAL</span><b>${t}</b><span>${d}</span>${tbadge(testScope(arg).key)}<span class="btn">Începe testul →</span></a>`;
@@ -3803,9 +3869,9 @@ function simTermo(){
   <div class="stack">
   <section class="grid2"><div class="sheet"><h2>Transformare 1 → 2</h2>
     <div class="seg" id="sim-type" role="group" aria-label="Transformare"></div>
-    <div class="field"><label for="sim-gas">Gaz</label><select id="sim-gas"><option value="3">Monoatomic (i = 3, ex. He)</option><option value="5" selected>Biatomic (i = 5, ex. O₂, aer)</option><option value="6">Poliatomic (i = 6)</option></select></div>
+    
     <div class="row2"><div class="field"><label for="sim-nu">ν (mol)</label><input id="sim-nu" type="number" step="0.1" min="0.1" value="1"></div><div class="field"><label for="sim-p1">p₁ (kPa)</label><input id="sim-p1" type="number" step="10" min="1" value="200"></div></div>
-    <div class="field"><label for="sim-v1">V₁ (litri)</label><input id="sim-v1" type="number" step="0.5" min="0.1" value="12.5"></div><p class="err-msg" id="sim-err" role="alert" hidden></p>
+    <div class="row2"><div class="field"><label for="sim-gas">Gaz</label><select id="sim-gas"><option value="3">Monoatomic (i = 3)</option><option value="5" selected>Biatomic (i = 5)</option><option value="6">Poliatomic (i = 6)</option></select></div><div class="field"><label for="sim-v1">V₁ (litri)</label><input id="sim-v1" type="number" step="0.5" min="0.1" value="12.5"></div></div><p class="err-msg" id="sim-err" role="alert" hidden></p>
     <div class="field"><label for="sim-r" id="sim-r-label">V₂ / V₁</label><input id="sim-r" type="range" min="0.4" max="3" step="0.05" value="2"><div class="mono" id="sim-r-val"></div></div>
     <div class="fx" id="sim-law"></div><p class="hint" id="sim-hint"></p>
   </div><div class="sheet"><div class="plots" id="sim-plots"></div><div class="results" id="sim-res"></div></div></section>
@@ -4121,7 +4187,29 @@ function simulator(arg){
   view.innerHTML=`<h1>Simulator</h1><p class="lead">Șapte laboratoare, din clasa a IX-a până într-a XII-a. Mută cursoarele: animațiile, graficele și rezultatele se recalculează pe loc.</p>
   <div class="seg" role="group" aria-label="Laborator">${LABS.map(s=>`<a href="#simulator-${s.id}" ${s.id===simSubj?'aria-current="page"':''}>${s.t}</a>`).join('')}</div><div id="simhost"></div>`;
   LABS.find(x=>x.id===simSubj).fn();
+  fitLab();
 }
+/* Pe calculator, primul laborator încape întreg pe ecran: graficele se micșorează până când
+   controalele, graficele și rezultatele intră în fereastră, fără derulare. */
+function fitLab(){
+  const g=document.querySelector('#simhost .grid2'); if(!g) return;
+  const cvs=[...g.querySelectorAll('canvas')]; cvs.forEach(c=>{ delete c.dataset.maxh; delete c.dataset.minh; });
+  g.style.removeProperty('--labh'); g.classList.remove('fit');
+  if(innerWidth<1000||innerHeight<520){ redraw(); return; }
+  redraw();
+  const top=g.getBoundingClientRect().top+scrollY, avail=innerHeight-top-14;
+  if(avail<300) return;
+  g.classList.add('fit'); g.style.setProperty('--labh',avail+'px'); redraw();
+  const right=g.children[1];
+  const fits=()=>right.scrollHeight<=right.clientHeight;
+  if(fits()) return;
+  /* cea mai mare scară a graficelor la care laboratorul încă încape (căutare binară) */
+  const nat=cvs.map(c=>c.clientHeight);
+  const apply=k=>{ cvs.forEach((c,i)=>{ c.dataset.minh=72; c.dataset.maxh=Math.max(72,Math.floor(nat[i]*k)); }); redraw(); };
+  let lo=.2, hi=1; for(let k=0;k<7;k++){ const mid=(lo+hi)/2; apply(mid); if(fits()) lo=mid; else hi=mid; }
+  apply(lo);
+}
+let fitT; addEventListener('resize',()=>{ clearTimeout(fitT); fitT=setTimeout(()=>{ if(current==='simulator') fitLab(); },150); });
 const wide=cv=>{ cv.parentElement.style.gridColumn='1/-1'; return cv; };
 const mono=(ctx,sz=12.5)=>{ ctx.font=sz+'px "IBM Plex Mono", ui-monospace, monospace'; };
 function liveAnim(host,title,draw,aspect){ let t=0; const cv=wide(addPlot(host,title,c=>draw(c,t),aspect)); startLoop(dt=>{ t+=dt; if(cv.isConnected) draw(cv,t); }); return cv; }
@@ -4441,7 +4529,7 @@ function probleme(arg){
     const only=subj(arg)?[arg]:isK(arg)?subjOfClass(arg.slice(1)).map(s=>s.id):null;
     view.innerHTML=`<h1>Probleme rezolvate</h1><p class="lead">Încearcă singur, apoi deschide pașii unul câte unul.</p>
     <div class="seg" role="group" aria-label="Clasă"><a href="#probleme" ${only?'':'aria-current="page"'}>Toate</a>${CLASE.map(c=>`<a href="#probleme-k${c.id}" ${arg==='k'+c.id?'aria-current="page"':''}>${c.t}</a>`).join('')}</div>`
-    +SUBJ.filter(s=>!only||only.includes(s.id)).map(s=>{const ps=P.filter(p=>subjOf(p.ch)===s.id);return ps.length?`<section class="group"><div class="group-h"><h2>${s.t}</h2><span>${klass(s.cls).t} · ${ps.length} probleme</span></div><div class="cards">${ps.map(p=>`${row('#probleme-'+p.id,p.id.toUpperCase(),p.t,p.ask,L.find(l=>l.id===p.ch).t)}`).join('')}</div></section>`:'';}).join('');
+    +SUBJ.filter(s=>!only||only.includes(s.id)).map(s=>{const ps=P.filter(p=>subjOf(p.ch)===s.id);return ps.length?`<section class="group"><div class="group-h"><h2>${s.t}</h2><span>${klass(s.cls).t} · ${ps.length} probleme</span></div><div class="cards">${ps.map(p=>{ const ok=(progress.solved||{})[p.id]; return row('#probleme-'+p.id,p.id.toUpperCase(),p.t,p.ask,(ok?'<span class="badge good">Rezolvată ✓</span>':'')+'<span class="src">'+L.find(l=>l.id===p.ch).t+'</span>',ok?'done':''); }).join('')}</div></section>`:'';}).join('');
     return;
   }
   const li=L.findIndex(l=>l.id===pr.ch);
@@ -4449,7 +4537,7 @@ function probleme(arg){
    <div class="stack"><div class="sheet"><h2>Enunț</h2><p class="data">${pr.data}</p><p>${pr.ask}</p><a class="badge" href="#lectii-${li+1}">Teorie: ${L[li].t}</a></div>
    <div class="sheet"><h2>Rezolvare</h2><div class="steps" id="psteps"></div><div class="actions"><button class="btn" type="button" id="pnext">Arată pasul următor</button><button class="btn ghost" type="button" id="pall">Arată tot</button></div></div></div>`;
   let shown=0; const box=$('#psteps');
-  const draw=()=>{box.innerHTML=pr.steps.slice(0,shown).map((s,k)=>stp(k+1,s[0],s[1],s[2])).join('')||'<p class="empty">Încearcă întâi singur. Apoi deschide pașii unul câte unul.</p>';$('#pnext').disabled=shown>=pr.steps.length;$('#pall').disabled=shown>=pr.steps.length;};
+  const draw=()=>{box.innerHTML=pr.steps.slice(0,shown).map((s,k)=>stp(k+1,s[0],s[1],s[2])).join('')||'<p class="empty">Încearcă întâi singur. Apoi deschide pașii unul câte unul.</p>';$('#pnext').disabled=shown>=pr.steps.length;$('#pall').disabled=shown>=pr.steps.length; if(shown>=pr.steps.length&&!(progress.solved||{})[pr.id]){ progress.solved=progress.solved||{}; progress.solved[pr.id]=true; saveP(); }};
   $('#pnext').onclick=()=>{shown++;draw();}; $('#pall').onclick=()=>{shown=pr.steps.length;draw();}; draw();
 }
 
@@ -4928,11 +5016,15 @@ function buildSide(){
    +'<h6>Bacalaureat</h6>'+it('bac',SIDE_IC.bac,'Pregătire BAC',bs.r+'/'+bs.n+' lecții','--accent',bs.pct)+it('simbac',SIDE_IC.sim,'Simulare BAC','cu notă și cronometru','--c2')
    +'<h6>Exersează</h6>'+it('quiz',SIDE_IC.quiz,'Quiz','','--c1')+it('flashcards',SIDE_IC.fc,'Flashcards','','--c3')+it('probleme',SIDE_IC.pr,'Probleme rezolvate','','--c4')
    +'<h6>Unelte</h6>'+it('simulator',SIDE_IC.lab,'Simulator','','--c3')+it('calculator',SIDE_IC.calc,'Calculator','','--c1')+it('formule',SIDE_IC.fx,'Fișa de formule','','--c2')+it('lectii',SIDE_IC.ls,'Caută în lecții','','--c4')+it('natura',SIDE_IC.nat,'Fizica în natură','','--c3')+it('premium',SIDE_IC.prem,'Lecții video și audio','Premium','--gold')
-   +`<div class="sfoot">${installBtn()}</div>`;
+   +`<div class="sfoot"><div class="sidepos" role="group" aria-label="Poziția meniului"><span>Meniul</span><button type="button" data-pos="left" aria-pressed="${sidePos()==='left'}">◧ Stânga</button><button type="button" data-pos="right" aria-pressed="${sidePos()==='right'}">Dreapta ◨</button></div><button type="button" class="btn ghost sthemes">🎨 Alege tema</button>${installBtn()}</div>`;
+  sd.querySelector('.sthemes').onclick=e=>{ e.stopPropagation(); $('#themebtn').click(); };
+  sd.querySelectorAll('[data-pos]').forEach(b=>b.onclick=()=>setSidePos(b.dataset.pos));
   const h=location.hash.replace('#','')||'acasa', r=h.split('-')[0];
   sd.querySelectorAll('a.si').forEach(a=>{ const d=a.dataset.h; const on = d===h || (d===r&&!['clasa','bac'].includes(r)) || (r==='bac'&&d==='bac') || (r==='materie'&&d==='clasa-'+(subj(h.split('-')[1])||{}).cls) || (r==='lectii'&&(()=>{ const l=L[parseInt(h.split('-')[1],10)-1]; return l&&d==='clasa-'+subj(subjOfL(l)).cls; })());
     on?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'); });
 }
+const sidePos=()=>document.documentElement.getAttribute('data-side')==='right'?'right':'left';
+function setSidePos(p){ document.documentElement.setAttribute('data-side',p); store.set('sidepos',p); document.querySelectorAll('[data-pos]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.pos===p)); redraw(); if(current==='simulator') fitLab(); }
 const progHero=(st,label)=>`<div class="prog"><div class="pc"><span>Lecții citite ${label}</span><b>${st.pct}%</b><span class="meter"><i style="width:${st.pct}%"></i></span><span>${st.r} din ${st.n} lecții</span></div><div class="pc"><span>Teste de lecție trecute</span><b>${st.tn?Math.round(st.tp/st.tn*100):0}%</b><span class="meter"><i style="width:${st.tn?Math.round(st.tp/st.tn*100):0}%"></i></span><span>${st.tp} din ${st.tn} teste, cu cel puțin ${PASS}%</span></div></div>`;
 /* feedback animat la răspuns corect/greșit (teste, quiz, verifică-te pe loc) */
 document.addEventListener('click',e=>{ const b=e.target.closest&&e.target.closest('.opt'); if(!b||b.closest('.sbarea')) return;
