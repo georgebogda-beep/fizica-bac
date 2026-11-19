@@ -702,81 +702,6 @@ footer{padding-bottom:calc(30px + var(--sab))}
 </head>
 <body>
 <script>try{var _t=JSON.parse(localStorage.getItem("tbac:theme"));if(_t)document.documentElement.setAttribute("data-theme",_t);}catch(e){}</script>
-<div id="lock" role="dialog" aria-modal="true" aria-labelledby="lockt">
-<style>
-html.locked,html.locked body{overflow:hidden}
-#lock{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 30% 20%,color-mix(in srgb,var(--accent) 30%,var(--paper,#f7f3ea)),var(--paper,#f7f3ea) 70%);font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink,#18202e)}
-#lock .box{width:min(380px,100%);background:var(--sheet,#fff);border:1px solid var(--line,#ddd);border-radius:22px;padding:28px 24px;box-shadow:0 20px 60px rgba(0,0,0,.18);text-align:center;animation:lkin .5s ease}
-#lock .ic{width:58px;height:58px;margin:0 auto 12px;border-radius:16px;display:grid;place-items:center;font-size:28px;background:var(--accent);color:var(--accent-ink,#fff)}
-#lock h1{margin:0 0 6px;font-size:24px}
-#lock p{margin:0 0 18px;color:var(--muted,#667);font-size:15px}
-#lock input{width:100%;box-sizing:border-box;font:600 20px/1.2 ui-monospace,monospace;letter-spacing:.15em;text-align:center;text-transform:uppercase;padding:13px;border-radius:14px;border:1.5px solid var(--line,#ccc);background:var(--sheet2,#f4f4f4);color:inherit;outline:none}
-#lock input:focus{border-color:var(--accent)}
-#lock button{margin-top:12px;width:100%;font-family:inherit;font-weight:700;font-size:16px;padding:13px;border:0;border-radius:14px;background:var(--accent);color:var(--accent-ink,#fff);cursor:pointer}
-#lock .err{min-height:20px;margin:10px 0 0;color:var(--pen,#c33);font-size:14px}
-#lock .lmail{display:inline-block;margin-top:14px;color:var(--accent);font-weight:700;font-size:15px;text-decoration:none}
-#lock .lmail:hover{text-decoration:underline}
-#lock .lnote{display:block;margin-top:6px;color:var(--muted,#778);font-size:12.5px;line-height:1.4}
-#lock.shake .box{animation:lksh .4s}
-#lock.out{transition:opacity .35s;opacity:0;pointer-events:none}
-@keyframes lkin{from{opacity:0;transform:translateY(14px) scale(.97)}}
-@keyframes lksh{20%,60%{transform:translateX(-9px)}40%,80%{transform:translateX(9px)}}
-</style>
-<div class="box" id="lockf">
-<div class="ic">🔒</div>
-<h1 id="lockt">Fizică BAC</h1>
-<p>Introdu codul de acces ca să intri în aplicație.</p>
-<label for="lockc" style="position:absolute;left:-9999px">Cod de acces</label>
-<input id="lockc" type="password" inputmode="text" autocapitalize="characters" spellcheck="false" placeholder="••••••••" autocomplete="off" enterkeyhint="go">
-<button type="button" id="lockb">Intră</button>
-<div class="err" id="locke" aria-live="polite"></div>
-<a class="lmail" href="mailto:georgebogdandanaila@gmail.com?subject=Cerere%20cod%20de%20acces%20Fizic%C4%83%20BAC&amp;body=Salut!%20A%C8%99%20vrea%20codul%20de%20acces%20pentru%20aplica%C8%9Bia%20Fizic%C4%83%20BAC.%0A%0ANumele%20meu%3A%20">Nu ai codul? Cere-l pe email ✉️</a>
-<small class="lnote">Se deschide aplicația de email cu un mesaj către georgebogdandanaila@gmail.com. Primești codul ca răspuns.</small>
-</div>
-<script>
-(function(){
-  /* Codul NU apare în fișier, doar amprenta lui SHA-256. Ca să schimbi codul, înlocuiește LOCK_HASH. */
-  var LOCK_HASH='0da38b363bcbb0b67ff80086950c3460d79f834ea8417a669e2bae3ec946850e', KEY='tbac:unlock';
-  function sha256(str){
-    function r(n,x){return (x>>>n)|(x<<(32-n));}
-    var K=[],H=[],p=2,c=0;
-    function isP(n){for(var f=2;f*f<=n;f++)if(n%f===0)return false;return true;}
-    while(c<64){if(isP(p)){if(c<8)H[c]=(Math.pow(p,1/2)*4294967296)|0;K[c]=(Math.pow(p,1/3)*4294967296)|0;c++;}p++;}
-    var b=unescape(encodeURIComponent(str)),w=[],l=b.length*8,i,j;
-    for(i=0;i<b.length;i++)w[i>>2]|=b.charCodeAt(i)<<((3-i%4)*8);
-    w[l>>5]|=0x80<<(24-l%32);w[((l+64>>9)<<4)+15]=l;
-    for(j=0;j<w.length;j+=16){var a=H.slice(0),W=[];for(i=0;i<64;i++){
-      if(i<16)W[i]=w[j+i]|0;else{var s0=r(7,W[i-15])^r(18,W[i-15])^(W[i-15]>>>3),s1=r(17,W[i-2])^r(19,W[i-2])^(W[i-2]>>>10);W[i]=(W[i-16]+s0+W[i-7]+s1)|0;}
-      var t1=a[7]+(r(6,a[4])^r(11,a[4])^r(25,a[4]))+((a[4]&a[5])^(~a[4]&a[6]))+K[i]+W[i],t2=(r(2,a[0])^r(13,a[0])^r(22,a[0]))+((a[0]&a[1])^(a[0]&a[2])^(a[1]&a[2]));
-      a=[(t1+t2)|0].concat(a);a[4]=(a[4]+t1)|0;a.pop();}
-      for(i=0;i<8;i++)H[i]=(H[i]+a[i])|0;}
-    var o='';for(i=0;i<8;i++)o+=('00000000'+(H[i]>>>0).toString(16)).slice(-8);return o;
-  }
-  var el=document.getElementById('lock'),root=document.documentElement;
-  /* codul se cere la fiecare deschidere: nu se mai ține minte */
-  try{localStorage.removeItem(KEY);}catch(e){}
-  root.classList.add('locked');
-  var inp=document.getElementById('lockc'),er=document.getElementById('locke'),tries=0,wait=0;
-  setTimeout(function(){inp.focus();},300);
-  function check(auto){
-    if(Date.now()<wait){er.textContent='Prea multe încercări. Mai așteaptă câteva secunde.';return;}
-    var v=inp.value.replace(/\s+/g,'').toUpperCase();
-    if(auto&&v.length<8) return;
-    if(sha256('fizbac:'+v)===LOCK_HASH){
-      el.classList.add('out');root.classList.remove('locked');setTimeout(function(){el.remove();},400);
-    }else{
-      if(auto) return;
-      tries++;er.textContent='Cod greșit. Mai încearcă.';inp.value='';inp.focus();
-      el.classList.remove('shake');void el.offsetWidth;el.classList.add('shake');
-      if(tries>=5){wait=Date.now()+30000;tries=0;er.textContent='Cod greșit de 5 ori. Așteaptă 30 de secunde.';}
-    }
-  }
-  document.getElementById('lockb').addEventListener('click',function(){check(false);});
-  inp.addEventListener('keydown',function(e){if(e.key==='Enter'||e.keyCode===13){e.preventDefault();check(false);}});
-  inp.addEventListener('input',function(){er.textContent='';check(true);});
-})();
-</script>
-</div>
 <header class="topbar">
   <div class="bar">
     <a class="logo" href="#acasa"><span class="mark">F</span>Fizică BAC</a>
@@ -4598,7 +4523,6 @@ route();
   /* butonul „Înapoi” pe Android: închide întâi panourile deschise, apoi navighează înapoi, apoi iese */
   if (App && App.addListener) {
     App.addListener('backButton', function(ev){
-      if (document.getElementById('lock')) { App.exitApp(); return; }
       var tp = document.getElementById('tpanel'); if (tp) { tp.remove(); return; }
       var mn = document.getElementById('mnav');
       if (mn && mn.classList.contains('open')) { document.getElementById('burger').click(); return; }
