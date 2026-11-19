@@ -943,9 +943,6 @@ input[aria-invalid="true"]{box-shadow:inset 0 0 0 2px var(--pen)!important}
 .tgrid button{min-height:76px;border:0;box-shadow:var(--soft);background:var(--sheet)}
 .tgrid button[aria-pressed="true"]{box-shadow:0 0 0 3px var(--accent)}
 .tpanel .tinst{margin-top:12px;width:100%;justify-content:center}
-.pm-ask{display:grid;gap:8px;margin-top:16px;padding-top:14px}
-.pm-ask .btn{justify-content:center}
-.pm-ask small{color:var(--muted);font-size:13.5px;line-height:1.45}
 .linkbtn{font:inherit;color:var(--accent);background:none;border:0;padding:0;text-decoration:underline;cursor:pointer;font-weight:700}
 .pm-lockcard{border:0;box-shadow:var(--soft),inset 0 0 0 2px color-mix(in srgb,var(--gold) 45%,transparent)}
 .pm-item .acts a{min-height:44px;border:0;box-shadow:var(--soft)}
@@ -4586,8 +4583,6 @@ function sha256s(str){
    Înainte era un simplu „premium: true” în localStorage, care se putea seta de mână. */
 let premMemo=null;
 const isPrem=()=>{ if(premMemo===null){ const c=store.get('premcode',''); premMemo=typeof c==='string'&&c!==''&&sha256s('fizbac-premium:'+c)===PREM_HASH; } return premMemo; };
-const CODE_MAIL='georgebogdadanaila@gmail.com';
-const codeMailHref='mailto:'+CODE_MAIL+'?subject='+encodeURIComponent('Cerere cod Premium Fizică BAC')+'&body='+encodeURIComponent('Salut! Aș vrea codul Premium pentru aplicația Fizică BAC.\n\nNumele meu: ');
 const IC={
   play:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.4-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>',
   pause:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4.5" height="16" rx="1.2"/><rect x="13.5" y="4" width="4.5" height="16" rx="1.2"/></svg>',
@@ -4610,8 +4605,7 @@ function unlockBox(onOk){
       tries++; inp.value=''; inp.focus(); er.textContent='Cod greșit.'; if(tries>=5){ tries=0; wait=Date.now()+30000; er.textContent='Cod greșit de 5 ori. Așteaptă 30 de secunde.'; } };
     btn.onclick=go; inp.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); go(); } }); inp.addEventListener('input',()=>{ er.textContent=''; }); },0);
   return `<div class="sheet pm-unlock"><span class="pm-tag">★ Premium</span><h2 style="margin:10px 0 4px">Introdu codul Premium</h2><p class="hint" style="margin:0">Codul deblochează toate lecțiile video și audio pe acest dispozitiv.</p>
-    <div class="row"><label class="sr" for="${id}">Cod Premium</label><input id="${id}" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="COD" enterkeyhint="go"><button class="btn" type="button" id="${id}b">Deblochează</button></div><div class="err" id="${id}e" aria-live="polite"></div>
-    <div class="pm-ask"><a class="btn ghost" href="${codeMailHref}">✉️ Nu ai codul? Cere-l pe email</a><small>Se deschide aplicația de email cu un mesaj gata scris către <b>${CODE_MAIL}</b>. Primești codul ca răspuns. Dacă nu se deschide nimic, <button type="button" class="linkbtn" data-copy="${CODE_MAIL}">copiază adresa</button> și scrie-ne din aplicația ta de email.</small></div></div>`;
+    <div class="row"><label class="sr" for="${id}">Cod Premium</label><input id="${id}" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="COD" enterkeyhint="go"><button class="btn" type="button" id="${id}b">Deblochează</button></div><div class="err" id="${id}e" aria-live="polite"></div></div>`;
 }
 function premStrip(n){
   if(isPrem()) return `<div class="pm-strip"><a class="btn" href="#video-${n}">${IC.video}Lecția video</a><a class="btn ghost" href="#audio-${n}">${IC.audio}Ascultă lecția</a><span class="pm-tag">★ Premium</span></div>`;
